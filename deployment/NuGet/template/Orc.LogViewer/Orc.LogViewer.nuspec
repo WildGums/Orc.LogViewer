@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Orc.LogViewer</id>
+    <version>[VERSION]</version>
+    <title>Orc.LogViewer</title>
+    <authors>OrchestraDevs</authors>
+    <owners>OrchestraDevs</owners>
+
+	<description>
+        Advanced log viewer control for WPF.
+	</description>
+	<summary>
+	</summary>
+
+    <tags>log viewer loggin orcomp orc</tags>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright Wild Gums 2010 - 2015</copyright>
+
+	<language>en-US</language>
+	<projectUrl>https://github.com/WildGums/Orc.LogViewer</projectUrl>
+	<!--<licenseUrl>http://catel.codeplex.com/license</licenseUrl>-->
+	<!--<iconUrl>http://www.catenalogic.com/catel.png</iconUrl>-->
+    
+    <dependencies>
+      <dependency id="Catel.Core" version="[replaced]" />
+      <dependency id="Catel.MVVM" version="[replaced]" />
+      <dependency id="Orc.Controls" version="[replaced]" />
+    </dependencies>    
+  </metadata>
+</package>
