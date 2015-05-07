@@ -1,6 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:orc="http://www.wildgums.net.au/orc">
 
+    <Style TargetType="{x:Type orc:RichTextBoxParagraph}">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+    
     <Geometry x:Key="HexagonGeometry">M5.26,17.9 L15.8,17.9 21.1,8.9 15.8,0 5.26,0 0,8.9200432 C0,8.9200432 5.26,17.9 5.26,17.9 z</Geometry>
     <Geometry x:Key="RectngleGeometry">M0.5,0.5 L17.5,0.5 L17.5,17.5 L0.5,17.5 z</Geometry>
     <Geometry x:Key="TriangleGeometry">M9.0,0.5 L17.5,17.5 L0.0,17.5 z</Geometry>
