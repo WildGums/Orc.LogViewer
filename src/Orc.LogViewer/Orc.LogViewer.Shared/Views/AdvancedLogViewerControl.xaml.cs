@@ -219,7 +219,7 @@ namespace Orc.LogViewer
 
             Dispatcher.BeginInvoke(new Action(() =>
             {
-                Clear();
+                ClearScreen();
 
                 var vm = ViewModel as AdvancedLogViewerViewModel;
                 if (vm != null)
@@ -276,9 +276,20 @@ namespace Orc.LogViewer
             LogRecordsRichTextBox.ScrollToEnd();
         }
 
-        public void Clear()
+        private void ClearScreen()
         {
             LogRecordsRichTextBox.Document.Blocks.Clear();
+        }
+
+        public void Clear()
+        {
+            var vm = ViewModel as AdvancedLogViewerViewModel;
+            if (vm != null)
+            {
+                vm.ClearEntries();
+            }
+
+            ClearScreen();
         }
         #endregion
     }
