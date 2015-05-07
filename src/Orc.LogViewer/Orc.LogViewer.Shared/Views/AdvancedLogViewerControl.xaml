@@ -68,34 +68,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-    
-        <Style x:Key="GreenCheckBoxStyle" TargetType="{x:Type CheckBox}">
-            <Setter Property="Padding" Value="5,0,0,0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type CheckBox}">
-                        <Viewbox x:Name="CheckMark" Width="16" Height="16">
-                            <Path x:Name="Checkmark" Stretch="Fill"
-                                        Data="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
-                                        Fill="LimeGreen" />
-                        </Viewbox>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter TargetName="CheckMark" Property="Visibility" Value="Hidden"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Viewbox x:Key="CheckMark" Width="16" Height="16">
-            <Path x:Name="Checkmark" Stretch="Fill"
-                                        Data="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
-                                        Fill="LimeGreen" />
-        </Viewbox>
-        <Path x:Key="GreenPath" Stretch="Fill"
-                                        Data="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"
-                                        Fill="LimeGreen" />
     </UserControl.Resources>
     
     <Grid>
