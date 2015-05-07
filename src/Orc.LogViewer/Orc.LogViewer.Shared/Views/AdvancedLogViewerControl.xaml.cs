@@ -291,6 +291,12 @@ namespace Orc.LogViewer
 
             ClearScreen();
         }
+
+        public void CopyToClipboard()
+        {
+            var text = LogRecordsRichTextBox.GetInlineText();
+            Clipboard.SetText(text);
+        }
         #endregion
     }
 }
