@@ -101,11 +101,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\LogViewerSeparateWindowExampleViewModel.cs" />
     <Compile Include="ViewModels\LogViewerExampleViewModel.cs" />
+    <Compile Include="ViewModels\LogWindowViewModel.cs" />
+    <Compile Include="Views\LogViewerSeparateWindowExample.xaml.cs">
+      <DependentUpon>LogViewerSeparateWindowExample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LogViewerExample.xaml.cs">
       <DependentUpon>LogViewerExample.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\LogViewerSeparateWindowExample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\LogViewerExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -122,6 +135,9 @@
     </Compile>
     <Compile Include="ModuleInitializer.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\LogWindow.xaml.cs">
+      <DependentUpon>LogWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -1,0 +1,13 @@
+﻿<catel:DataWindow x:Class="Orc.LogViewer.Examples.Views.LogWindow"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:catel="http://catel.codeplex.com"
+                  xmlns:orc="http://www.wildgums.net.au/orc"
+                  Width="800" Height="500" ResizeMode="CanResize"
+                  SizeToContent="Manual" >
+
+    <Grid>
+        <orc:AdvancedLogViewerControl />
+    </Grid>
+    
+</catel:DataWindow>

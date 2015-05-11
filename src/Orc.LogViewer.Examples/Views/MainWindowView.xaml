@@ -111,7 +111,11 @@
         <TabItem Header="LogViewer">
             <views:LogViewerExample/>
         </TabItem>
-S
+
+        <TabItem Header="LogViewer window">
+            <views:LogViewerSeparateWindowExample/>
+        </TabItem>
+
     </TabControl>
     
 </catel:Window>
