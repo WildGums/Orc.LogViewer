@@ -8,7 +8,7 @@
 namespace Orc.LogViewer.ViewModels
 {
     using System;
-    using System.Threading.Tasks;
+    using System.Windows.Media;
     using Catel.MVVM;
 
     public class AdvancedLogViewerViewModel : ViewModelBase
@@ -21,7 +21,8 @@ namespace Orc.LogViewer.ViewModels
 
         #region Properties
         public Type LogListenerType { get; set; }
-        #endregion
 
+        public Brush AccentColorBrush { get; set; }
+        #endregion
     }
 }
