@@ -109,7 +109,7 @@
     <TabControl Padding="10" TabStripPlacement="Left" Background="White" BorderBrush="{StaticResource TabControlNormalBorderBrush}">
         
         <TabItem Header="LogViewer">
-            <views:LogViewer/>
+            <views:LogViewerExample/>
         </TabItem>
 S
     </TabControl>

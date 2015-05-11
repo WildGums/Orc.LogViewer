@@ -10,12 +10,12 @@ namespace Orc.LogViewer.Examples.Views
     /// <summary>
     /// Interaction logic for LogViewer.xaml.
     /// </summary>
-    public partial class LogViewer
+    public partial class LogViewerExample
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LogViewer"/> class.
         /// </summary>
-        public LogViewer()
+        public LogViewerExample()
         {
             InitializeComponent();
         }
