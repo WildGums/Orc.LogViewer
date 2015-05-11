@@ -66,7 +66,7 @@
     </Reference>
     <Reference Include="Orc.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Orc.Controls.1.0.0-unstable0210\lib\net40\Orc.Controls.dll</HintPath>
+      <HintPath>..\..\lib\Orc.Controls.1.0.0-unstable0229\lib\net40\Orc.Controls.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -101,11 +101,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\LogViewerViewModel.cs" />
-    <Compile Include="Views\LogViewer.xaml.cs">
-      <DependentUpon>LogViewer.xaml</DependentUpon>
+    <Compile Include="ViewModels\LogViewerExampleViewModel.cs" />
+    <Compile Include="Views\LogViewerExample.xaml.cs">
+      <DependentUpon>LogViewerExample.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\LogViewer.xaml">
+    <Page Include="Views\LogViewerExample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
