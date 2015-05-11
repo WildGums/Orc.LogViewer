@@ -27,7 +27,7 @@ namespace Orc.LogViewer
 
         private void CopyLog_OnClick(object sender, RoutedEventArgs e)
         {
-            // LogViewerControl.CopyToClipboard();
+             LogViewerControl.CopyToClipboard();
         }
 
         private void OpenInEditor_OnClick(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace Orc.LogViewer
 
         private string GetLog()
         {
-            //LogViewerControl.CopyToClipboard();
+            LogViewerControl.CopyToClipboard();
 
             var dataObject = Clipboard.GetDataObject();
             if (dataObject == null)
