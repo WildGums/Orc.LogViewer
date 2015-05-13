@@ -13,6 +13,8 @@ namespace Orc.LogViewer.ViewModels
 
     public class AdvancedLogViewerViewModel : ViewModelBase
     {
+        private Brush _accentColorBrushProperty;
+
         #region Constructors
         public AdvancedLogViewerViewModel()
         {
@@ -22,7 +24,22 @@ namespace Orc.LogViewer.ViewModels
         #region Properties
         public Type LogListenerType { get; set; }
 
-        public Brush AccentColorBrush { get; set; }
+        public Brush AccentColorBrush
+        {
+            get { return _accentColorBrushProperty; }
+            set
+            {
+                if (_accentColorBrushProperty == value)
+                {
+                    return;
+                }
+
+                _accentColorBrushProperty = value;
+                var accentColor = ((SolidColorBrush) AccentColorBrush).Color;
+                accentColor.CreateAccentColorResourceDictionary();
+                RaisePropertyChanged("AccentColorBrush");
+            }
+        }
         #endregion
     }
 }
