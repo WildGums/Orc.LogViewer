@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <DockPanel>
-            <ToggleButton x:Name="ShowErrorToggleButton" IsChecked="True" Tag="Error" Margin="2 0 0 0">
+            <ToggleButton x:Name="ShowErrorToggleButton" IsChecked="True" Tag="Error" Margin="0 0 0 0">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.ErrorEntriesCount}"/>
                     <TextBlock Text="Error"/>
@@ -39,20 +39,20 @@
                 </StackPanel>
             </ToggleButton>
 
-            <ToggleButton x:Name="ShowDebugToggleButton" IsChecked="True" Tag="Debug" Margin="2 0 0 0">
+            <ToggleButton x:Name="ShowDebugToggleButton" IsChecked="True" Tag="Debug" Margin="2 0 2 0">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.DebugEntriesCount}"/>
                     <TextBlock Text="Debug"/>
                 </StackPanel>
             </ToggleButton>
             
-            <ToggleButton x:Name="EnableTimestampToggleButton" Margin="4 0 4 0" 
+            <ToggleButton x:Name="EnableTimestampToggleButton" Margin="2 0 2 0" 
                           Style="{StaticResource EnableTimestampToggleButtonStyle}"/>
 
-            <ComboBox x:Name="OriginComboBox" Margin="2" Width="250" SelectedIndex="0"
+            <ComboBox x:Name="OriginComboBox" Margin="4 0 2 0" Width="250" SelectedIndex="0"
                       ItemsSource="{Binding ElementName=LogViewerControl, Path=ViewModel.TypeNames}" />
             
-            <orc:FilterBoxControl x:Name="FilterBox" Margin="2" DockPanel.Dock="Right" MinWidth="200" PropertyName="Message"
+            <orc:FilterBoxControl x:Name="FilterBox" Margin="4 0 4 0" DockPanel.Dock="Right" MinWidth="200" PropertyName="Message"
                                   FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
                                   AccentColorBrush="{Binding DataContext.AccentColorBrush, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
             
