@@ -49,6 +49,9 @@
             <ToggleButton x:Name="EnableTimestampToggleButton" Margin="4 0 4 0" 
                           Style="{StaticResource EnableTimestampToggleButtonStyle}"/>
 
+            <ComboBox x:Name="OriginComboBox" Margin="2" Width="250" SelectedIndex="0"
+                      ItemsSource="{Binding ElementName=LogViewerControl, Path=ViewModel.TypeNames}" />
+            
             <orc:FilterBoxControl x:Name="FilterBox" Margin="2" DockPanel.Dock="Right" MinWidth="200" PropertyName="Message"
                                   FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
                                   AccentColorBrush="{Binding AccentColorBrush}"/>
@@ -63,6 +66,7 @@
                               EnableTextColoring="True"
                               EnableIcons="True"
                               LogFilter="{Binding Text, ElementName=FilterBox}"
+                              TypeFilter="{Binding SelectedValue, ElementName=OriginComboBox, Mode=OneWay}"
                               LogListenerType="{Binding LogListenerType}"/>
         <DockPanel Grid.Row="2" LastChildFill="False">
             <Button Content="Clear Log" Click="ClearLog_OnClick" DockPanel.Dock="Left" Margin="4 2 2 2" />
