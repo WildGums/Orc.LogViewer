@@ -76,6 +76,9 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="#FFADADAD"/>
+                            <Setter Property="BorderBrush" Value="#FFADADAD"/>
+                            <Setter Property="Background" TargetName="Chrome" Value="WhiteSmoke"/>
+                            <Setter Property="BorderBrush" TargetName="Chrome" Value="WhiteSmoke"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
