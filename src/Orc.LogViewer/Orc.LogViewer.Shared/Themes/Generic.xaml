@@ -74,6 +74,11 @@
                             <Setter Property="Background" TargetName="Chrome" Value="LightGray"/>
                             <Setter Property="BorderBrush" TargetName="Chrome" Value="LightGray"/>
                         </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Foreground" Value="#FFADADAD"/>
+                            <Setter Property="BorderBrush" Value="#FFADADAD"/>
+                            <Setter Property="Background" TargetName="Chrome" Value="WhiteSmoke"/>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="#FFADADAD"/>
                             <Setter Property="BorderBrush" Value="#FFADADAD"/>
