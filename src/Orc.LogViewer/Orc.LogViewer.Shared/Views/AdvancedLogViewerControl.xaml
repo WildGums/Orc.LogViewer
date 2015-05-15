@@ -54,7 +54,7 @@
             
             <orc:FilterBoxControl x:Name="FilterBox" Margin="4 0 4 0" DockPanel.Dock="Right" MinWidth="200" PropertyName="Message"
                                   FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
-                                  AccentColorBrush="{Binding DataContext.AccentColorBrush, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"/>
+                                  AccentColorBrush="{DynamicResource ControlsAccentBrush}"/>
             
         </DockPanel>
         <orc:LogViewerControl x:Name ="LogViewerControl" Grid.Row="1" Margin="4"
