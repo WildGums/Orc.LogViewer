@@ -7,6 +7,8 @@
     <Geometry x:Key="EllipseGeometry">M17.5,9 C17.5,13.69442 13.69442,17.5 9,17.5 C4.3055796,17.5 0.5,13.69442 0.5,9 C0.5,4.3055796 
             4.3055796,0.5 9,0.5 C13.69442,0.5 17.5,4.3055796 17.5,9 z</Geometry>
 
+    <Geometry x:Key="ClockGeometry">M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z</Geometry>
+
     <Style TargetType="{x:Type ToggleButton}">
         <Setter Property="Template">
             <Setter.Value>
@@ -67,12 +69,9 @@
                             <Setter Property="Path.Margin" Value="-1 0 1 -1" />
                             <Setter Property="Path.Data" Value="{StaticResource HexagonGeometry}" />
                         </DataTrigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="Chrome" Value="White"/>
-                        </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="Chrome" Value="LightGray"/>
-                            <Setter Property="BorderBrush" TargetName="Chrome" Value="LightGray"/>
+                            <Setter Property="Background" TargetName="Chrome" Value="White"/>
+                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{DynamicResource ControlsAccentBrush}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter Property="Foreground" Value="#FFADADAD"/>
@@ -91,40 +90,41 @@
         </Setter>
     </Style>
 
-    <Style x:Key="EnableTimestampToggleButtonStyle"  TargetType="{x:Type ToggleButton}">
-        <Setter Property="Content" Value="Show timestamps "/>
+    <Style x:Key="TimestampToggleButtonStyle" TargetType="{x:Type ToggleButton}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <Border x:Name="Chrome" BorderBrush="LightGray" BorderThickness="1" Background="White"
-                            SnapsToDevicePixels="True" Padding="4 0 4 0" Margin="4 0 0 0">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            RecognizesAccessKey="True"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            SnapsToDevicePixels="True" Padding="4"> 
+                        <Viewbox x:Name="Viewbox" Height="16" Width="16">
+                            <Path x:Name="Path" Data="{StaticResource ClockGeometry}"
+                                  HorizontalAlignment="Center" SnapsToDevicePixels="True" Stretch="Fill"
+                                  UseLayoutRounding="True" Fill="#575757" VerticalAlignment="Center"/>
+                        </Viewbox>
+                        <Border.ToolTip>Hide timestamps</Border.ToolTip>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="Chrome" Value="White"/>
-                        </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" TargetName="Chrome" Value="LightGray"/>
-                            <Setter Property="BorderBrush" TargetName="Chrome" Value="LightGray"/>
+                            <Setter Property="Background" TargetName="Chrome" Value="White"/>
+                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{DynamicResource ControlsAccentBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Fill" TargetName="Path" Value="#FFADADAD"/>
+                            <Setter Property="BorderBrush" Value="#FFADADAD"/>
+                            <Setter Property="Border.ToolTip" TargetName="Chrome" Value="Show timestamps"/>
+                            <Setter Property="Background" TargetName="Chrome" Value="WhiteSmoke"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#FFADADAD"/>
+                            <Setter Property="Fill" TargetName="Path" Value="#FFADADAD"/>
+                            <Setter Property="BorderBrush" Value="#FFADADAD"/>
+                            <Setter Property="Background" TargetName="Chrome" Value="WhiteSmoke"/>
+                            <Setter Property="BorderBrush" TargetName="Chrome" Value="WhiteSmoke"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Content" Value="Hide timestamps"/>
-            </Trigger>
-        </Style.Triggers>
     </Style>
-
 
     <Style TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="4 0 0 0"/>

@@ -3,11 +3,11 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:catel="http://catel.codeplex.com"
                   xmlns:orc="http://www.wildgums.net.au/orc"
-                  Width="800" Height="500" ResizeMode="CanResize"
+                  Width="950" Height="500" ResizeMode="CanResize"
                   SizeToContent="Manual" >
 
     <Grid>
-        <orc:AdvancedLogViewerControl />
+        <orc:AdvancedLogViewerControl AccentColorBrush="Orange" Margin="4"/>
     </Grid>
     
 </catel:DataWindow>
