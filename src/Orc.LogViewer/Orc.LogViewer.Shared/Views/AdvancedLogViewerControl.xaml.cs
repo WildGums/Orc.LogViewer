@@ -13,6 +13,8 @@ namespace Orc.LogViewer
     using System.Security;
     using System.Windows;
     using System.Windows.Media;
+    using Catel.IoC;
+    using Catel.MVVM;
     using Catel.MVVM.Views;
     using Controls.Logging;
 
@@ -21,17 +23,79 @@ namespace Orc.LogViewer
     /// </summary>
     public partial class AdvancedLogViewerControl
     {
-        private void ClearLog_OnClick(object sender, RoutedEventArgs e)
+        #region Fields
+        private readonly ICommandManager _commandManager;
+        #endregion
+
+        #region Constructors
+        static AdvancedLogViewerControl()
+        {
+            typeof(AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe();
+        }
+
+        public AdvancedLogViewerControl()
+        {
+            InitializeComponent();
+
+            var serviceLocator = ServiceLocator.Default;
+
+            _commandManager = serviceLocator.ResolveType<ICommandManager>();
+        }
+        #endregion
+
+        #region Properties
+        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+        public Brush AccentColorBrush
+        {
+            get { return (Brush)GetValue(AccentColorBrushProperty); }
+            set { SetValue(AccentColorBrushProperty, value); }
+        }
+
+        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof(Brush),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.Blue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+        public Type LogListenerType
+        {
+            get { return (Type) GetValue(LogListenerTypeProperty); }
+            set { SetValue(LogListenerTypeProperty, value); }
+        }
+
+        public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register("LogListenerType", typeof (Type),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        #endregion
+
+        #region Methods
+        protected override void OnLoaded(EventArgs e)
+        {
+            // Commands that require a view component cannot live inside a CommandContainer
+            // because they must access a view (which is probably not registered inside the ServiceLocator).
+            // In such a case, you can manually add actions to the ICommandManager. Don't forget to
+            // remove them again in the Unloaded.
+
+            _commandManager.RegisterAction(LogViewerCommands.Logging.Clear, Clear);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.CopyToClipboard, CopyToClipboard);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.OpenInEditor, OpenInEditor);
+        }
+
+        protected override void OnUnloaded(EventArgs e)
+        {
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.Clear, Clear);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.CopyToClipboard, CopyToClipboard);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.OpenInEditor, OpenInEditor);
+        }
+
+        private void Clear()
         {
             LogViewerControl.Clear();
         }
 
-        private void CopyLog_OnClick(object sender, RoutedEventArgs e)
+        private void CopyToClipboard()
         {
-             LogViewerControl.CopyToClipboard();
+            LogViewerControl.CopyToClipboard();
         }
 
-        private void OpenInEditor_OnClick(object sender, RoutedEventArgs e)
+        private void OpenInEditor()
         {
             var path = string.Empty;
             try
@@ -64,39 +128,6 @@ namespace Orc.LogViewer
             }
 
             return dataObject.GetData(DataFormats.Text).ToString();
-        }
-
-        #region Properties
-        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
-        public Brush AccentColorBrush
-        {
-            get { return (Brush)GetValue(AccentColorBrushProperty); }
-            set { SetValue(AccentColorBrushProperty, value); }
-        }
-
-        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof(Brush),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.Blue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
-        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
-        public Type LogListenerType
-        {
-            get { return (Type) GetValue(LogListenerTypeProperty); }
-            set { SetValue(LogListenerTypeProperty, value); }
-        }
-
-        public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register("LogListenerType", typeof (Type),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-        #endregion
-
-        #region Constructors
-        static AdvancedLogViewerControl()
-        {
-            typeof (AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe();
-        }
-
-        public AdvancedLogViewerControl()
-        {
-            InitializeComponent();
         }
         #endregion
     }
