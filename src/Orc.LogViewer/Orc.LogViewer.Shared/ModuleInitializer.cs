@@ -34,8 +34,12 @@ public static class ModuleInitializer
     private static void InitializeCommands(ICommandManager commandManager)
     {
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleError");
+        commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleWarning");
+        commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleDebug");
+        commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleInfo");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "Clear");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "CopyToClipboard");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "OpenInEditor");
+        commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "Filter");
     }
 }

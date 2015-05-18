@@ -12,6 +12,7 @@ namespace Orc.LogViewer
     using System.IO;
     using System.Security;
     using System.Windows;
+    using System.Windows.Input;
     using System.Windows.Media;
     using Catel.IoC;
     using Catel.MVVM;
@@ -76,6 +77,11 @@ namespace Orc.LogViewer
             _commandManager.RegisterAction(LogViewerCommands.Logging.Clear, Clear);
             _commandManager.RegisterAction(LogViewerCommands.Logging.CopyToClipboard, CopyToClipboard);
             _commandManager.RegisterAction(LogViewerCommands.Logging.OpenInEditor, OpenInEditor);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleError, ToggleError);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleWarning, ToggleWarning);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleDebug, ToggleDebug);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleInfo, ToggleInfo);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.Filter, Filter);
         }
 
         protected override void OnUnloaded(EventArgs e)
@@ -83,6 +89,60 @@ namespace Orc.LogViewer
             _commandManager.UnregisterAction(LogViewerCommands.Logging.Clear, Clear);
             _commandManager.UnregisterAction(LogViewerCommands.Logging.CopyToClipboard, CopyToClipboard);
             _commandManager.UnregisterAction(LogViewerCommands.Logging.OpenInEditor, OpenInEditor);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleError, ToggleError);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleWarning, ToggleWarning);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleDebug, ToggleDebug);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleInfo, ToggleInfo);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.Filter, Filter);
+        }
+
+        private void Filter()
+        {
+            //TODO: focus FilterBox here
+        }
+
+        private void ToggleError()
+        {
+            if (ShowErrorToggleButton.IsChecked == true)
+            {
+                ShowErrorToggleButton.IsChecked = false;
+                return;
+            }
+
+            ShowErrorToggleButton.IsChecked = true;
+        }
+
+        private void ToggleWarning()
+        {
+            if (ShowWarningToggleButton.IsChecked == true)
+            {
+                ShowWarningToggleButton.IsChecked = false;
+                return;
+            }
+
+            ShowWarningToggleButton.IsChecked = true;
+        }
+
+        private void ToggleDebug()
+        {
+            if (ShowDebugToggleButton.IsChecked == true)
+            {
+                ShowDebugToggleButton.IsChecked = false;
+                return;
+            }
+
+            ShowDebugToggleButton.IsChecked = true;
+        }
+
+        private void ToggleInfo()
+        {
+            if (ShowInfoToggleButton.IsChecked == true)
+            {
+                ShowInfoToggleButton.IsChecked = false;
+                return;
+            }
+
+            ShowInfoToggleButton.IsChecked = true;
         }
 
         private void Clear()
