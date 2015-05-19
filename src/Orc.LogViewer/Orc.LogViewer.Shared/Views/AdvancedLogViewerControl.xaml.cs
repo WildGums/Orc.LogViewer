@@ -108,57 +108,27 @@ namespace Orc.LogViewer
 
         private void ToggleTimestamp()
         {
-            if (EnableTimestampToggleButton.IsChecked == true)
-            {
-                EnableTimestampToggleButton.IsChecked = false;
-                return;
-            }
-
-            EnableTimestampToggleButton.IsChecked = true;
+            EnableTimestampToggleButton.Toggle();
         }
 
         private void ToggleError()
         {
-            if (ShowErrorToggleButton.IsChecked == true)
-            {
-                ShowErrorToggleButton.IsChecked = false;
-                return;
-            }
-
-            ShowErrorToggleButton.IsChecked = true;
+            ShowErrorToggleButton.Toggle();
         }
 
         private void ToggleWarning()
         {
-            if (ShowWarningToggleButton.IsChecked == true)
-            {
-                ShowWarningToggleButton.IsChecked = false;
-                return;
-            }
-
-            ShowWarningToggleButton.IsChecked = true;
+            ShowWarningToggleButton.Toggle();
         }
 
         private void ToggleDebug()
         {
-            if (ShowDebugToggleButton.IsChecked == true)
-            {
-                ShowDebugToggleButton.IsChecked = false;
-                return;
-            }
-
-            ShowDebugToggleButton.IsChecked = true;
+            ShowDebugToggleButton.Toggle();
         }
 
         private void ToggleInfo()
         {
-            if (ShowInfoToggleButton.IsChecked == true)
-            {
-                ShowInfoToggleButton.IsChecked = false;
-                return;
-            }
-
-            ShowInfoToggleButton.IsChecked = true;
+            ShowInfoToggleButton.Toggle();
         }
 
         private void Clear()

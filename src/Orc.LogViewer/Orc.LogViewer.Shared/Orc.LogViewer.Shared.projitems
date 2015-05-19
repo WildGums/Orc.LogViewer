@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\RichTextBoxExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ToggleButtonExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UIElementExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ModuleInitializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Properties\AssemblyInfo.cs" />
