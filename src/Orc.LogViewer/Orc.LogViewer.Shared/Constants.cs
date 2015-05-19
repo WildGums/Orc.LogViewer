@@ -47,6 +47,14 @@ namespace Orc.LogViewer
             public static readonly InputGesture ToggleInfoInputGesture = null;
 #endif
 
+            public const string ToggleTimestamp = "Logging.ToggleTimestamp";
+
+#if DEBUG && TEST_INPUTGESTURES
+            public static readonly InputGesture ToggleTimestampInputGesture = new InputGesture(Key.T, ModifierKeys.Control);
+#else
+            public static readonly InputGesture ToggleTimestampInputGesture = null;
+#endif
+
             public const string Clear = "Logging.Clear";
 #if DEBUG && TEST_INPUTGESTURES
             public static readonly InputGesture ClearInputGesture = new InputGesture(Key.X, ModifierKeys.Control);

@@ -12,7 +12,7 @@ namespace Orc.LogViewer
     using System.IO;
     using System.Security;
     using System.Windows;
-    using System.Windows.Input;
+    using System.Windows.Controls;
     using System.Windows.Media;
     using Catel.IoC;
     using Catel.MVVM;
@@ -41,7 +41,10 @@ namespace Orc.LogViewer
             var serviceLocator = ServiceLocator.Default;
 
             _commandManager = serviceLocator.ResolveType<ICommandManager>();
+
+            CreateTooltips();
         }
+
         #endregion
 
         #region Properties
@@ -82,6 +85,7 @@ namespace Orc.LogViewer
             _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleDebug, ToggleDebug);
             _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleInfo, ToggleInfo);
             _commandManager.RegisterAction(LogViewerCommands.Logging.Filter, Filter);
+            _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleTimestamp, ToggleTimestamp);
         }
 
         protected override void OnUnloaded(EventArgs e)
@@ -94,11 +98,23 @@ namespace Orc.LogViewer
             _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleDebug, ToggleDebug);
             _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleInfo, ToggleInfo);
             _commandManager.UnregisterAction(LogViewerCommands.Logging.Filter, Filter);
+            _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleTimestamp, ToggleTimestamp);
         }
 
         private void Filter()
         {
             //TODO: focus FilterBox here
+        }
+
+        private void ToggleTimestamp()
+        {
+            if (EnableTimestampToggleButton.IsChecked == true)
+            {
+                EnableTimestampToggleButton.IsChecked = false;
+                return;
+            }
+
+            EnableTimestampToggleButton.IsChecked = true;
         }
 
         private void ToggleError()
@@ -188,6 +204,21 @@ namespace Orc.LogViewer
             }
 
             return dataObject.GetData(DataFormats.Text).ToString();
+        }
+
+        private void CreateTooltips()
+        {
+            ShowErrorToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleErrorInputGesture);
+            ShowWarningToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleWarningInputGesture);
+            ShowInfoToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleInfoInputGesture);
+            ShowDebugToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleDebugInputGesture);
+
+            EnableTimestampToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleTimestampInputGesture, "Show timestamps");
+            FilterBox.SetTooltip(LogViewerCommands.Logging.FilterInputGesture);
+
+            ClearButton.SetTooltip(LogViewerCommands.Logging.ClearInputGesture);
+            CopyButton.SetTooltip(LogViewerCommands.Logging.CopyToClipboardInputGesture);
+            OpenButton.SetTooltip(LogViewerCommands.Logging.OpenInEditorInputGesture);
         }
         #endregion
     }

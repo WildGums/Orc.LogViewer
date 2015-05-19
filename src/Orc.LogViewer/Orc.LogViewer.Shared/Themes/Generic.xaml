@@ -101,7 +101,7 @@
                                   HorizontalAlignment="Center" SnapsToDevicePixels="True" Stretch="Fill"
                                   UseLayoutRounding="True" Fill="#575757" VerticalAlignment="Center"/>
                         </Viewbox>
-                        <Border.ToolTip>Hide timestamps</Border.ToolTip>
+                        <!--<Border.ToolTip>Hide timestamps</Border.ToolTip>-->
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
@@ -111,7 +111,7 @@
                         <Trigger Property="IsChecked" Value="False">
                             <Setter Property="Fill" TargetName="Path" Value="#FFADADAD"/>
                             <Setter Property="BorderBrush" Value="#FFADADAD"/>
-                            <Setter Property="Border.ToolTip" TargetName="Chrome" Value="Show timestamps"/>
+                            <!--<Setter Property="Border.ToolTip" TargetName="Chrome" Value="Show timestamps"/>-->
                             <Setter Property="Background" TargetName="Chrome" Value="WhiteSmoke"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">

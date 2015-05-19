@@ -37,6 +37,8 @@ public static class ModuleInitializer
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleWarning");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleDebug");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleInfo");
+
+        commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "ToggleTimestamp");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "Clear");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "CopyToClipboard");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "OpenInEditor");

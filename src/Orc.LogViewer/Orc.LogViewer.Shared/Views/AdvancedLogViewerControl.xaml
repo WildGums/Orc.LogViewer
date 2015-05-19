@@ -39,7 +39,7 @@
                 </StackPanel>
             </ToggleButton>
 
-            <ToggleButton x:Name="ShowDebugToggleButton" IsChecked="True" Tag="Debug" Margin="0 0 2 0" >
+            <ToggleButton x:Name="ShowDebugToggleButton" IsChecked="False" Tag="Debug" Margin="0 0 2 0" >
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.DebugEntriesCount}"/>
                     <TextBlock Text="Debug"/>
@@ -71,9 +71,9 @@
                               TypeFilter="{Binding SelectedValue, ElementName=OriginComboBox, Mode=OneWay}"
                               LogListenerType="{Binding LogListenerType}"/>
         <DockPanel Grid.Row="2" LastChildFill="False">
-            <Button Content="Clear Log" Command="{catel:CommandManagerBinding Logging.Clear}" DockPanel.Dock="Left" Margin="4 2 2 2" Width="80" />
-            <Button Content="Copy" Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"  DockPanel.Dock="Right" Margin="2 2 4 2" Width="60" />
-            <Button Content="Open in text editor" Command="{catel:CommandManagerBinding Logging.OpenInEditor}" DockPanel.Dock="Right" Margin="2 2 4 2" Width="140" />
+            <Button x:Name="ClearButton" Content="Clear" Command="{catel:CommandManagerBinding Logging.Clear}" DockPanel.Dock="Left" Margin="4 2 2 2" Width="80" />
+            <Button x:Name="CopyButton" Content="Copy" Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"  DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" />
+            <Button x:Name="OpenButton" Content="Open" Command="{catel:CommandManagerBinding Logging.OpenInEditor}" DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" />
         </DockPanel>
     </Grid>
 </catel:UserControl>
