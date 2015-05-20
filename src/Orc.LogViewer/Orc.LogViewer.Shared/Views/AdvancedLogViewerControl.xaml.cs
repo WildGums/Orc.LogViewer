@@ -12,7 +12,6 @@ namespace Orc.LogViewer
     using System.IO;
     using System.Security;
     using System.Windows;
-    using System.Windows.Controls;
     using System.Windows.Media;
     using Catel.IoC;
     using Catel.MVVM;
@@ -31,7 +30,7 @@ namespace Orc.LogViewer
         #region Constructors
         static AdvancedLogViewerControl()
         {
-            typeof(AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe();
+            typeof (AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe();
         }
 
         public AdvancedLogViewerControl()
@@ -44,19 +43,18 @@ namespace Orc.LogViewer
 
             CreateTooltips();
         }
-
         #endregion
 
         #region Properties
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Brush AccentColorBrush
         {
-            get { return (Brush)GetValue(AccentColorBrushProperty); }
+            get { return (Brush) GetValue(AccentColorBrushProperty); }
             set { SetValue(AccentColorBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof(Brush),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.Blue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof (Brush),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.Blue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Type LogListenerType
@@ -95,7 +93,6 @@ namespace Orc.LogViewer
             _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleWarning, ToggleWarning);
             _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleDebug, ToggleDebug);
             _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleInfo, ToggleInfo);
-            _commandManager.RegisterAction(LogViewerCommands.Logging.Filter, Filter);
             _commandManager.RegisterAction(LogViewerCommands.Logging.ToggleTimestamp, ToggleTimestamp);
         }
 
@@ -108,13 +105,7 @@ namespace Orc.LogViewer
             _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleWarning, ToggleWarning);
             _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleDebug, ToggleDebug);
             _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleInfo, ToggleInfo);
-            _commandManager.UnregisterAction(LogViewerCommands.Logging.Filter, Filter);
             _commandManager.UnregisterAction(LogViewerCommands.Logging.ToggleTimestamp, ToggleTimestamp);
-        }
-
-        private void Filter()
-        {
-            //TODO: focus FilterBox here
         }
 
         private void ToggleTimestamp()
