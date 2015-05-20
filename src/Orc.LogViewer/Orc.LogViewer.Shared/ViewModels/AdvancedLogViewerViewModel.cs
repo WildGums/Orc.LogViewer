@@ -24,6 +24,8 @@ namespace Orc.LogViewer.ViewModels
         #region Properties
         public Type LogListenerType { get; set; }
 
+        public bool IgnoreCatelLogging { get; set; }
+
         public Brush AccentColorBrush
         {
             get { return _accentColorBrushProperty; }
