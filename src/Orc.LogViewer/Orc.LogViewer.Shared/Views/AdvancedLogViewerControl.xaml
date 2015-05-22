@@ -50,15 +50,16 @@
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
                 <ToggleButton x:Name="EnableTimestampToggleButton" Margin="2 0 4 0"
                               Style="{StaticResource TimestampToggleButtonStyle}"/>
-            
-                <ComboBox x:Name="OriginComboBox" Margin="0 0 4 0" Width="200" SelectedIndex="0" 
+
+                <ComboBox x:Name="TypeNamesComboBox" Margin="0 0 4 0" Width="200" SelectedIndex="0" VerticalContentAlignment="Center"
                           ItemsSource="{Binding ElementName=LogViewerControl, Path=ViewModel.TypeNames}"
-                          VerticalContentAlignment="Center"/>
+                          Visibility="{Binding ShowTypeNames, Converter={catel:BooleanToCollapsingVisibilityConverter}}"/>
 
                 <orc:FilterBoxControl x:Name="FilterBox" Margin="0 0 4 0" Width="200" PropertyName="Message"
-                                    FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
-                                    AccentColorBrush="{DynamicResource ControlsAccentBrush}">
-                    <i:Interaction.Behaviors>
+                                      FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
+                                      AccentColorBrush="{DynamicResource ControlsAccentBrush}"
+                                      Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
+                <i:Interaction.Behaviors>
                         <catel:FocusOnKeyPress Key="F" Modifiers="Ctrl" />
                     </i:Interaction.Behaviors>
                 </orc:FilterBoxControl>
@@ -73,7 +74,7 @@
                               EnableTextColoring="True"
                               EnableIcons="True"
                               LogFilter="{Binding Text, ElementName=FilterBox}"
-                              TypeFilter="{Binding SelectedValue, ElementName=OriginComboBox, Mode=OneWay}"
+                              TypeFilter="{Binding SelectedValue, ElementName=TypeNamesComboBox, Mode=OneWay}"
                               LogListenerType="{Binding LogListenerType}"
                               IgnoreCatelLogging="{Binding IgnoreCatelLogging}"/>
         <DockPanel Grid.Row="2" LastChildFill="False">

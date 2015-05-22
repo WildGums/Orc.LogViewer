@@ -26,6 +26,10 @@ namespace Orc.LogViewer.ViewModels
 
         public bool IgnoreCatelLogging { get; set; }
 
+        public bool ShowTypeNames { get; set; }
+
+        public bool ShowFilterBox { get; set; }
+
         public Brush AccentColorBrush
         {
             get { return _accentColorBrushProperty; }

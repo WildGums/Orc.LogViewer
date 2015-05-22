@@ -76,6 +76,25 @@ namespace Orc.LogViewer
         public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register("IgnoreCatelLogging", typeof(bool),
             typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+        public bool ShowTypeNames
+        {
+            get { return (bool)GetValue(ShowTypeNamesProperty); }
+            set { SetValue(ShowTypeNamesProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowTypeNamesProperty = DependencyProperty.Register("ShowTypeNames", typeof(bool),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+       
+        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+        public bool ShowFilterBox
+        {
+            get { return (bool)GetValue(ShowFilterBoxProperty); }
+            set { SetValue(ShowFilterBoxProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof(bool),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
         #endregion
 
         #region Methods
@@ -133,7 +152,7 @@ namespace Orc.LogViewer
             ShowInfoToggleButton.Toggle();
         }
 
-        private void Clear()
+        public void Clear()
         {
             LogViewerControl.Clear();
         }
