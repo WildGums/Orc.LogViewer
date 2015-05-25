@@ -42,6 +42,5 @@ public static class ModuleInitializer
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "Clear");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "CopyToClipboard");
         commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "OpenInEditor");
-        commandManager.CreateCommandWithGesture(typeof(LogViewerCommands.Logging), "Filter");
     }
 }

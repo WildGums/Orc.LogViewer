@@ -7,7 +7,7 @@
                   SizeToContent="Manual" >
 
     <Grid>
-        <orc:AdvancedLogViewerControl AccentColorBrush="Orange" Margin="4" IgnoreCatelLogging="False"/>
+        <orc:AdvancedLogViewerControl AccentColorBrush="Orange" Margin="4" IgnoreCatelLogging="False" ShowFilterBox="False"/>
     </Grid>
     
 </catel:DataWindow>

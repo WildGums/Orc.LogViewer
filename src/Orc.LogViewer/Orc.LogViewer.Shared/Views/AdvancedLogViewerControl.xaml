@@ -59,8 +59,8 @@
                                       FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
                                       AccentColorBrush="{DynamicResource ControlsAccentBrush}"
                                       Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
-                <i:Interaction.Behaviors>
-                        <catel:FocusOnKeyPress Key="F" Modifiers="Ctrl" />
+                    <i:Interaction.Behaviors>
+                        <catel:FocusOnKeyPress Key="F" Modifiers="Ctrl" IsEnabled="{Binding ShowFilterBox}"/>
                     </i:Interaction.Behaviors>
                 </orc:FilterBoxControl>
             </StackPanel>
