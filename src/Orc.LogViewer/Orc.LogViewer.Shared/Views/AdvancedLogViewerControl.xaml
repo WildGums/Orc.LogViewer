@@ -22,7 +22,7 @@
 
         <DockPanel LastChildFill="False">
             <ToggleButton x:Name="ShowErrorToggleButton" Tag="Error" Margin="0"
-                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Error}}">
+                          IsChecked="{Binding ErrorChecked}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.ErrorEntriesCount}"/>
                     <TextBlock Text="Error"/>
@@ -30,7 +30,7 @@
             </ToggleButton>
 
             <ToggleButton x:Name="ShowWarningToggleButton" Tag="Warning" Margin="0"
-                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Warning}}">
+                          IsChecked="{Binding WarningChecked}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.WarningEntriesCount}"/>
                     <TextBlock Text="Warning"/>
@@ -38,7 +38,7 @@
             </ToggleButton>
 
             <ToggleButton x:Name="ShowInfoToggleButton" Tag="Info" Margin="0"
-                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Info}}">
+                          IsChecked="{Binding InfoChecked}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.InfoEntriesCount}"/>
                     <TextBlock Text="Info"/>
@@ -46,7 +46,7 @@
             </ToggleButton>
 
             <ToggleButton x:Name="ShowDebugToggleButton" Tag="Debug" Margin="0 0 2 0"
-                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Debug}}">
+                          IsChecked="{Binding DebugChecked}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.DebugEntriesCount}"/>
                     <TextBlock Text="Debug"/>
