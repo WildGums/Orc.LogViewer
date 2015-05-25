@@ -9,6 +9,7 @@ namespace Orc.LogViewer.ViewModels
 {
     using System;
     using System.Windows.Media;
+    using Catel.Logging;
     using Catel.MVVM;
 
     public class AdvancedLogViewerViewModel : ViewModelBase
@@ -29,6 +30,8 @@ namespace Orc.LogViewer.ViewModels
         public bool ShowTypeNames { get; set; }
 
         public bool ShowFilterBox { get; set; }
+
+        public LogEvent Level { get; set; }
 
         public Brush AccentColorBrush
         {

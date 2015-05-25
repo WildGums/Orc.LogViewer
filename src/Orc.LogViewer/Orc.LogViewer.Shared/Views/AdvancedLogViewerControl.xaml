@@ -6,6 +6,8 @@
                    xmlns:catel="http://catel.codeplex.com"
                    xmlns:orc="http://www.wildgums.net.au/orc"
                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:converters="clr-namespace:Orc.LogViewer.Converters"
+                   xmlns:logging="clr-namespace:Catel.Logging;assembly=Catel.Core"
                    mc:Ignorable="d" x:Name="CurrentControl" d:DesignHeight="22" d:DesignWidth="120">
 
     <UserControl.Resources>
@@ -19,28 +21,32 @@
         </Grid.RowDefinitions>
 
         <DockPanel LastChildFill="False">
-            <ToggleButton x:Name="ShowErrorToggleButton" IsChecked="True" Tag="Error" Margin="0">
+            <ToggleButton x:Name="ShowErrorToggleButton" Tag="Error" Margin="0"
+                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Error}}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.ErrorEntriesCount}"/>
                     <TextBlock Text="Error"/>
                 </StackPanel>
             </ToggleButton>
-            
-            <ToggleButton x:Name="ShowWarningToggleButton" IsChecked="True" Tag="Warning" Margin="0">
+
+            <ToggleButton x:Name="ShowWarningToggleButton" Tag="Warning" Margin="0"
+                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Warning}}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.WarningEntriesCount}"/>
                     <TextBlock Text="Warning"/>
                 </StackPanel>
             </ToggleButton>
 
-            <ToggleButton x:Name="ShowInfoToggleButton" IsChecked="True" Tag="Info" Margin="0">
+            <ToggleButton x:Name="ShowInfoToggleButton" Tag="Info" Margin="0"
+                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Info}}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.InfoEntriesCount}"/>
                     <TextBlock Text="Info"/>
                 </StackPanel>
             </ToggleButton>
 
-            <ToggleButton x:Name="ShowDebugToggleButton" IsChecked="False" Tag="Debug" Margin="0 0 2 0" >
+            <ToggleButton x:Name="ShowDebugToggleButton" Tag="Debug" Margin="0 0 2 0"
+                          IsChecked="{Binding Level, Converter={converters:LogEventLevelToBoolConverter}, ConverterParameter={x:Static logging:LogEvent.Debug}}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.DebugEntriesCount}"/>
                     <TextBlock Text="Debug"/>

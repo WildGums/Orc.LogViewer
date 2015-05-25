@@ -11,6 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)..\..\SolutionAssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\LogEventLevelToBoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToLogEventLevelConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ToggleButtonExtensions.cs" />
@@ -34,7 +36,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Behaviors\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
     <Folder Include="$(MSBuildThisFileDirectory)Enums\Extensions\" />
     <Folder Include="$(MSBuildThisFileDirectory)EventArgs\" />
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

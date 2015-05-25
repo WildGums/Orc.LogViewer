@@ -13,10 +13,13 @@ namespace Orc.LogViewer
     using System.Security;
     using System.Windows;
     using System.Windows.Media;
+    using System.ComponentModel;
     using Catel.IoC;
     using Catel.MVVM;
     using Catel.MVVM.Views;
+    using Catel.Logging;
     using Controls.Logging;
+    using Converters;
 
     /// <summary>
     /// Interaction logic for AdvancedLogViewerControl.xaml.
@@ -42,6 +45,8 @@ namespace Orc.LogViewer
             _commandManager = serviceLocator.ResolveType<ICommandManager>();
 
             CreateTooltips();
+
+            
         }
         #endregion
 
@@ -95,6 +100,17 @@ namespace Orc.LogViewer
 
         public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof(bool),
             typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        [TypeConverter(typeof(StringToLogEventLevelConverter))]
+        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+        public LogEvent Level
+        {
+            get { return (LogEvent)GetValue(LevelProperty); }
+            set { SetValue(LevelProperty, value); }
+        }
+
+        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof(LogEvent),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
         #endregion
 
         #region Methods
