@@ -25,8 +25,6 @@ public static class ModuleInitializer
     {
         var serviceLocator = ServiceLocator.Default;
 
-        var viewModelLocator = serviceLocator.ResolveType<IViewModelLocator>();
-
         var commandManager = serviceLocator.ResolveType<ICommandManager>();
         InitializeCommands(commandManager);
     }
