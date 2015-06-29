@@ -63,7 +63,7 @@
 
                 <orc:FilterBoxControl x:Name="FilterBox" Margin="0 0 4 0" Width="200" PropertyName="Message"
                                       FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
-                                      AccentColorBrush="{DynamicResource ControlsAccentBrush}"
+                                      Watermark="Filter" AccentColorBrush="{DynamicResource ControlsAccentBrush}"
                                       Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
                     <i:Interaction.Behaviors>
                         <catel:FocusOnKeyPress Key="F" Modifiers="Ctrl" IsEnabled="{Binding ShowFilterBox}"/>
