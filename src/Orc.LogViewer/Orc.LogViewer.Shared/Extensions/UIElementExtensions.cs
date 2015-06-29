@@ -22,11 +22,32 @@ namespace Orc.LogViewer
         public static void SetTooltip(this UIElement control, InputGesture inputGesture, string text)
         {
             var content = string.Empty;
+
+            if (inputGesture != null)
+            {
+                content = inputGesture.ToString();
+            }
+
             if (text != string.Empty)
             {
-                content = text + Environment.NewLine;
+                if (content.Equals(string.Empty))
+                {
+                    content = text;
+                }
+
+                else
+                {
+                    content = text + Environment.NewLine + content;
+                }
             }
-            var tooltip = new ToolTip() { Content = content + inputGesture };
+
+            if (content.Equals(string.Empty))
+            {
+                return;
+            }
+
+            var tooltip = new ToolTip() { Content = content };
+
             ToolTipService.SetToolTip(control, tooltip);
         }
     }
