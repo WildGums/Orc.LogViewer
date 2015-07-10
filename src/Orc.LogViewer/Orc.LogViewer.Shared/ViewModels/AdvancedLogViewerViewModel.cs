@@ -38,14 +38,17 @@ namespace Orc.LogViewer.ViewModels
             get { return _level; }
             set
             {
-                if (_level != value)
-                {
-                    RaisePropertyChanged("ErrorChecked");
-                    RaisePropertyChanged("WarningChecked");
-                    RaisePropertyChanged("DebugChecked");
-                    RaisePropertyChanged("InfoChecked");
-                };
-                _level = value;
+				if (_level == value)
+				{
+					return;
+				}
+				
+				_level = value;
+
+				RaisePropertyChanged("ErrorChecked");
+				RaisePropertyChanged("WarningChecked");
+				RaisePropertyChanged("DebugChecked");
+				RaisePropertyChanged("InfoChecked");
             }
         }
 
