@@ -19,7 +19,6 @@ namespace Orc.LogViewer
     using Catel.MVVM.Views;
     using Catel.Logging;
     using Controls.Logging;
-    using Converters;
 
     /// <summary>
     /// Interaction logic for AdvancedLogViewerControl.xaml.

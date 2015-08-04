@@ -1,4 +1,11 @@
-﻿namespace Orc.LogViewer.Converters
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StringToLogEventLevelConverter.cs" company="Wild Gums">
+//   Copyright (c) 2008 - 2015 Wild Gums. All rights reserved.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+
+namespace Orc.LogViewer
 {
     using System;
     using System.ComponentModel;
@@ -22,15 +29,19 @@
                     case "error":
                         result |= LogEvent.Error;
                         break;
+
                     case "warning":
                         result |= LogEvent.Warning;
                         break;
+
                     case "info":
                         result |= LogEvent.Info;
                         break;
+
                     case "debug":
                         result |= LogEvent.Debug;
                         break;
+
                     default:
                         Log.ErrorAndThrowException<XamlException>("Cannot parse the LogEvent value.");
                         break;

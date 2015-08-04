@@ -32,14 +32,4 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Behaviors\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Enums\Extensions\" />
-    <Folder Include="$(MSBuildThisFileDirectory)EventArgs\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Logging\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Services\Interfaces\" />
-  </ItemGroup>
 </Project>

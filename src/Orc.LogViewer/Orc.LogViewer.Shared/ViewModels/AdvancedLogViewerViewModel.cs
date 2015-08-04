@@ -38,17 +38,17 @@ namespace Orc.LogViewer.ViewModels
             get { return _level; }
             set
             {
-				if (_level == value)
-				{
-					return;
-				}
-				
-				_level = value;
+                if (_level == value)
+                {
+                    return;
+                }
 
-				RaisePropertyChanged("ErrorChecked");
-				RaisePropertyChanged("WarningChecked");
-				RaisePropertyChanged("DebugChecked");
-				RaisePropertyChanged("InfoChecked");
+                _level = value;
+
+                RaisePropertyChanged("ErrorChecked");
+                RaisePropertyChanged("WarningChecked");
+                RaisePropertyChanged("DebugChecked");
+                RaisePropertyChanged("InfoChecked");
             }
         }
 
@@ -138,7 +138,7 @@ namespace Orc.LogViewer.ViewModels
                 }
 
                 _accentColorBrushProperty = value;
-                var accentColor = ((SolidColorBrush) AccentColorBrush).Color;
+                var accentColor = ((SolidColorBrush)AccentColorBrush).Color;
                 accentColor.CreateAccentColorResourceDictionary();
                 RaisePropertyChanged("AccentColorBrush");
             }
