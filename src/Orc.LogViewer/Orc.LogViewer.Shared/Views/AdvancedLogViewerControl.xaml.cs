@@ -18,6 +18,7 @@ namespace Orc.LogViewer
     using Catel.MVVM;
     using Catel.MVVM.Views;
     using Catel.Logging;
+    using Controls;
     using Controls.Logging;
 
     /// <summary>
@@ -110,6 +111,11 @@ namespace Orc.LogViewer
 
         public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof(LogEvent),
             typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        public LogViewerControl UnderlyingLogViewerControl
+        {
+            get { return LogViewerControl; }
+        }
         #endregion
 
         #region Methods
