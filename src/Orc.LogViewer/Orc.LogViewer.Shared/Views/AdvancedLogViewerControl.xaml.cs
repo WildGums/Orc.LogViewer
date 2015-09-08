@@ -8,16 +8,16 @@
 namespace Orc.LogViewer
 {
     using System;
+    using System.ComponentModel;
     using System.Diagnostics;
     using System.IO;
     using System.Security;
     using System.Windows;
     using System.Windows.Media;
-    using System.ComponentModel;
     using Catel.IoC;
+    using Catel.Logging;
     using Catel.MVVM;
     using Catel.MVVM.Views;
-    using Catel.Logging;
     using Controls;
     using Controls.Logging;
 
@@ -45,22 +45,20 @@ namespace Orc.LogViewer
             _commandManager = serviceLocator.ResolveType<ICommandManager>();
 
             CreateTooltips();
-
-            
         }
         #endregion
 
         #region Properties
         public Brush AccentColorBrush
         {
-            get { return (Brush)GetValue(AccentColorBrushProperty); }
+            get { return (Brush) GetValue(AccentColorBrushProperty); }
             set { SetValue(AccentColorBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof(Brush),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl)sender).OnAccentColorBrushChanged()));
+        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof (Brush),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl) sender).OnAccentColorBrushChanged()));
 
-       [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Type LogListenerType
         {
             get { return (Type) GetValue(LogListenerTypeProperty); }
@@ -73,43 +71,43 @@ namespace Orc.LogViewer
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging
         {
-            get { return (bool)GetValue(IgnoreCatelLoggingProperty); }
+            get { return (bool) GetValue(IgnoreCatelLoggingProperty); }
             set { SetValue(IgnoreCatelLoggingProperty, value); }
         }
 
-        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register("IgnoreCatelLogging", typeof(bool),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register("IgnoreCatelLogging", typeof (bool),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowTypeNames
         {
-            get { return (bool)GetValue(ShowTypeNamesProperty); }
+            get { return (bool) GetValue(ShowTypeNamesProperty); }
             set { SetValue(ShowTypeNamesProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowTypeNamesProperty = DependencyProperty.Register("ShowTypeNames", typeof(bool),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-       
+        public static readonly DependencyProperty ShowTypeNamesProperty = DependencyProperty.Register("ShowTypeNames", typeof (bool),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox
         {
-            get { return (bool)GetValue(ShowFilterBoxProperty); }
+            get { return (bool) GetValue(ShowFilterBoxProperty); }
             set { SetValue(ShowFilterBoxProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof(bool),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof (bool),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        [TypeConverter(typeof(StringToLogEventLevelConverter))]
+        [TypeConverter(typeof (StringToLogEventLevelConverter))]
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public LogEvent Level
         {
-            get { return (LogEvent)GetValue(LevelProperty); }
+            get { return (LogEvent) GetValue(LevelProperty); }
             set { SetValue(LevelProperty, value); }
         }
 
-        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof(LogEvent),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof (LogEvent),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public LogViewerControl UnderlyingLogViewerControl
         {
@@ -237,7 +235,7 @@ namespace Orc.LogViewer
             var solidColorBrush = AccentColorBrush as SolidColorBrush;
             if (solidColorBrush != null)
             {
-                var accentColor = ((SolidColorBrush)AccentColorBrush).Color;
+                var accentColor = ((SolidColorBrush) AccentColorBrush).Color;
                 accentColor.CreateAccentColorResourceDictionary("Controls");
             }
         }

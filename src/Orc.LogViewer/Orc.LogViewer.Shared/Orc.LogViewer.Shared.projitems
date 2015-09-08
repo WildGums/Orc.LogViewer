@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)..\..\SolutionAssemblyInfo.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\StringToLogEventLevelConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ColorExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\RichTextBoxExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\ToggleButtonExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\UIElementExtensions.cs" />
