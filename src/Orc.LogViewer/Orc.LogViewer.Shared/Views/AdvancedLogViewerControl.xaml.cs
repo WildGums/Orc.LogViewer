@@ -51,17 +51,16 @@ namespace Orc.LogViewer
         #endregion
 
         #region Properties
-        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Brush AccentColorBrush
         {
-            get { return (Brush) GetValue(AccentColorBrushProperty); }
+            get { return (Brush)GetValue(AccentColorBrushProperty); }
             set { SetValue(AccentColorBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof (Brush),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.Blue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof(Brush),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl)sender).OnAccentColorBrushChanged()));
 
-        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+       [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Type LogListenerType
         {
             get { return (Type) GetValue(LogListenerTypeProperty); }
@@ -231,6 +230,23 @@ namespace Orc.LogViewer
             ClearButton.SetTooltip(LogViewerCommands.Logging.ClearInputGesture);
             CopyButton.SetTooltip(LogViewerCommands.Logging.CopyToClipboardInputGesture);
             OpenButton.SetTooltip(LogViewerCommands.Logging.OpenInEditorInputGesture);
+        }
+
+        private void OnAccentColorBrushChanged()
+        {
+            var solidColorBrush = AccentColorBrush as SolidColorBrush;
+            if (solidColorBrush != null)
+            {
+                var accentColor = ((SolidColorBrush)AccentColorBrush).Color;
+                accentColor.CreateAccentColorResourceDictionary("Controls");
+            }
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            AccentColorBrush = TryFindResource("AccentColorBrush") as SolidColorBrush;
         }
         #endregion
     }
