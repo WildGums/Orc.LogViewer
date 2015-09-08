@@ -9,7 +9,6 @@ namespace Orc.LogViewer
 {
     using System;
     using System.ComponentModel;
-    using System.Diagnostics;
     using System.IO;
     using System.Security;
     using System.Windows;
@@ -18,6 +17,7 @@ namespace Orc.LogViewer
     using Catel.Logging;
     using Catel.MVVM;
     using Catel.MVVM.Views;
+    using Catel.Services;
     using Controls;
     using Controls.Logging;
 
@@ -28,6 +28,7 @@ namespace Orc.LogViewer
     {
         #region Fields
         private readonly ICommandManager _commandManager;
+        private readonly IProcessService _processService;
         #endregion
 
         #region Constructors
@@ -43,6 +44,7 @@ namespace Orc.LogViewer
             var serviceLocator = ServiceLocator.Default;
 
             _commandManager = serviceLocator.ResolveType<ICommandManager>();
+            _processService = serviceLocator.ResolveType<IProcessService>();
 
             CreateTooltips();
         }
@@ -192,7 +194,7 @@ namespace Orc.LogViewer
                 return;
             }
             var filePath = CreateLogFile(path);
-            Process.Start(filePath);
+            _processService.StartProcess(filePath);
         }
 
         private string CreateLogFile(string path)
