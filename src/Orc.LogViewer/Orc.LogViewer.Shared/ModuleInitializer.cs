@@ -9,6 +9,8 @@ using Catel;
 using Catel.IoC;
 using Catel.Logging;
 using Catel.MVVM;
+using Catel.Services;
+using Catel.Services.Models;
 using Orc.LogViewer;
 
 /// <summary>
@@ -24,6 +26,9 @@ public static class ModuleInitializer
     public static void Initialize()
     {
         var serviceLocator = ServiceLocator.Default;
+
+        var languageService = serviceLocator.ResolveType<ILanguageService>();
+        languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.LogViewer", "Orc.LogViewer.Properties", "Resources"));
 
         var commandManager = serviceLocator.ResolveType<ICommandManager>();
         InitializeCommands(commandManager);
