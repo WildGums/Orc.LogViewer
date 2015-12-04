@@ -7,7 +7,6 @@
 
 using Catel;
 using Catel.IoC;
-using Catel.Logging;
 using Catel.MVVM;
 using Catel.Services;
 using Catel.Services.Models;
@@ -21,8 +20,6 @@ public static class ModuleInitializer
     /// <summary>
     /// Initializes the module.
     /// </summary>
-    private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
     public static void Initialize()
     {
         var serviceLocator = ServiceLocator.Default;

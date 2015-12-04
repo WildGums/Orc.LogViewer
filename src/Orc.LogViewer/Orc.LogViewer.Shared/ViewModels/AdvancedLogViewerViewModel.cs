@@ -63,6 +63,7 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Error;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("ErrorChecked");
             }
@@ -81,9 +82,9 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Warning;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("WarningChecked");
-
             }
         }
 
@@ -100,9 +101,9 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Info;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("InfoChecked");
-
             }
         }
 
@@ -119,9 +120,9 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Debug;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("DebugChecked");
-
             }
         }
 

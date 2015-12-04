@@ -68,7 +68,7 @@ namespace Orc.LogViewer
         }
 
         public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register("LogListenerType", typeof (Type),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (Controls.Logging.LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging
@@ -185,6 +185,7 @@ namespace Orc.LogViewer
         private void OpenInEditor()
         {
             var path = string.Empty;
+
             try
             {
                 path = Path.GetTempPath();
@@ -193,6 +194,7 @@ namespace Orc.LogViewer
             {
                 return;
             }
+
             var filePath = CreateLogFile(path);
             _processService.StartProcess(filePath);
         }
