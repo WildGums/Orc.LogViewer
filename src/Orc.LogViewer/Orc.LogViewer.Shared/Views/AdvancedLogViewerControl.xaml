@@ -20,7 +20,7 @@
 
         <DockPanel LastChildFill="False">
             <ToggleButton x:Name="ShowErrorToggleButton" Tag="Error" Margin="0"
-                          IsChecked="{Binding ErrorChecked}">
+                          IsChecked="{Binding ErrorChecked}" Style="{StaticResource LevelToggleButtonStyle}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.ErrorEntriesCount}"/>
                     <TextBlock Text="Error"/>
@@ -28,7 +28,7 @@
             </ToggleButton>
 
             <ToggleButton x:Name="ShowWarningToggleButton" Tag="Warning" Margin="0"
-                          IsChecked="{Binding WarningChecked}">
+                          IsChecked="{Binding WarningChecked}" Style="{StaticResource LevelToggleButtonStyle}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.WarningEntriesCount}"/>
                     <TextBlock Text="Warning"/>
@@ -36,7 +36,7 @@
             </ToggleButton>
 
             <ToggleButton x:Name="ShowInfoToggleButton" Tag="Info" Margin="0"
-                          IsChecked="{Binding InfoChecked}">
+                          IsChecked="{Binding InfoChecked}" Style="{StaticResource LevelToggleButtonStyle}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.InfoEntriesCount}"/>
                     <TextBlock Text="Info"/>
@@ -44,7 +44,7 @@
             </ToggleButton>
 
             <ToggleButton x:Name="ShowDebugToggleButton" Tag="Debug" Margin="0 0 2 0"
-                          IsChecked="{Binding DebugChecked}">
+                          IsChecked="{Binding DebugChecked}" Style="{StaticResource LevelToggleButtonStyle}">
                 <StackPanel Orientation="Horizontal" >
                     <TextBlock Text="{Binding ElementName=LogViewerControl, Path=ViewModel.DebugEntriesCount}"/>
                     <TextBlock Text="Debug"/>
@@ -61,8 +61,7 @@
 
                 <orc:FilterBoxControl x:Name="FilterBox" Margin="0 0 4 0" Width="200" PropertyName="Message"
                                       FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
-                                      Watermark="Filter" AccentColorBrush="{DynamicResource ControlsAccentBrush}"
-                                      Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
+                                      Watermark="Filter" Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
                     <i:Interaction.Behaviors>
                         <catel:FocusOnKeyPress Key="F" Modifiers="Ctrl" IsEnabled="{Binding ShowFilterBox}"/>
                     </i:Interaction.Behaviors>
@@ -82,9 +81,9 @@
                               LogListenerType="{Binding LogListenerType}"
                               IgnoreCatelLogging="{Binding IgnoreCatelLogging}"/>
         <DockPanel Grid.Row="2" LastChildFill="False">
-            <Button x:Name="ClearButton" Content="Clear" Command="{catel:CommandManagerBinding Logging.Clear}" DockPanel.Dock="Left" Margin="4 2 2 2" Width="80" />
-            <Button x:Name="CopyButton" Content="Copy" Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"  DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" />
-            <Button x:Name="OpenButton" Content="Open" Command="{catel:CommandManagerBinding Logging.OpenInEditor}" DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" />
+            <Button x:Name="ClearButton" Content="Clear" Command="{catel:CommandManagerBinding Logging.Clear}" DockPanel.Dock="Left" Margin="4 2 2 2" Width="80" Padding="2" />
+            <Button x:Name="CopyButton" Content="Copy" Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"  DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" Padding="2"/>
+            <Button x:Name="OpenButton" Content="Open" Command="{catel:CommandManagerBinding Logging.OpenInEditor}" DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" Padding="2" />
         </DockPanel>
     </Grid>
 </catel:UserControl>

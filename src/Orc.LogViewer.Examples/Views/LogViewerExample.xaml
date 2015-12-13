@@ -5,6 +5,6 @@
                    xmlns:orc="http://www.wildgums.net.au/orc">
 
     <Grid>
-        <orc:AdvancedLogViewerControl AccentColorBrush="Orange" />
+        <orc:AdvancedLogViewerControl IgnoreCatelLogging="False" />
     </Grid>
 </catel:UserControl>

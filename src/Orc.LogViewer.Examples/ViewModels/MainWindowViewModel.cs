@@ -15,13 +15,7 @@ namespace Orc.LogViewer.Examples.ViewModels
         #region Constructors
         public MainWindowViewModel()
         {
-            AccentColorBrush = Brushes.Orange;
         }
         #endregion
-
-        #region Properties
-        public Brush AccentColorBrush { get; set; }
-        #endregion
-
     }
 }

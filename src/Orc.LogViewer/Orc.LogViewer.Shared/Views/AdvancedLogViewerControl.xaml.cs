@@ -8,16 +8,16 @@
 namespace Orc.LogViewer
 {
     using System;
-    using System.Diagnostics;
+    using System.ComponentModel;
     using System.IO;
     using System.Security;
     using System.Windows;
     using System.Windows.Media;
-    using System.ComponentModel;
     using Catel.IoC;
+    using Catel.Logging;
     using Catel.MVVM;
     using Catel.MVVM.Views;
-    using Catel.Logging;
+    using Catel.Services;
     using Controls;
     using Controls.Logging;
 
@@ -28,6 +28,7 @@ namespace Orc.LogViewer
     {
         #region Fields
         private readonly ICommandManager _commandManager;
+        private readonly IProcessService _processService;
         #endregion
 
         #region Constructors
@@ -43,15 +44,13 @@ namespace Orc.LogViewer
             var serviceLocator = ServiceLocator.Default;
 
             _commandManager = serviceLocator.ResolveType<ICommandManager>();
+            _processService = serviceLocator.ResolveType<IProcessService>();
 
             CreateTooltips();
-
-            
         }
         #endregion
 
         #region Properties
-        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Brush AccentColorBrush
         {
             get { return (Brush) GetValue(AccentColorBrushProperty); }
@@ -59,7 +58,7 @@ namespace Orc.LogViewer
         }
 
         public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof (Brush),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.Blue, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl) sender).OnAccentColorBrushChanged()));
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Type LogListenerType
@@ -69,48 +68,48 @@ namespace Orc.LogViewer
         }
 
         public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register("LogListenerType", typeof (Type),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (Controls.Logging.LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging
         {
-            get { return (bool)GetValue(IgnoreCatelLoggingProperty); }
+            get { return (bool) GetValue(IgnoreCatelLoggingProperty); }
             set { SetValue(IgnoreCatelLoggingProperty, value); }
         }
 
-        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register("IgnoreCatelLogging", typeof(bool),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register("IgnoreCatelLogging", typeof (bool),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowTypeNames
         {
-            get { return (bool)GetValue(ShowTypeNamesProperty); }
+            get { return (bool) GetValue(ShowTypeNamesProperty); }
             set { SetValue(ShowTypeNamesProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowTypeNamesProperty = DependencyProperty.Register("ShowTypeNames", typeof(bool),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-       
+        public static readonly DependencyProperty ShowTypeNamesProperty = DependencyProperty.Register("ShowTypeNames", typeof (bool),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox
         {
-            get { return (bool)GetValue(ShowFilterBoxProperty); }
+            get { return (bool) GetValue(ShowFilterBoxProperty); }
             set { SetValue(ShowFilterBoxProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof(bool),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof (bool),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        [TypeConverter(typeof(StringToLogEventLevelConverter))]
+        [TypeConverter(typeof (StringToLogEventLevelConverter))]
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public LogEvent Level
         {
-            get { return (LogEvent)GetValue(LevelProperty); }
+            get { return (LogEvent) GetValue(LevelProperty); }
             set { SetValue(LevelProperty, value); }
         }
 
-        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof(LogEvent),
-            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof (LogEvent),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         public LogViewerControl UnderlyingLogViewerControl
         {
@@ -186,6 +185,7 @@ namespace Orc.LogViewer
         private void OpenInEditor()
         {
             var path = string.Empty;
+
             try
             {
                 path = Path.GetTempPath();
@@ -194,8 +194,9 @@ namespace Orc.LogViewer
             {
                 return;
             }
+
             var filePath = CreateLogFile(path);
-            Process.Start(filePath);
+            _processService.StartProcess(filePath);
         }
 
         private string CreateLogFile(string path)
@@ -231,6 +232,23 @@ namespace Orc.LogViewer
             ClearButton.SetTooltip(LogViewerCommands.Logging.ClearInputGesture);
             CopyButton.SetTooltip(LogViewerCommands.Logging.CopyToClipboardInputGesture);
             OpenButton.SetTooltip(LogViewerCommands.Logging.OpenInEditorInputGesture);
+        }
+
+        private void OnAccentColorBrushChanged()
+        {
+            var solidColorBrush = AccentColorBrush as SolidColorBrush;
+            if (solidColorBrush != null)
+            {
+                var accentColor = ((SolidColorBrush) AccentColorBrush).Color;
+                accentColor.CreateAccentColorResourceDictionary("Controls");
+            }
+        }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            AccentColorBrush = TryFindResource("AccentColorBrush") as SolidColorBrush;
         }
         #endregion
     }

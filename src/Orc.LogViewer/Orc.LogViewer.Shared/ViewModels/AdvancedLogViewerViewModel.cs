@@ -8,13 +8,11 @@
 namespace Orc.LogViewer.ViewModels
 {
     using System;
-    using System.Windows.Media;
     using Catel.Logging;
     using Catel.MVVM;
 
     public class AdvancedLogViewerViewModel : ViewModelBase
     {
-        private Brush _accentColorBrushProperty;
         private LogEvent _level;
 
         #region Constructors
@@ -65,6 +63,7 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Error;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("ErrorChecked");
             }
@@ -83,9 +82,9 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Warning;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("WarningChecked");
-
             }
         }
 
@@ -102,9 +101,9 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Info;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("InfoChecked");
-
             }
         }
 
@@ -121,28 +120,12 @@ namespace Orc.LogViewer.ViewModels
                 {
                     Level &= ~LogEvent.Debug;
                 }
+
                 RaisePropertyChanged("Level");
                 RaisePropertyChanged("DebugChecked");
-
             }
         }
 
-        public Brush AccentColorBrush
-        {
-            get { return _accentColorBrushProperty; }
-            set
-            {
-                if (_accentColorBrushProperty == value)
-                {
-                    return;
-                }
-
-                _accentColorBrushProperty = value;
-                var accentColor = ((SolidColorBrush)AccentColorBrush).Color;
-                accentColor.CreateAccentColorResourceDictionary();
-                RaisePropertyChanged("AccentColorBrush");
-            }
-        }
         #endregion
     }
 }

@@ -43,8 +43,7 @@ namespace Orc.LogViewer
                         break;
 
                     default:
-                        Log.ErrorAndThrowException<XamlException>("Cannot parse the LogEvent value.");
-                        break;
+                        throw Log.ErrorAndCreateException<XamlException>("Cannot parse the LogEvent value.");
                 }
             }
             return result;
