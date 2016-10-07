@@ -4,8 +4,8 @@
     <id>Orc.LogViewer</id>
     <version>[VERSION]</version>
     <title>Orc.LogViewer</title>
-    <authors>OrchestraDevs</authors>
-    <owners>OrchestraDevs</owners>
+    <authors>WildGums</authors>
+    <owners>WildGums</owners>
 
 	<description>
         Advanced log viewer control for WPF.
@@ -16,7 +16,7 @@
     <tags>log viewer loggin orcomp orc</tags>
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Copyright Wild Gums 2010 - 2015</copyright>
+    <copyright>Copyright WildGums 2010 - 2015</copyright>
 
 	<language>en-US</language>
 	<projectUrl>https://github.com/WildGums/Orc.LogViewer</projectUrl>
