@@ -13,13 +13,7 @@ namespace Orc.LogViewer
     {
         public static void Toggle(this ToggleButton toggleButton)
         {
-            if (toggleButton.IsChecked == true)
-            {
-                toggleButton.IsChecked = false;
-                return;
-            }
-
-            toggleButton.IsChecked = true;
+            toggleButton.SetCurrentValue(ToggleButton.IsCheckedProperty, !toggleButton.IsChecked);
         }
     }
 }
