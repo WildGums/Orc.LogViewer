@@ -23,6 +23,8 @@ namespace Orc.LogViewer.ViewModels
         #endregion
 
         #region Properties
+        public bool EnableThreadId { get; set; }
+
         public Type LogListenerType { get; set; }
 
         public bool IgnoreCatelLogging { get; set; }

@@ -115,6 +115,16 @@ namespace Orc.LogViewer
         {
             get { return LogViewerControl; }
         }
+
+        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
+        public bool EnableThreadId
+        {
+            get { return (bool) GetValue(EnableThreadIdProperty); }
+            set { SetValue(EnableThreadIdProperty, value); }
+        }
+
+        public static readonly DependencyProperty EnableThreadIdProperty = DependencyProperty.Register(
+            "EnableThreadId", typeof(bool), typeof(AdvancedLogViewerControl), new PropertyMetadata(default(bool)));
         #endregion
 
         #region Methods
