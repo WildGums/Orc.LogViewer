@@ -23,6 +23,8 @@ namespace Orc.LogViewer.ViewModels
         #endregion
 
         #region Properties
+        public bool EnableThreadId { get; set; }
+
         public Type LogListenerType { get; set; }
 
         public bool IgnoreCatelLogging { get; set; }
@@ -43,10 +45,11 @@ namespace Orc.LogViewer.ViewModels
 
                 _level = value;
 
-                RaisePropertyChanged("ErrorChecked");
-                RaisePropertyChanged("WarningChecked");
-                RaisePropertyChanged("DebugChecked");
-                RaisePropertyChanged("InfoChecked");
+                RaisePropertyChanged(nameof(Level));
+                RaisePropertyChanged(nameof(ErrorChecked));
+                RaisePropertyChanged(nameof(WarningChecked));
+                RaisePropertyChanged(nameof(DebugChecked));
+                RaisePropertyChanged(nameof(InfoChecked));
             }
         }
 
@@ -64,8 +67,8 @@ namespace Orc.LogViewer.ViewModels
                     Level &= ~LogEvent.Error;
                 }
 
-                RaisePropertyChanged("Level");
-                RaisePropertyChanged("ErrorChecked");
+                RaisePropertyChanged(nameof(Level));
+                RaisePropertyChanged(nameof(ErrorChecked));
             }
         }
 
@@ -83,8 +86,8 @@ namespace Orc.LogViewer.ViewModels
                     Level &= ~LogEvent.Warning;
                 }
 
-                RaisePropertyChanged("Level");
-                RaisePropertyChanged("WarningChecked");
+                RaisePropertyChanged(nameof(Level));
+                RaisePropertyChanged(nameof(WarningChecked));
             }
         }
 
@@ -102,8 +105,8 @@ namespace Orc.LogViewer.ViewModels
                     Level &= ~LogEvent.Info;
                 }
 
-                RaisePropertyChanged("Level");
-                RaisePropertyChanged("InfoChecked");
+                RaisePropertyChanged(nameof(Level));
+                RaisePropertyChanged(nameof(InfoChecked));
             }
         }
 
@@ -121,8 +124,8 @@ namespace Orc.LogViewer.ViewModels
                     Level &= ~LogEvent.Debug;
                 }
 
-                RaisePropertyChanged("Level");
-                RaisePropertyChanged("DebugChecked");
+                RaisePropertyChanged(nameof(Level));
+                RaisePropertyChanged(nameof(DebugChecked));
             }
         }
 
