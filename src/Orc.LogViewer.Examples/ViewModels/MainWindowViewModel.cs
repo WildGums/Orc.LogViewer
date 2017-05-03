@@ -15,6 +15,7 @@ namespace Orc.LogViewer.Examples.ViewModels
         #region Constructors
         public MainWindowViewModel()
         {
+            Title = "Orc.LogViewer example";
         }
         #endregion
     }

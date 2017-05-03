@@ -12,6 +12,7 @@ namespace Orc.LogViewer.Examples
     using Catel.IoC;
     using Catel.Logging;
     using Catel.Services;
+    using Orchestra;
 
     /// <summary>
     /// Interaction logic for App.xaml
@@ -31,6 +32,8 @@ namespace Orc.LogViewer.Examples
             // we use .CurrentCulture for the sake of the demo
             languageService.PreferredCulture = CultureInfo.CurrentCulture;
             languageService.FallbackCulture = new CultureInfo("en-US");
+
+            this.ApplyTheme();
 
             base.OnStartup(e);
         }
