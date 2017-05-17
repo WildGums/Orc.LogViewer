@@ -59,5 +59,77 @@ namespace Orc.LogViewer.Properties {
                 resourceCulture = value;
             }
         }
-    }
+   
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_Button_Content_Open {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_Button_Content_Open", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Copy.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_Button_Content_Copy {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_Button_Content_Copy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_Button_Content_Clear {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_Button_Content_Clear", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Debug.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Info.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error", resourceCulture);
+            }
+        }
+ }
 }
