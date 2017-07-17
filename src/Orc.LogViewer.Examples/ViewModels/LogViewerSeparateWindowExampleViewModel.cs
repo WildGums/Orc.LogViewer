@@ -7,6 +7,7 @@
 
 namespace Orc.LogViewer.Examples.ViewModels
 {
+    using System.Threading.Tasks;
     using Catel;
     using Catel.MVVM;
     using Catel.Services;
@@ -22,15 +23,15 @@ namespace Orc.LogViewer.Examples.ViewModels
 
             _uiVisualizerService = uiVisualizerService;
 
-            ShowLogWindow = new Command(OnShowLogWindowExecute);
+            ShowLogWindow = new TaskCommand(OnShowLogWindowExecuteAsync);
         }
         #endregion
 
-        public Command ShowLogWindow { get; private set; }
+        public TaskCommand ShowLogWindow { get; private set; }
 
-        private void OnShowLogWindowExecute()
+        private async Task OnShowLogWindowExecuteAsync()
         {
-            _uiVisualizerService.Show<LogWindowViewModel>();
+            _uiVisualizerService.ShowAsync<LogWindowViewModel>();
         }
     }
 }

@@ -9,7 +9,6 @@ using Catel;
 using Catel.IoC;
 using Catel.MVVM;
 using Catel.Services;
-using Catel.Services.Models;
 using Orc.LogViewer;
 
 /// <summary>
