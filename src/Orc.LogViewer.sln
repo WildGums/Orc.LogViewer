@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26020.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.LogViewer.NET40", "Orc.LogViewer\Orc.LogViewer.NET40\Orc.LogViewer.NET40.csproj", "{E6CE2111-3D7C-4759-A886-E44EC77CE3AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.LogViewer.NET47", "Orc.LogViewer\Orc.LogViewer.NET47\Orc.LogViewer.NET47.csproj", "{E6CE2111-3D7C-4759-A886-E44EC77CE3AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.LogViewer.Tests.NET40", "Orc.LogViewer.Tests\Orc.LogViewer.Tests.NET40\Orc.LogViewer.Tests.NET40.csproj", "{9D4DD1A4-D63D-4766-BA11-29FC99C1CBEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.LogViewer.Tests.NET47", "Orc.LogViewer.Tests\Orc.LogViewer.Tests.NET47\Orc.LogViewer.Tests.NET47.csproj", "{9D4DD1A4-D63D-4766-BA11-29FC99C1CBEF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orc.LogViewer.Examples", "Orc.LogViewer.Examples\Orc.LogViewer.Examples.csproj", "{FC8A5188-FF86-4D47-B72C-834D12B20406}"
 EndProject
