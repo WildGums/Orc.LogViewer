@@ -39,11 +39,32 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Catel.Fody.Attributes, Version=2.17.1.0, Culture=neutral, PublicKeyToken=1c8163524cbe02e6, processorArchitecture=MSIL">
-      <HintPath>..\..\..\lib\Catel.Fody.2.17.1\lib\portable-net4+sl4+wp7+win8+wpa81+MonoAndroid14+MonoTouch40\Catel.Fody.Attributes.dll</HintPath>
+    <Reference Include="ApprovalTests, Version=3.0.0.0, Culture=neutral, PublicKeyToken=11bd7d124fc62e0f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\ApprovalTests.3.0.13\lib\net40\ApprovalTests.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.7.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\..\lib\NUnit.3.7.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="ApprovalUtilities, Version=3.0.0.0, Culture=neutral, PublicKeyToken=11bd7d124fc62e0f, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\ApprovalUtilities.3.0.13\lib\net45\ApprovalUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="ApprovalUtilities.Net45, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\ApprovalUtilities.3.0.13\lib\net45\ApprovalUtilities.Net45.dll</HintPath>
+    </Reference>
+    <Reference Include="Catel.Fody.Attributes, Version=2.19.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Catel.Fody.2.19.0\lib\netstandard1.0\Catel.Fody.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Mono.Cecil.0.9.6.4\lib\net45\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Mono.Cecil.0.9.6.4\lib\net45\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Mono.Cecil.0.9.6.4\lib\net45\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks, Version=0.9.6.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Mono.Cecil.0.9.6.4\lib\net45\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -54,6 +75,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="FodyWeavers.xml" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -61,6 +83,8 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Packages\ApiApprover.6.0.0\PublicApiApprover.cs" />
+    <Compile Include="App_Packages\PublicApiGenerator.6.0.0\ApiGenerator.cs" />
     <Compile Include="ModuleInitializer.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +93,12 @@
     <Analyzer Include="..\..\..\lib\PublicApiAnalyzer.1.0.0-alpha001\analyzers\dotnet\cs\PublicApiAnalyzer.dll" />
     <Analyzer Include="..\..\..\lib\WpfAnalyzers.0.2.7.10\analyzers\dotnet\cs\WpfAnalyzers.Analyzers.dll" />
     <Analyzer Include="..\..\..\lib\WpfAnalyzers.0.2.7.10\analyzers\dotnet\cs\WpfAnalyzers.CodeFixes.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Orc.LogViewer\Orc.LogViewer.NET47\Orc.LogViewer.NET47.csproj">
+      <Project>{e6ce2111-3d7c-4759-a886-e44ec77ce3aa}</Project>
+      <Name>Orc.LogViewer.NET47</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Orc.LogViewer.Tests.Shared\Orc.LogViewer.Tests.Shared.projitems" Label="Shared" Condition="Exists('..\Orc.LogViewer.Tests.Shared\Orc.LogViewer.Tests.Shared.projitems')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
