@@ -60,7 +60,7 @@
                           ItemsSource="{Binding ElementName=LogViewerControl, Path=ViewModel.TypeNames}"
                           Visibility="{Binding ShowTypeNames, Converter={catel:BooleanToCollapsingVisibilityConverter}}"/>
 
-                <orc:FilterBox x:Name="FilterBox" Margin="0 0 4 0" Width="200" PropertyName="Message"
+                <orc:FilterBox x:Name="FilterBox" Margin="0 0 4 0" Width="200" PropertyName="Message" AllowAutoCompletion="False"
                                FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
                                Watermark="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter}" Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
                     <i:Interaction.Behaviors>
