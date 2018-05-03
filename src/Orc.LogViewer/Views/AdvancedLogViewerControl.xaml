@@ -71,10 +71,10 @@
         </DockPanel>
         
         <orccontrols:LogViewerControl x:Name ="LogViewerControl" Grid.Row="1" Margin="4"
-                              ShowDebug="{Binding IsChecked, ElementName=ShowDebugToggleButton}"
-                              ShowInfo="{Binding IsChecked, ElementName=ShowInfoToggleButton}"
-                              ShowWarning="{Binding IsChecked, ElementName=ShowWarningToggleButton}"
-                              ShowError="{Binding IsChecked, ElementName=ShowErrorToggleButton}"
+                              ShowDebug="{Binding DebugChecked}"
+                              ShowInfo="{Binding InfoChecked}"
+                              ShowWarning="{Binding WarningChecked}"
+                              ShowError="{Binding ErrorChecked}"
                               EnableTimestamp="{Binding IsChecked, ElementName=EnableTimestampToggleButton}"
                               EnableTextColoring="True"
                               EnableIcons="True"

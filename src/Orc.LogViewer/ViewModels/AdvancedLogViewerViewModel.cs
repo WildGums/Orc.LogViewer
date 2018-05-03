@@ -48,8 +48,8 @@ namespace Orc.LogViewer.ViewModels
                 RaisePropertyChanged(nameof(Level));
                 RaisePropertyChanged(nameof(ErrorChecked));
                 RaisePropertyChanged(nameof(WarningChecked));
-                RaisePropertyChanged(nameof(DebugChecked));
                 RaisePropertyChanged(nameof(InfoChecked));
+                RaisePropertyChanged(nameof(DebugChecked));
             }
         }
 
@@ -128,7 +128,6 @@ namespace Orc.LogViewer.ViewModels
                 RaisePropertyChanged(nameof(DebugChecked));
             }
         }
-
         #endregion
     }
 }

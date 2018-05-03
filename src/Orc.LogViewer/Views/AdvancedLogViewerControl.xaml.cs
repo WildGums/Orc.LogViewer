@@ -60,6 +60,7 @@ namespace Orc.LogViewer
         public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof (Brush),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl) sender).OnAccentColorBrushChanged()));
 
+
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public Type LogListenerType
         {
@@ -70,6 +71,7 @@ namespace Orc.LogViewer
         public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register("LogListenerType", typeof (Type),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (Controls.Logging.LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging
         {
@@ -79,6 +81,7 @@ namespace Orc.LogViewer
 
         public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register("IgnoreCatelLogging", typeof (bool),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowTypeNames
@@ -100,6 +103,7 @@ namespace Orc.LogViewer
         public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof (bool),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
+
         [TypeConverter(typeof (StringToLogEventLevelConverter))]
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public LogEvent Level
@@ -108,13 +112,9 @@ namespace Orc.LogViewer
             set { SetValue(LevelProperty, value); }
         }
 
-        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register("Level", typeof (LogEvent),
+        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register(nameof(Level), typeof (LogEvent),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-        public LogViewerControl UnderlyingLogViewerControl
-        {
-            get { return LogViewerControl; }
-        }
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool EnableThreadId
@@ -124,7 +124,13 @@ namespace Orc.LogViewer
         }
 
         public static readonly DependencyProperty EnableThreadIdProperty = DependencyProperty.Register(
-            "EnableThreadId", typeof(bool), typeof(AdvancedLogViewerControl), new PropertyMetadata(default(bool)));
+            nameof(EnableThreadId), typeof(bool), typeof(AdvancedLogViewerControl), new PropertyMetadata(default(bool)));
+
+
+        public LogViewerControl UnderlyingLogViewerControl
+        {
+            get { return LogViewerControl; }
+        }
         #endregion
 
         #region Methods
