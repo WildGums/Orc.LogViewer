@@ -10,6 +10,11 @@
     <PackageTags>orc;log;viewer</PackageTags>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- SonarQube requires a project guid -->
+    <ProjectGuid>A420CA39-3B44-4DAC-B66A-D12960AAC025</ProjectGuid>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="MethodTimer.Fody" Version="2.1.0" PrivateAssets="all" />
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="all" />

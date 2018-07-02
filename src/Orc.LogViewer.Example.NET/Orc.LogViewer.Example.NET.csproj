@@ -4,6 +4,7 @@
     <AssemblyName>Orc.LogViewer.Example.NET</AssemblyName>
     <RootNamespace>Orc.LogViewer.Example</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <SonarQubeExclude>true</SonarQubeExclude>
   </PropertyGroup>
 
   <PropertyGroup>
