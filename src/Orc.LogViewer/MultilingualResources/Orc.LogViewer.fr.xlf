@@ -46,6 +46,18 @@
           <target state="needs-review-translation">Open</target>
           <note from="MultilingualUpdate" priority="2">When the XLIFF file support was added via MAT, existing resources were found and auto-imported.  This source and target string contained the same value so the resource was marked as 'Needs review' to ensure the translation could be easily reviewed.</note>
         </trans-unit>
+        <trans-unit id="LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip" translate="yes" xml:space="preserve">
+          <source>Edit filter groups</source>
+          <target state="new">Edit filter groups</target>
+        </trans-unit>
+        <trans-unit id="LogViewer_AdvancedLogViewerControl_None" translate="yes" xml:space="preserve">
+          <source>None</source>
+          <target state="new">None</target>
+        </trans-unit>
+        <trans-unit id="LogViewer_AdvancedLogViewerControl_Editor_Title" translate="yes" xml:space="preserve">
+          <source>Filter group editor</source>
+          <target state="new">Filter group editor</target>
+        </trans-unit>
       </group>
     </body>
   </file>

@@ -19,7 +19,6 @@ namespace Orc.LogViewer
     using Catel.MVVM.Views;
     using Catel.Services;
     using Controls;
-    using Controls.Logging;
 
     /// <summary>
     /// Interaction logic for AdvancedLogViewerControl.xaml.
@@ -69,7 +68,7 @@ namespace Orc.LogViewer
         }
 
         public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register("LogListenerType", typeof (Type),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (Controls.Logging.LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (Controls.LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
@@ -84,14 +83,15 @@ namespace Orc.LogViewer
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
-        public bool ShowTypeNames
+        public bool ShowFilterGroups
         {
-            get { return (bool) GetValue(ShowTypeNamesProperty); }
-            set { SetValue(ShowTypeNamesProperty, value); }
+            get { return (bool) GetValue(ShowFilterGroupsProperty); }
+            set { SetValue(ShowFilterGroupsProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowTypeNamesProperty = DependencyProperty.Register("ShowTypeNames", typeof (bool),
+        public static readonly DependencyProperty ShowFilterGroupsProperty = DependencyProperty.Register(nameof(ShowFilterGroups), typeof (bool),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox

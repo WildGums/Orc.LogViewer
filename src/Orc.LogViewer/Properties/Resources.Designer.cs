@@ -10,7 +10,7 @@
 
 namespace Orc.LogViewer.Properties {
     using System;
-    using Catel.Reflection;
+    
     
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
@@ -39,7 +39,7 @@ namespace Orc.LogViewer.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Orc.LogViewer.Properties.Resources", typeof(Resources).GetAssemblyEx());
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Orc.LogViewer.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -88,11 +88,38 @@ namespace Orc.LogViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit filter groups.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter group editor.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_Editor_Title {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_Editor_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter.
         /// </summary>
         internal static string LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter {
             get {
                 return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_None {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_None", resourceCulture);
             }
         }
         
