@@ -12,6 +12,7 @@ namespace Orc.LogViewer.ViewModels
     using System.Linq;
     using System.Threading.Tasks;
     using Catel;
+    using Catel.Configuration;
     using Catel.Logging;
     using Catel.MVVM;
     using Catel.Services;
@@ -21,16 +22,20 @@ namespace Orc.LogViewer.ViewModels
     {
         private readonly IUIVisualizerService _uiVisualizerService;
         private readonly IApplicationLogFilterGroupService _applicationLogFilterGroupService;
+        private readonly IConfigurationService _configurationService;
         private LogEvent _level;
 
         #region Constructors
-        public AdvancedLogViewerViewModel(IUIVisualizerService uiVisualizerService, IApplicationLogFilterGroupService applicationLogFilterGroupService)
+        public AdvancedLogViewerViewModel(IUIVisualizerService uiVisualizerService,
+            IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService)
         {
             Argument.IsNotNull(() => uiVisualizerService);
             Argument.IsNotNull(() => applicationLogFilterGroupService);
+            Argument.IsNotNull(() => configurationService);
 
             _uiVisualizerService = uiVisualizerService;
             _applicationLogFilterGroupService = applicationLogFilterGroupService;
+            _configurationService = configurationService;
 
             _level = LogEvent.Error | LogEvent.Warning | LogEvent.Info;
 
@@ -182,7 +187,25 @@ namespace Orc.LogViewer.ViewModels
             filterGroups.AddRange(loadedFilterGroups.OrderBy(x => x.Name));
 
             LogFilterGroups = filterGroups;
-            SelectedLogFilterGroup = filterGroups.FirstOrDefault();
+
+            var filterGroupName = _configurationService.GetRoamingValue(LogViewerSettings.LogFilterGroup, LogViewerSettings.LogFilterGroupDefaultValue);
+            var filterGroupToSelect = (from x in filterGroups
+                                       where x.Name.EqualsIgnoreCase(filterGroupName)
+                                       select x).FirstOrDefault();
+            if (filterGroupToSelect == null)
+            {
+                filterGroupToSelect = filterGroups.FirstOrDefault();
+            }
+
+            SelectedLogFilterGroup = filterGroupToSelect;
+        }
+
+        private void OnSelectedLogFilterGroupChanged()
+        {
+            if (IsInitialized)
+            {
+                _configurationService.SetRoamingValue(LogViewerSettings.LogFilterGroup, SelectedLogFilterGroup?.Name ?? string.Empty);
+            }
         }
         #endregion
     }

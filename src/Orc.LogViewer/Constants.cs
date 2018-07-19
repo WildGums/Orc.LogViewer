@@ -84,4 +84,10 @@ namespace Orc.LogViewer
 #endif
         }
     }
+
+    public static class LogViewerSettings
+    {
+        public const string LogFilterGroup = "LogViewer.LastKnownLogFilterGroup";
+        public static readonly string LogFilterGroupDefaultValue = string.Empty;
+    }
 }
