@@ -64,6 +64,11 @@ namespace Orc.LogViewer
             public static readonly Catel.Windows.Input.InputGesture ToggleWarningInputGesture;
         }
     }
+    public class static LogViewerSettings
+    {
+        public const string LogFilterGroup = "LogViewer.LastKnownLogFilterGroup";
+        public static readonly string LogFilterGroupDefaultValue;
+    }
     public class static RichTextBoxExtensions
     {
         public static string GetInlineText(this System.Windows.Controls.RichTextBox richTextBox) { }
@@ -95,7 +100,7 @@ namespace Orc.LogViewer.ViewModels
         public static readonly Catel.Data.PropertyData SelectedLogFilterGroupProperty;
         public static readonly Catel.Data.PropertyData ShowFilterBoxProperty;
         public static readonly Catel.Data.PropertyData ShowFilterGroupsProperty;
-        public AdvancedLogViewerViewModel(Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService) { }
+        public AdvancedLogViewerViewModel(Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService, Catel.Configuration.IConfigurationService configurationService) { }
         public bool DebugChecked { get; set; }
         public Catel.MVVM.TaskCommand EditFilterGroups { get; }
         public bool EnableThreadId { get; set; }
