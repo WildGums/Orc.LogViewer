@@ -64,8 +64,9 @@
                         Margin="0 0 4 0" Visibility="{Binding ShowFilterGroups, Converter={catel:BooleanToCollapsingVisibilityConverter}}" />
 
                 <orccontrols:FilterBox x:Name="FilterBox" Margin="0 0 4 0" Width="200" PropertyName="Message" AllowAutoCompletion="False"
-                               FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
-                               Watermark="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter}" Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
+                                       FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
+                                       Watermark="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter}" 
+                                       Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
                     <i:Interaction.Behaviors>
                         <catel:FocusOnKeyPress Key="F" Modifiers="Ctrl" IsEnabled="{Binding ShowFilterBox}"/>
                     </i:Interaction.Behaviors>
@@ -73,7 +74,7 @@
             </StackPanel>
         </DockPanel>
         
-        <orccontrols:LogViewerControl x:Name ="LogViewerControl" Grid.Row="1" Margin="4"
+        <orccontrols:LogViewerControl x:Name ="LogViewerControl" Grid.Row="1" Margin="-2,0,-2,0"
                                       ShowDebug="{Binding DebugChecked}"
                                       ShowInfo="{Binding InfoChecked}"
                                       ShowWarning="{Binding WarningChecked}"
@@ -86,10 +87,14 @@
                                       LogListenerType="{Binding LogListenerType}"
                                       IgnoreCatelLogging="{Binding IgnoreCatelLogging}"
                                       EnableThreadId="{Binding EnableThreadId}"/>
+        
         <DockPanel Grid.Row="2" LastChildFill="False">
-            <Button x:Name="ClearButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Clear}" Command="{catel:CommandManagerBinding Logging.Clear}" DockPanel.Dock="Left" Margin="4 2 2 2" Width="80" Padding="2" />
-            <Button x:Name="CopyButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Copy}" Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"  DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" Padding="2"/>
-            <Button x:Name="OpenButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Open}" Command="{catel:CommandManagerBinding Logging.OpenInEditor}" DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" Padding="2" />
+            <Button x:Name="ClearButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Clear}" 
+                    Command="{catel:CommandManagerBinding Logging.Clear}" DockPanel.Dock="Left" Margin="4 2 2 2" Width="80" Padding="2" />
+            <Button x:Name="CopyButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Copy}" 
+                    Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"  DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" Padding="2"/>
+            <Button x:Name="OpenButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Open}" 
+                    Command="{catel:CommandManagerBinding Logging.OpenInEditor}" DockPanel.Dock="Right" Margin="2 2 4 2" Width="80" Padding="2" />
         </DockPanel>
     </Grid>
 </catel:UserControl>

@@ -4,11 +4,11 @@
                   xmlns:catel="http://schemas.catelproject.com"
                   xmlns:orclogviewer="http://schemas.wildgums.com/orc/logviewer"
                   Width="950" Height="500" ResizeMode="CanResize"
-                  SizeToContent="Manual" >
+                  SizeToContent="Manual">
 
     <Grid>
         <orclogviewer:AdvancedLogViewerControl Margin="4" IgnoreCatelLogging="False"
-                                      ShowFilterBox="False" Level="Warning"/>
+                                               ShowFilterBox="True" Level="Warning"/>
     </Grid>
     
 </catel:DataWindow>

@@ -7,4 +7,5 @@
     <Grid>
         <orclogviewer:AdvancedLogViewerControl IgnoreCatelLogging="False" />
     </Grid>
+    
 </catel:UserControl>
