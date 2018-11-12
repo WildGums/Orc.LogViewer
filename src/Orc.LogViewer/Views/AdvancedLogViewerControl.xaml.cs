@@ -252,12 +252,12 @@ namespace Orc.LogViewer
 
         private void OnAccentColorBrushChanged()
         {
-            var solidColorBrush = AccentColorBrush as SolidColorBrush;
-            if (solidColorBrush != null)
-            {
-                var accentColor = ((SolidColorBrush) AccentColorBrush).Color;
-                accentColor.CreateAccentColorResourceDictionary("Controls");
-            }
+            //var solidColorBrush = AccentColorBrush as SolidColorBrush;
+            //if (solidColorBrush != null)
+            //{
+            //    var accentColor = ((SolidColorBrush) AccentColorBrush).Color;
+            //    accentColor.CreateAccentColorResourceDictionary("Controls");
+            //}
         }
 
         public override void OnApplyTemplate()
