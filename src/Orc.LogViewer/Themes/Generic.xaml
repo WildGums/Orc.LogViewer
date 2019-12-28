@@ -116,7 +116,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="{x:Type TextBlock}">
+    <Style x:Key="LogViewerTextBlockStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="Margin" Value="4 0 0 0"/>
     </Style>
 </ResourceDictionary>
