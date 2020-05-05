@@ -57,7 +57,7 @@
                         </DataTrigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Background" TargetName="Chrome" Value="White"/>
-                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{orccontrols:AccentColorBrush AccentColorStyle=AccentColor}"/>
+                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{orccontrols:ThemeColorBrush ThemeColorStyle=AccentColor}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter Property="Foreground" Value="#FFADADAD"/>
@@ -96,7 +96,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Background" TargetName="Chrome" Value="White"/>
-                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{orccontrols:AccentColorBrush AccentColorStyle=AccentColor}"/>
+                            <Setter Property="BorderBrush" TargetName="Chrome" Value="{orccontrols:ThemeColorBrush ThemeColorStyle=AccentColor}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
                             <Setter Property="Fill" TargetName="Path" Value="#FFADADAD"/>
