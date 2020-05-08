@@ -56,7 +56,7 @@ namespace Orc.LogViewer
             set { SetValue(AccentColorBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register("AccentColorBrush", typeof (Brush),
+        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register(nameof(AccentColorBrush), typeof (Brush),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl) sender).OnAccentColorBrushChanged()));
 
 
@@ -67,7 +67,7 @@ namespace Orc.LogViewer
             set { SetValue(LogListenerTypeProperty, value); }
         }
 
-        public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register("LogListenerType", typeof (Type),
+        public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register(nameof(LogListenerType), typeof (Type),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (Controls.LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
@@ -78,7 +78,7 @@ namespace Orc.LogViewer
             set { SetValue(IgnoreCatelLoggingProperty, value); }
         }
 
-        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register("IgnoreCatelLogging", typeof (bool),
+        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register(nameof(IgnoreCatelLogging), typeof (bool),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
@@ -100,7 +100,7 @@ namespace Orc.LogViewer
             set { SetValue(ShowFilterBoxProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register("ShowFilterBox", typeof (bool),
+        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register(nameof(ShowFilterBox), typeof (bool),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 

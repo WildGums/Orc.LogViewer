@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net46;net47;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net46;net47;netcoreapp3.0;netcoreapp3.1</TargetFrameworks>
     <AssemblyName>Orc.LogViewer</AssemblyName>
     <RootNamespace>Orc.LogViewer</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -28,21 +28,6 @@
     <PackageReference Include="Obsolete.Fody" Version="5.2.1" PrivateAssets="all" />
     <PackageReference Include="Orc.Controls" Version="4.0.0-alpha0048" />
     <PackageReference Include="WpfAnalyzers" Version="2.4.5" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
