@@ -1,6 +1,8 @@
 ﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
 [assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v3.1", FrameworkDisplayName="")]
 [assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer.Controls")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer.Converters")]
 [assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/logviewer", "orclogviewer")]
 [assembly: System.Windows.ThemeInfo(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
 public static class ModuleInitializer
@@ -87,6 +89,46 @@ namespace Orc.LogViewer
     {
         public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture inputGesture) { }
         public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture inputGesture, string text) { }
+    }
+}
+namespace Orc.LogViewer.Controls
+{
+    public class CategoryPresenter : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public static readonly System.Windows.DependencyProperty CategoryProperty;
+        public CategoryPresenter() { }
+        public string Category { get; set; }
+        public void InitializeComponent() { }
+    }
+    public class CategoryToggleButton : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public static readonly System.Windows.DependencyProperty CategoryProperty;
+        public static readonly System.Windows.DependencyProperty EntryCountProperty;
+        public static readonly System.Windows.DependencyProperty IsCheckedProperty;
+        public CategoryToggleButton() { }
+        public string Category { get; set; }
+        public int EntryCount { get; set; }
+        public bool IsChecked { get; set; }
+        public void InitializeComponent() { }
+        public void Toggle() { }
+    }
+}
+namespace Orc.LogViewer.Converters
+{
+    public class CategoryBorderBrushConverter : Catel.MVVM.Converters.ValueConverterBase<string>
+    {
+        public CategoryBorderBrushConverter() { }
+        protected override object Convert(string value, System.Type targetType, object parameter) { }
+    }
+    public class CategoryPathConverter : Catel.MVVM.Converters.ValueConverterBase<string>
+    {
+        public CategoryPathConverter() { }
+        protected override object Convert(string value, System.Type targetType, object parameter) { }
+    }
+    public class CategoryTextConverter : Catel.MVVM.Converters.ValueConverterBase<string>
+    {
+        public CategoryTextConverter() { }
+        protected override object Convert(string value, System.Type targetType, object parameter) { }
     }
 }
 namespace Orc.LogViewer.ViewModels

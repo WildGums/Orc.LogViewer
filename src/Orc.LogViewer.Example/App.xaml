@@ -4,7 +4,16 @@
              StartupUri="Views/MainWindowView.xaml">
     
     <Application.Resources>
-        <SolidColorBrush x:Key="AccentColorBrush" Color="Orange" />
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Orc.Theming;component/themes/generic.xaml" />
+                <ResourceDictionary Source="/Orc.Controls;component/themes/generic.xaml" />
+                <ResourceDictionary Source="/Orchestra.Core;component/themes/generic.xaml" />
+                <ResourceDictionary Source="/Orc.LogViewer;component/themes/generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <SolidColorBrush x:Key="AccentColorBrush" Color="Orange" />
+        </ResourceDictionary>
     </Application.Resources>
     
 </Application>

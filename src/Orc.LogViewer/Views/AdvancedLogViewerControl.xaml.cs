@@ -19,6 +19,7 @@ namespace Orc.LogViewer
     using Catel.MVVM.Views;
     using Catel.Services;
     using Controls;
+    using Orc.Controls;
 
     /// <summary>
     /// Interaction logic for AdvancedLogViewerControl.xaml.
@@ -68,7 +69,7 @@ namespace Orc.LogViewer
         }
 
         public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register(nameof(LogListenerType), typeof (Type),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (Controls.LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
