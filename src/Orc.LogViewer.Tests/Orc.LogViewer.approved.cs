@@ -1,9 +1,11 @@
-﻿[assembly: System.Resources.NeutralResourcesLanguageAttribute("en-US")]
-[assembly: System.Runtime.Versioning.TargetFrameworkAttribute(".NETFramework,Version=v4.6", FrameworkDisplayName=".NET Framework 4.6")]
-[assembly: System.Windows.Markup.XmlnsDefinitionAttribute("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer")]
-[assembly: System.Windows.Markup.XmlnsPrefixAttribute("http://schemas.wildgums.com/orc/logviewer", "orclogviewer")]
-[assembly: System.Windows.ThemeInfoAttribute(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
-public class static ModuleInitializer
+﻿[assembly: System.Resources.NeutralResourcesLanguage("en-US")]
+[assembly: System.Runtime.Versioning.TargetFramework(".NETCoreApp,Version=v3.1", FrameworkDisplayName="")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer.Controls")]
+[assembly: System.Windows.Markup.XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer.Converters")]
+[assembly: System.Windows.Markup.XmlnsPrefix("http://schemas.wildgums.com/orc/logviewer", "orclogviewer")]
+[assembly: System.Windows.ThemeInfo(System.Windows.ResourceDictionaryLocation.None, System.Windows.ResourceDictionaryLocation.SourceAssembly)]
+public static class ModuleInitializer
 {
     public static void Initialize() { }
 }
@@ -20,18 +22,18 @@ namespace Orc.LogViewer
         public static readonly System.Windows.DependencyProperty ShowFilterGroupsProperty;
         public AdvancedLogViewerControl() { }
         public System.Windows.Media.Brush AccentColorBrush { get; set; }
-        [Catel.MVVM.Views.ViewToViewModelAttribute("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
+        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool EnableThreadId { get; set; }
-        [Catel.MVVM.Views.ViewToViewModelAttribute("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
+        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging { get; set; }
-        [Catel.MVVM.Views.ViewToViewModelAttribute("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
-        [System.ComponentModel.TypeConverterAttribute(typeof(Orc.LogViewer.StringToLogEventLevelConverter))]
+        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
+        [System.ComponentModel.TypeConverter(typeof(Orc.LogViewer.StringToLogEventLevelConverter))]
         public Catel.Logging.LogEvent Level { get; set; }
-        [Catel.MVVM.Views.ViewToViewModelAttribute("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
+        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public System.Type LogListenerType { get; set; }
-        [Catel.MVVM.Views.ViewToViewModelAttribute("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
+        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox { get; set; }
-        [Catel.MVVM.Views.ViewToViewModelAttribute("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
+        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterGroups { get; set; }
         public Orc.Controls.LogViewerControl UnderlyingLogViewerControl { get; }
         public void Clear() { }
@@ -40,36 +42,36 @@ namespace Orc.LogViewer
         protected override void OnLoaded(System.EventArgs e) { }
         protected override void OnUnloaded(System.EventArgs e) { }
     }
-    public class static LogViewerCommands
+    public static class LogViewerCommands
     {
-        public class static Logging
+        public static class Logging
         {
             public const string Clear = "Logging.Clear";
-            public static readonly Catel.Windows.Input.InputGesture ClearInputGesture;
             public const string CopyToClipboard = "Logging.CopyToClipboard";
-            public static readonly Catel.Windows.Input.InputGesture CopyToClipboardInputGesture;
             public const string Filter = "Logging.Filter";
-            public static readonly Catel.Windows.Input.InputGesture FilterInputGesture;
             public const string OpenInEditor = "Logging.OpenInEditor";
-            public static readonly Catel.Windows.Input.InputGesture OpenInEditorInputGesture;
             public const string ToggleDebug = "Logging.ToggleDebug";
-            public static readonly Catel.Windows.Input.InputGesture ToggleDebugInputGesture;
             public const string ToggleError = "Logging.ToggleError";
-            public static readonly Catel.Windows.Input.InputGesture ToggleErrorInputGesture;
             public const string ToggleInfo = "Logging.ToggleInfo";
-            public static readonly Catel.Windows.Input.InputGesture ToggleInfoInputGesture;
             public const string ToggleTimestamp = "Logging.ToggleTimestamp";
-            public static readonly Catel.Windows.Input.InputGesture ToggleTimestampInputGesture;
             public const string ToggleWarning = "Logging.ToggleWarning";
+            public static readonly Catel.Windows.Input.InputGesture ClearInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture CopyToClipboardInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture FilterInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture OpenInEditorInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture ToggleDebugInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture ToggleErrorInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture ToggleInfoInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture ToggleTimestampInputGesture;
             public static readonly Catel.Windows.Input.InputGesture ToggleWarningInputGesture;
         }
     }
-    public class static LogViewerSettings
+    public static class LogViewerSettings
     {
         public const string LogFilterGroup = "LogViewer.LastKnownLogFilterGroup";
         public static readonly string LogFilterGroupDefaultValue;
     }
-    public class static RichTextBoxExtensions
+    public static class RichTextBoxExtensions
     {
         public static string GetInlineText(this System.Windows.Controls.RichTextBox richTextBox) { }
     }
@@ -79,14 +81,54 @@ namespace Orc.LogViewer
         public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { }
         public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { }
     }
-    public class static ToggleButtonExtensions
+    public static class ToggleButtonExtensions
     {
         public static void Toggle(this System.Windows.Controls.Primitives.ToggleButton toggleButton) { }
     }
-    public class static UIElementExtensions
+    public static class UIElementExtensions
     {
         public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture inputGesture) { }
         public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture inputGesture, string text) { }
+    }
+}
+namespace Orc.LogViewer.Controls
+{
+    public class CategoryPresenter : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public static readonly System.Windows.DependencyProperty CategoryProperty;
+        public CategoryPresenter() { }
+        public string Category { get; set; }
+        public void InitializeComponent() { }
+    }
+    public class CategoryToggleButton : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
+    {
+        public static readonly System.Windows.DependencyProperty CategoryProperty;
+        public static readonly System.Windows.DependencyProperty EntryCountProperty;
+        public static readonly System.Windows.DependencyProperty IsCheckedProperty;
+        public CategoryToggleButton() { }
+        public string Category { get; set; }
+        public int EntryCount { get; set; }
+        public bool IsChecked { get; set; }
+        public void InitializeComponent() { }
+        public void Toggle() { }
+    }
+}
+namespace Orc.LogViewer.Converters
+{
+    public class CategoryBorderBrushConverter : Catel.MVVM.Converters.ValueConverterBase<string>
+    {
+        public CategoryBorderBrushConverter() { }
+        protected override object Convert(string value, System.Type targetType, object parameter) { }
+    }
+    public class CategoryPathConverter : Catel.MVVM.Converters.ValueConverterBase<string>
+    {
+        public CategoryPathConverter() { }
+        protected override object Convert(string value, System.Type targetType, object parameter) { }
+    }
+    public class CategoryTextConverter : Catel.MVVM.Converters.ValueConverterBase<string>
+    {
+        public CategoryTextConverter() { }
+        protected override object Convert(string value, System.Type targetType, object parameter) { }
     }
 }
 namespace Orc.LogViewer.ViewModels

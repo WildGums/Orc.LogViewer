@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{59924607
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.LogViewer", "Orc.LogViewer\Orc.LogViewer.csproj", "{2039D28F-F6B5-46A5-B8C8-7B711EB28EF1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.LogViewer.Example.NET", "Orc.LogViewer.Example.NET\Orc.LogViewer.Example.NET.csproj", "{04D0B1AE-3915-4F84-B063-0948273EB1D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.LogViewer.Example", "Orc.LogViewer.Example\Orc.LogViewer.Example.csproj", "{04D0B1AE-3915-4F84-B063-0948273EB1D2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orc.LogViewer.Tests", "Orc.LogViewer.Tests\Orc.LogViewer.Tests.csproj", "{8C233776-D133-456A-A51C-6A024F1879C1}"
 EndProject

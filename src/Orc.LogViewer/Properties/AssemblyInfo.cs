@@ -19,6 +19,8 @@ using System.Windows.Markup;
 
 [assembly: XmlnsPrefix("http://schemas.wildgums.com/orc/logviewer", "orclogviewer")]
 [assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer")]
+[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer.Controls")]
+[assembly: XmlnsDefinition("http://schemas.wildgums.com/orc/logviewer", "Orc.LogViewer.Converters")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
@@ -28,4 +30,3 @@ using System.Windows.Markup;
     //(used if a resource is not found in the page, 
     // app, or any theme specific resource dictionaries)
     )]
-    

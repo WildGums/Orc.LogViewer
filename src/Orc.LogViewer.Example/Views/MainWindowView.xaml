@@ -1,0 +1,29 @@
+﻿<catel:Window x:Class="Orc.LogViewer.Examples.Views.MainWindowView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:catel="http://schemas.catelproject.com"
+              xmlns:views="clr-namespace:Orc.LogViewer.Examples.Views" 
+              xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" 
+              xmlns:orctheming="http://schemas.wildgums.com/orc/theming"
+              Height="500" Width="1000">
+
+    <orccontrols:StackGrid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <orctheming:ThemeSwitcherView />
+
+        <orccontrols:TabControl TabStripPlacement="Left">
+            <TabItem Header="LogViewer">
+                <views:LogViewerExample/>
+            </TabItem>
+
+            <TabItem Header="LogViewer window">
+                <views:LogViewerSeparateWindowExample/>
+            </TabItem>
+        </orccontrols:TabControl>
+    </orccontrols:StackGrid>
+   
+</catel:Window>
