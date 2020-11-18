@@ -10,7 +10,7 @@
 
     public class CategoryBorderBrushConverter : ValueConverterBase<string>
     {
-        private static readonly Dictionary<string, SolidColorBrush> BrushCache = new Dictionary<string, SolidColorBrush>(StringComparer.OrdinalIgnoreCase);
+        public static readonly Dictionary<string, SolidColorBrush> BrushCache = new Dictionary<string, SolidColorBrush>(StringComparer.OrdinalIgnoreCase);
 
         static CategoryBorderBrushConverter()
         {

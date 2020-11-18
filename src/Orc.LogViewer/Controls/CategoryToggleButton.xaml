@@ -13,6 +13,7 @@
                       Width="100"
                       Margin="0"
                       HorizontalContentAlignment="Stretch">
+
             <Grid HorizontalAlignment="Stretch"
                   Margin="0,0,4,0">
                 <Grid.ColumnDefinitions>
@@ -21,13 +22,14 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                
+
                 <controls:CategoryPresenter Grid.Column="0" 
                                             Category="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CategoryToggleButton}}, Path=Category}" />
-                
+
                 <TextBlock Grid.Column="2" 
                            Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CategoryToggleButton}}, Path=EntryCount}"
                            VerticalAlignment="Center" />
+
                 <TextBlock Grid.Column="3" 
                            Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:CategoryToggleButton}}, Path=Category, Converter={converters:CategoryTextConverter}}"
                            VerticalAlignment="Center" />
