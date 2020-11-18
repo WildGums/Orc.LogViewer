@@ -117,6 +117,7 @@ namespace Orc.LogViewer.Converters
 {
     public class CategoryBorderBrushConverter : Catel.MVVM.Converters.ValueConverterBase<string>
     {
+        public static readonly System.Collections.Generic.Dictionary<string, System.Windows.Media.SolidColorBrush> BrushCache;
         public CategoryBorderBrushConverter() { }
         protected override object Convert(string value, System.Type targetType, object parameter) { }
     }

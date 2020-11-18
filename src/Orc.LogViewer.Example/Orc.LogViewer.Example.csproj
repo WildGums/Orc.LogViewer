@@ -26,6 +26,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Update="Catel.Analyzers" Version="1.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Update="CatenaLogic.Analyzers" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Update="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
 
