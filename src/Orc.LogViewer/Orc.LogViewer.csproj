@@ -1,6 +1,6 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net46;net47;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;net5.0-windows</TargetFrameworks>
     <AssemblyName>Orc.LogViewer</AssemblyName>
     <RootNamespace>Orc.LogViewer</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -29,14 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="Catel.Analyzers" Version="1.1.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Update="CatenaLogic.Analyzers" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
     <PackageReference Update="NETStandard.Library" Version="2.0.3" />
   </ItemGroup>
 
