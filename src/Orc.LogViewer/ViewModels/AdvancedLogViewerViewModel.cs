@@ -192,7 +192,7 @@ namespace Orc.LogViewer.ViewModels
             var filterGroupToSelect = (from x in filterGroups
                                        where x.Name.EqualsIgnoreCase(filterGroupName)
                                        select x).FirstOrDefault();
-            if (filterGroupToSelect == null)
+            if (filterGroupToSelect is null)
             {
                 filterGroupToSelect = filterGroups.FirstOrDefault();
             }
