@@ -23,7 +23,7 @@ namespace Orc.LogViewer
         {
             string content = null;
 
-            if (inputGesture != null)
+            if (inputGesture is not null)
             {
                 content = inputGesture.ToString();
             }

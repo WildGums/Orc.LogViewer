@@ -228,7 +228,7 @@ namespace Orc.LogViewer
             LogViewerControl.CopyToClipboard();
 
             var dataObject = Clipboard.GetDataObject();
-            if (dataObject == null)
+            if (dataObject is null)
             {
                 return string.Empty;
             }
