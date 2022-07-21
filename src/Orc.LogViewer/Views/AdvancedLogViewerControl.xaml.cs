@@ -213,7 +213,12 @@ namespace Orc.LogViewer
             }
 
             var filePath = CreateLogFile(path);
-            _processService.StartProcess(filePath);
+
+            _processService.StartProcess(new ProcessContext
+            {
+                FileName = filePath,
+                UseShellExecute = true
+            });
         }
 
         private string CreateLogFile(string path)
