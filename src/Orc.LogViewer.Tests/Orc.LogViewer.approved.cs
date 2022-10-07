@@ -55,15 +55,15 @@ namespace Orc.LogViewer
             public const string ToggleInfo = "Logging.ToggleInfo";
             public const string ToggleTimestamp = "Logging.ToggleTimestamp";
             public const string ToggleWarning = "Logging.ToggleWarning";
-            public static readonly Catel.Windows.Input.InputGesture ClearInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture CopyToClipboardInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture FilterInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture OpenInEditorInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture ToggleDebugInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture ToggleErrorInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture ToggleInfoInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture ToggleTimestampInputGesture;
-            public static readonly Catel.Windows.Input.InputGesture ToggleWarningInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? ClearInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? CopyToClipboardInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? FilterInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? OpenInEditorInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? ToggleDebugInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? ToggleErrorInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? ToggleInfoInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? ToggleTimestampInputGesture;
+            public static readonly Catel.Windows.Input.InputGesture? ToggleWarningInputGesture;
         }
     }
     public static class LogViewerSettings
