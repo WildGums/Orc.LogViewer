@@ -2,23 +2,28 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.Immutable;
     using System.Windows;
     using System.Windows.Media;
     using Catel.MVVM.Converters;
 
     public class CategoryPathConverter : ValueConverterBase<string>
     {
-        private static readonly Dictionary<string, Geometry?> PathCache = new Dictionary<string, Geometry?>(StringComparer.OrdinalIgnoreCase);
+        private static readonly ImmutableDictionary<string, Geometry?> PathCache;
 
         static CategoryPathConverter()
         {
             var application = Application.Current;
 
-            PathCache["Debug"] = application.TryFindResource("LogDebugGeometry") as Geometry;
-            PathCache["Info"] = application.TryFindResource("LogInfoGeometry") as Geometry;
-            PathCache["Warning"] = application.TryFindResource("LogWarningGeometry") as Geometry;
-            PathCache["Error"] = application.TryFindResource("LogErrorGeometry") as Geometry;
-            PathCache["Clock"] = application.TryFindResource("LogClockGeometry") as Geometry;
+            var dictionary = new Dictionary<string, Geometry?>(StringComparer.OrdinalIgnoreCase);
+
+            dictionary["Debug"] = application.TryFindResource("LogDebugGeometry") as Geometry;
+            dictionary["Info"] = application.TryFindResource("LogInfoGeometry") as Geometry;
+            dictionary["Warning"] = application.TryFindResource("LogWarningGeometry") as Geometry;
+            dictionary["Error"] = application.TryFindResource("LogErrorGeometry") as Geometry;
+            dictionary["Clock"] = application.TryFindResource("LogClockGeometry") as Geometry;
+
+            PathCache = dictionary.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
         }
 
         protected override object? Convert(string? value, Type targetType, object? parameter)

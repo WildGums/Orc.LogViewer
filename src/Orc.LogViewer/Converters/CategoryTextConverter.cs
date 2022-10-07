@@ -2,23 +2,25 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Windows;
+    using System.Collections.Immutable;
     using Catel;
     using Catel.MVVM.Converters;
 
     public class CategoryTextConverter : ValueConverterBase<string>
     {
-        private static readonly Dictionary<string, string?> PathCache = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
+        private static readonly ImmutableDictionary<string, string?> PathCache;
 
         static CategoryTextConverter()
         {
-            var application = Application.Current;
+            var dictionary = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
 
-            PathCache["Debug"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug");
-            PathCache["Info"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info");
-            PathCache["Warning"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning");
-            PathCache["Error"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error");
-            PathCache["Clock"] = null;
+            dictionary["Debug"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug");
+            dictionary["Info"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info");
+            dictionary["Warning"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning");
+            dictionary["Error"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error");
+            dictionary["Clock"] = null;
+
+            PathCache = dictionary.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
         }
 
         protected override object? Convert(string? value, Type targetType, object? parameter)
