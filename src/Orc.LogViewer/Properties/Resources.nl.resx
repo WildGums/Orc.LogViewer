@@ -36,4 +36,13 @@
   <data name="LogViewer_AdvancedLogViewerControl_Button_Content_Open" xml:space="preserve">
     <value>Open</value>
   </data>
+  <data name="LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip" xml:space="preserve">
+    <value>Edit filter groups</value>
+  </data>
+  <data name="LogViewer_AdvancedLogViewerControl_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="LogViewer_AdvancedLogViewerControl_Editor_Title" xml:space="preserve">
+    <value>Filter group editor</value>
+  </data>
 </root>

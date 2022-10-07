@@ -9,9 +9,9 @@
             InitializeComponent();
         }
 
-        public string Category
+        public string? Category
         {
-            get { return (string)GetValue(CategoryProperty); }
+            get { return (string?)GetValue(CategoryProperty); }
             set { SetValue(CategoryProperty, value); }
         }
 

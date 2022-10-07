@@ -2,16 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Media;
     using Catel.MVVM.Converters;
 
     public class CategoryPathConverter : ValueConverterBase<string>
     {
-        private static readonly Dictionary<string, Geometry> PathCache = new Dictionary<string, Geometry>(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<string, Geometry?> PathCache = new Dictionary<string, Geometry?>(StringComparer.OrdinalIgnoreCase);
 
         static CategoryPathConverter()
         {
@@ -24,9 +21,14 @@
             PathCache["Clock"] = application.TryFindResource("LogClockGeometry") as Geometry;
         }
 
-        protected override object Convert(string value, Type targetType, object parameter)
+        protected override object? Convert(string? value, Type targetType, object? parameter)
         {
-            if (PathCache.TryGetValue(value, out var geometry))
+            if (value is not string stringValue)
+            {
+                return null;
+            }
+
+            if (PathCache.TryGetValue(stringValue, out var geometry))
             {
                 return geometry;
             }

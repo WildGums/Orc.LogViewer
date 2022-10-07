@@ -31,9 +31,9 @@
             typeof(int), typeof(CategoryToggleButton), new PropertyMetadata(0));
 
 
-        public string Category
+        public string? Category
         {
-            get { return (string)GetValue(CategoryProperty); }
+            get { return (string?)GetValue(CategoryProperty); }
             set { SetValue(CategoryProperty, value); }
         }
 
@@ -52,6 +52,11 @@
             }
 
             if (!brushes.TryGetValue(newBrushName, out var brush))
+            {
+                return;
+            }
+
+            if (brush is null)
             {
                 return;
             }

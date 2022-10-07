@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AdvancedLogViewerControl.xaml.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer
+﻿namespace Orc.LogViewer
 {
     using System;
     using System.ComponentModel;
@@ -18,7 +11,6 @@ namespace Orc.LogViewer
     using Catel.MVVM;
     using Catel.MVVM.Views;
     using Catel.Services;
-    using Controls;
     using Orc.Controls;
 
     /// <summary>
@@ -26,12 +18,9 @@ namespace Orc.LogViewer
     /// </summary>
     public partial class AdvancedLogViewerControl
     {
-        #region Fields
         private readonly ICommandManager _commandManager;
         private readonly IProcessService _processService;
-        #endregion
 
-        #region Constructors
         static AdvancedLogViewerControl()
         {
             typeof (AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe();
@@ -43,17 +32,15 @@ namespace Orc.LogViewer
 
             var serviceLocator = ServiceLocator.Default;
 
-            _commandManager = serviceLocator.ResolveType<ICommandManager>();
-            _processService = serviceLocator.ResolveType<IProcessService>();
+            _commandManager = serviceLocator.ResolveRequiredType<ICommandManager>();
+            _processService = serviceLocator.ResolveRequiredType<IProcessService>();
 
             CreateTooltips();
         }
-        #endregion
 
-        #region Properties
-        public Brush AccentColorBrush
+        public Brush? AccentColorBrush
         {
-            get { return (Brush) GetValue(AccentColorBrushProperty); }
+            get { return (Brush?) GetValue(AccentColorBrushProperty); }
             set { SetValue(AccentColorBrushProperty, value); }
         }
 
@@ -62,9 +49,9 @@ namespace Orc.LogViewer
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
-        public Type LogListenerType
+        public Type? LogListenerType
         {
-            get { return (Type) GetValue(LogListenerTypeProperty); }
+            get { return (Type?) GetValue(LogListenerTypeProperty); }
             set { SetValue(LogListenerTypeProperty, value); }
         }
 
@@ -128,13 +115,11 @@ namespace Orc.LogViewer
             nameof(EnableThreadId), typeof(bool), typeof(AdvancedLogViewerControl), new PropertyMetadata(default(bool)));
 
 
-        public LogViewerControl UnderlyingLogViewerControl
+        public LogViewerControl? UnderlyingLogViewerControl
         {
             get { return LogViewerControl; }
         }
-        #endregion
 
-        #region Methods
         protected override void OnLoaded(EventArgs e)
         {
             // Commands that require a view component cannot live inside a CommandContainer
@@ -238,7 +223,7 @@ namespace Orc.LogViewer
                 return string.Empty;
             }
 
-            return dataObject.GetData(DataFormats.Text).ToString();
+            return dataObject.GetData(DataFormats.Text).ToString() ?? string.Empty;
         }
 
         private void CreateTooltips()
@@ -272,6 +257,5 @@ namespace Orc.LogViewer
 
             SetCurrentValue(AccentColorBrushProperty, TryFindResource("AccentColorBrush") as SolidColorBrush);
         }
-        #endregion
     }
 }

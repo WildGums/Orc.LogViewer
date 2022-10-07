@@ -2,15 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Media;
     using Catel.MVVM.Converters;
 
     public class CategoryBorderBrushConverter : ValueConverterBase<string>
     {
-        public static readonly Dictionary<string, SolidColorBrush> BrushCache = new Dictionary<string, SolidColorBrush>(StringComparer.OrdinalIgnoreCase);
+        public static readonly Dictionary<string, SolidColorBrush?> BrushCache = new Dictionary<string, SolidColorBrush?>(StringComparer.OrdinalIgnoreCase);
 
         static CategoryBorderBrushConverter()
         {
@@ -21,9 +18,14 @@
             BrushCache["Clock"] = new SolidColorBrush(Colors.Gray);
         }
 
-        protected override object Convert(string value, Type targetType, object parameter)
+        protected override object? Convert(string? value, Type targetType, object? parameter)
         {
-            if (BrushCache.TryGetValue(value, out var brush))
+            if (value is not string stringValue)
+            {
+                return null;
+            }
+
+            if (BrushCache.TryGetValue(stringValue, out var brush))
             {
                 return brush;
             }

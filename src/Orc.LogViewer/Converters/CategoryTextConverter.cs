@@ -2,17 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows;
-    using System.Windows.Media;
     using Catel;
     using Catel.MVVM.Converters;
 
     public class CategoryTextConverter : ValueConverterBase<string>
     {
-        private static readonly Dictionary<string, string> PathCache = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        private static readonly Dictionary<string, string?> PathCache = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
 
         static CategoryTextConverter()
         {
@@ -25,9 +21,14 @@
             PathCache["Clock"] = null;
         }
 
-        protected override object Convert(string value, Type targetType, object parameter)
+        protected override object? Convert(string? value, Type targetType, object? parameter)
         {
-            if (PathCache.TryGetValue(value, out var cachedvalue))
+            if (value is not string stringValue)
+            {
+                return null;
+            }
+
+            if (PathCache.TryGetValue(stringValue, out var cachedvalue))
             {
                 return cachedvalue;
             }

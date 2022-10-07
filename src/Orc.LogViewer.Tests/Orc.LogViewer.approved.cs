@@ -21,7 +21,7 @@ namespace Orc.LogViewer
         public static readonly System.Windows.DependencyProperty ShowFilterBoxProperty;
         public static readonly System.Windows.DependencyProperty ShowFilterGroupsProperty;
         public AdvancedLogViewerControl() { }
-        public System.Windows.Media.Brush AccentColorBrush { get; set; }
+        public System.Windows.Media.Brush? AccentColorBrush { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool EnableThreadId { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
@@ -30,12 +30,12 @@ namespace Orc.LogViewer
         [System.ComponentModel.TypeConverter(typeof(Orc.LogViewer.StringToLogEventLevelConverter))]
         public Catel.Logging.LogEvent Level { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
-        public System.Type LogListenerType { get; set; }
+        public System.Type? LogListenerType { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterGroups { get; set; }
-        public Orc.Controls.LogViewerControl UnderlyingLogViewerControl { get; }
+        public Orc.Controls.LogViewerControl? UnderlyingLogViewerControl { get; }
         public void Clear() { }
         public void InitializeComponent() { }
         public override void OnApplyTemplate() { }
@@ -78,8 +78,8 @@ namespace Orc.LogViewer
     public class StringToLogEventLevelConverter : System.ComponentModel.TypeConverter
     {
         public StringToLogEventLevelConverter() { }
-        public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Type sourceType) { }
-        public override object ConvertFrom(System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value) { }
+        public override bool CanConvertFrom(System.ComponentModel.ITypeDescriptorContext? context, System.Type? sourceType) { }
+        public override object? ConvertFrom(System.ComponentModel.ITypeDescriptorContext? context, System.Globalization.CultureInfo? culture, object? value) { }
     }
     public static class ToggleButtonExtensions
     {
@@ -87,8 +87,8 @@ namespace Orc.LogViewer
     }
     public static class UIElementExtensions
     {
-        public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture inputGesture) { }
-        public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture inputGesture, string text) { }
+        public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture? inputGesture) { }
+        public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture? inputGesture, string text) { }
     }
 }
 namespace Orc.LogViewer.Controls
@@ -97,7 +97,7 @@ namespace Orc.LogViewer.Controls
     {
         public static readonly System.Windows.DependencyProperty CategoryProperty;
         public CategoryPresenter() { }
-        public string Category { get; set; }
+        public string? Category { get; set; }
         public void InitializeComponent() { }
     }
     public class CategoryToggleButton : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector
@@ -106,7 +106,7 @@ namespace Orc.LogViewer.Controls
         public static readonly System.Windows.DependencyProperty EntryCountProperty;
         public static readonly System.Windows.DependencyProperty IsCheckedProperty;
         public CategoryToggleButton() { }
-        public string Category { get; set; }
+        public string? Category { get; set; }
         public int EntryCount { get; set; }
         public bool IsChecked { get; set; }
         public void InitializeComponent() { }
@@ -117,32 +117,32 @@ namespace Orc.LogViewer.Converters
 {
     public class CategoryBorderBrushConverter : Catel.MVVM.Converters.ValueConverterBase<string>
     {
-        public static readonly System.Collections.Generic.Dictionary<string, System.Windows.Media.SolidColorBrush> BrushCache;
+        public static readonly System.Collections.Generic.Dictionary<string, System.Windows.Media.SolidColorBrush?> BrushCache;
         public CategoryBorderBrushConverter() { }
-        protected override object Convert(string value, System.Type targetType, object parameter) { }
+        protected override object? Convert(string? value, System.Type targetType, object? parameter) { }
     }
     public class CategoryPathConverter : Catel.MVVM.Converters.ValueConverterBase<string>
     {
         public CategoryPathConverter() { }
-        protected override object Convert(string value, System.Type targetType, object parameter) { }
+        protected override object? Convert(string? value, System.Type targetType, object? parameter) { }
     }
     public class CategoryTextConverter : Catel.MVVM.Converters.ValueConverterBase<string>
     {
         public CategoryTextConverter() { }
-        protected override object Convert(string value, System.Type targetType, object parameter) { }
+        protected override object? Convert(string? value, System.Type targetType, object? parameter) { }
     }
 }
 namespace Orc.LogViewer.ViewModels
 {
     public class AdvancedLogViewerViewModel : Catel.MVVM.ViewModelBase
     {
-        public static readonly Catel.Data.PropertyData EnableThreadIdProperty;
-        public static readonly Catel.Data.PropertyData IgnoreCatelLoggingProperty;
-        public static readonly Catel.Data.PropertyData LogFilterGroupsProperty;
-        public static readonly Catel.Data.PropertyData LogListenerTypeProperty;
-        public static readonly Catel.Data.PropertyData SelectedLogFilterGroupProperty;
-        public static readonly Catel.Data.PropertyData ShowFilterBoxProperty;
-        public static readonly Catel.Data.PropertyData ShowFilterGroupsProperty;
+        public static readonly Catel.Data.IPropertyData EnableThreadIdProperty;
+        public static readonly Catel.Data.IPropertyData IgnoreCatelLoggingProperty;
+        public static readonly Catel.Data.IPropertyData LogFilterGroupsProperty;
+        public static readonly Catel.Data.IPropertyData LogListenerTypeProperty;
+        public static readonly Catel.Data.IPropertyData SelectedLogFilterGroupProperty;
+        public static readonly Catel.Data.IPropertyData ShowFilterBoxProperty;
+        public static readonly Catel.Data.IPropertyData ShowFilterGroupsProperty;
         public AdvancedLogViewerViewModel(Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService, Catel.Configuration.IConfigurationService configurationService) { }
         public bool DebugChecked { get; set; }
         public Catel.MVVM.TaskCommand EditFilterGroups { get; }
@@ -152,13 +152,13 @@ namespace Orc.LogViewer.ViewModels
         public bool InfoChecked { get; set; }
         public Catel.Logging.LogEvent Level { get; set; }
         public System.Collections.Generic.List<Orc.Controls.LogFilterGroup> LogFilterGroups { get; }
-        public System.Type LogListenerType { get; set; }
-        public Orc.Controls.LogFilterGroup SelectedLogFilterGroup { get; set; }
+        public System.Type? LogListenerType { get; set; }
+        public Orc.Controls.LogFilterGroup? SelectedLogFilterGroup { get; set; }
         public bool ShowFilterBox { get; set; }
         public bool ShowFilterGroups { get; set; }
         public bool WarningChecked { get; set; }
         protected override System.Threading.Tasks.Task InitializeAsync() { }
-        protected override void OnPropertyChanged(Catel.Data.AdvancedPropertyChangedEventArgs e) { }
+        protected override void OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs e) { }
     }
     public class LogFilterGroupEditorViewModel : Catel.MVVM.ViewModelBase
     {

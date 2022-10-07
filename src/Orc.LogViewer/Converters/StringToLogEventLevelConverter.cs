@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StringToLogEventLevelConverter.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer
+﻿namespace Orc.LogViewer
 {
     using System;
     using System.ComponentModel;
@@ -16,12 +9,19 @@ namespace Orc.LogViewer
 
     public class StringToLogEventLevelConverter : TypeConverter
     {
-        private readonly ILog Log = LogManager.GetCurrentClassLogger();
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
-        {
-            var values = ((string)value).Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
 
+        public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object? value)
+        {
             LogEvent result = 0;
+
+            if (value is not string stringValue)
+            {
+                return result;
+            }
+
+            var values = stringValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
             foreach (var enumValue in values.Select(x => x.Trim()))
             {
                 switch (enumValue.ToLower())
@@ -46,13 +46,13 @@ namespace Orc.LogViewer
                         throw Log.ErrorAndCreateException<XamlException>("Cannot parse the LogEvent value.");
                 }
             }
+
             return result;
         }
 
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        public override bool CanConvertFrom(ITypeDescriptorContext? context, Type? sourceType)
         {
             return sourceType == typeof(string);
         }
     }
-
 }
