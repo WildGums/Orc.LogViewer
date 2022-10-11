@@ -1,14 +1,8 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="App.xaml.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer.Examples
+﻿namespace Orc.LogViewer.Examples
 {
     using System.Globalization;
     using System.Windows;
+    using Catel.Configuration;
     using Catel.IoC;
     using Catel.Logging;
     using Catel.Services;
@@ -19,11 +13,14 @@ namespace Orc.LogViewer.Examples
     /// </summary>
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
 #if DEBUG
             LogManager.AddDebugListener();
 #endif
+
+            var configurationService = ServiceLocator.Default.ResolveType<IConfigurationService>();
+            await configurationService.LoadAsync();
 
             var languageService = ServiceLocator.Default.ResolveType<ILanguageService>();
 

@@ -176,7 +176,7 @@
 
             LogFilterGroups = filterGroups;
 
-            var filterGroupName = await _configurationService.GetRoamingValueAsync(LogViewerSettings.LogFilterGroup, LogViewerSettings.LogFilterGroupDefaultValue);
+            var filterGroupName = _configurationService.GetRoamingValue(LogViewerSettings.LogFilterGroup, LogViewerSettings.LogFilterGroupDefaultValue);
             var filterGroupToSelect = (from x in filterGroups
                                        where x.Name.EqualsIgnoreCase(filterGroupName)
                                        select x).FirstOrDefault();
@@ -188,11 +188,11 @@
             SelectedLogFilterGroup = filterGroupToSelect;
         }
 
-        private async void OnSelectedLogFilterGroupChanged()
+        private void OnSelectedLogFilterGroupChanged()
         {
             if (IsInitialized)
             {
-                await _configurationService.SetRoamingValueAsync(LogViewerSettings.LogFilterGroup, SelectedLogFilterGroup?.Name ?? string.Empty);
+                _configurationService.SetRoamingValue(LogViewerSettings.LogFilterGroup, SelectedLogFilterGroup?.Name ?? string.Empty);
             }
         }
     }
