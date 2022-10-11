@@ -10,6 +10,7 @@
     <PackageTags></PackageTags>
     <SonarQubeExclude>true</SonarQubeExclude>
     <UseWpf>true</UseWpf>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

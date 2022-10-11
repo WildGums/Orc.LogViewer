@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LogWindow.xaml.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer.Examples.Views
+﻿namespace Orc.LogViewer.Examples.Views
 {
     using Catel.MVVM;
     using Catel.Windows;
@@ -20,7 +13,7 @@ namespace Orc.LogViewer.Examples.Views
         {
         }
 
-        public LogWindow(LogWindowViewModel viewModel)
+        public LogWindow(LogWindowViewModel? viewModel)
             : base(viewModel, DataWindowMode.Custom)
         {
             InitializeComponent();

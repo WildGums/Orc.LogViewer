@@ -6,9 +6,9 @@
                   Width="950" Height="500" ResizeMode="CanResize"
                   SizeToContent="Manual">
 
-    <Grid>
-        <orclogviewer:AdvancedLogViewerControl Margin="4" IgnoreCatelLogging="False"
-                                               ShowFilterBox="True" Level="Warning"/>
-    </Grid>
-    
+    <orclogviewer:AdvancedLogViewerControl Margin="4" 
+                                           IgnoreCatelLogging="False"
+                                           ShowFilterBox="True" 
+                                           Level="Warning"/>
+
 </catel:DataWindow>

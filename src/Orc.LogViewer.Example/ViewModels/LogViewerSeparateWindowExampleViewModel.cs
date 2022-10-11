@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LogViewerSeparateWindowExampleViewModel.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer.Examples.ViewModels
+﻿namespace Orc.LogViewer.Examples.ViewModels
 {
     using System.Threading.Tasks;
     using Catel;
@@ -16,7 +9,6 @@ namespace Orc.LogViewer.Examples.ViewModels
     {
         private readonly IUIVisualizerService _uiVisualizerService;
 
-        #region Constructors
         public LogViewerSeparateWindowExampleViewModel(IUIVisualizerService uiVisualizerService)
         {
             Argument.IsNotNull(() => uiVisualizerService);
@@ -25,8 +17,7 @@ namespace Orc.LogViewer.Examples.ViewModels
 
             ShowLogWindow = new TaskCommand(OnShowLogWindowExecuteAsync);
         }
-        #endregion
-
+        
         public TaskCommand ShowLogWindow { get; private set; }
 
         private async Task OnShowLogWindowExecuteAsync()
