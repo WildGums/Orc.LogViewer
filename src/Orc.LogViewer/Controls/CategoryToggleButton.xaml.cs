@@ -38,7 +38,7 @@
         }
 
         public static readonly DependencyProperty CategoryProperty = DependencyProperty.Register(nameof(Category),
-            typeof(string), typeof(CategoryToggleButton), new PropertyMetadata("", 
+            typeof(string), typeof(CategoryToggleButton), new PropertyMetadata(string.Empty, 
                 (sender, args) => ((CategoryToggleButton)sender).OnCategoryChanged(args)));
 
         private void OnCategoryChanged(DependencyPropertyChangedEventArgs args)

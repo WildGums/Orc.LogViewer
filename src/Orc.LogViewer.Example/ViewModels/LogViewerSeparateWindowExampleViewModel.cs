@@ -1,30 +1,29 @@
-﻿namespace Orc.LogViewer.Examples.ViewModels
+﻿namespace Orc.LogViewer.Examples.ViewModels;
+
+using System;
+using System.Threading.Tasks;
+using Catel.MVVM;
+using Catel.Services;
+
+public class LogViewerSeparateWindowExampleViewModel : ViewModelBase
 {
-    using System.Threading.Tasks;
-    using Catel;
-    using Catel.MVVM;
-    using Catel.Services;
+    private readonly IUIVisualizerService _uiVisualizerService;
 
-    public class LogViewerSeparateWindowExampleViewModel : ViewModelBase
+    public LogViewerSeparateWindowExampleViewModel(IUIVisualizerService uiVisualizerService)
     {
-        private readonly IUIVisualizerService _uiVisualizerService;
+        ArgumentNullException.ThrowIfNull(uiVisualizerService);
 
-        public LogViewerSeparateWindowExampleViewModel(IUIVisualizerService uiVisualizerService)
-        {
-            Argument.IsNotNull(() => uiVisualizerService);
+        _uiVisualizerService = uiVisualizerService;
 
-            _uiVisualizerService = uiVisualizerService;
-
-            ShowLogWindow = new TaskCommand(OnShowLogWindowExecuteAsync);
-        }
+        ShowLogWindow = new TaskCommand(OnShowLogWindowExecuteAsync);
+    }
         
-        public TaskCommand ShowLogWindow { get; private set; }
+    public TaskCommand ShowLogWindow { get; }
 
-        private async Task OnShowLogWindowExecuteAsync()
-        {
+    private async Task OnShowLogWindowExecuteAsync()
+    {
 #pragma warning disable 4014
-            _uiVisualizerService.ShowAsync<LogWindowViewModel>();
+        _uiVisualizerService.ShowAsync<LogWindowViewModel>();
 #pragma warning restore 4014
-        }
     }
 }

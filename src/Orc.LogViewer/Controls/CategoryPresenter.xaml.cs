@@ -16,6 +16,6 @@
         }
 
         public static readonly DependencyProperty CategoryProperty = DependencyProperty.Register(nameof(Category), 
-            typeof(string), typeof(CategoryPresenter), new PropertyMetadata(""));
+            typeof(string), typeof(CategoryPresenter), new PropertyMetadata(string.Empty));
     }
 }
