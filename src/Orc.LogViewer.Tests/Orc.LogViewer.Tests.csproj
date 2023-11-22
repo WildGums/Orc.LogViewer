@@ -1,6 +1,6 @@
 <Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net6.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows</TargetFrameworks>
     <AssemblyName>Orc.LogViewer.Tests</AssemblyName>
     <RootNamespace>Orc.LogViewer.Tests</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
