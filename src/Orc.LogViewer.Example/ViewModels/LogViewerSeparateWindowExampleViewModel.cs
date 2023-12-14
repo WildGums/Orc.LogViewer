@@ -1,39 +1,29 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LogViewerSeparateWindowExampleViewModel.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
+﻿namespace Orc.LogViewer.Examples.ViewModels;
 
+using System;
+using System.Threading.Tasks;
+using Catel.MVVM;
+using Catel.Services;
 
-namespace Orc.LogViewer.Examples.ViewModels
+public class LogViewerSeparateWindowExampleViewModel : ViewModelBase
 {
-    using System.Threading.Tasks;
-    using Catel;
-    using Catel.MVVM;
-    using Catel.Services;
+    private readonly IUIVisualizerService _uiVisualizerService;
 
-    public class LogViewerSeparateWindowExampleViewModel : ViewModelBase
+    public LogViewerSeparateWindowExampleViewModel(IUIVisualizerService uiVisualizerService)
     {
-        private readonly IUIVisualizerService _uiVisualizerService;
+        ArgumentNullException.ThrowIfNull(uiVisualizerService);
 
-        #region Constructors
-        public LogViewerSeparateWindowExampleViewModel(IUIVisualizerService uiVisualizerService)
-        {
-            Argument.IsNotNull(() => uiVisualizerService);
+        _uiVisualizerService = uiVisualizerService;
 
-            _uiVisualizerService = uiVisualizerService;
+        ShowLogWindow = new TaskCommand(OnShowLogWindowExecuteAsync);
+    }
+        
+    public TaskCommand ShowLogWindow { get; }
 
-            ShowLogWindow = new TaskCommand(OnShowLogWindowExecuteAsync);
-        }
-        #endregion
-
-        public TaskCommand ShowLogWindow { get; private set; }
-
-        private async Task OnShowLogWindowExecuteAsync()
-        {
+    private async Task OnShowLogWindowExecuteAsync()
+    {
 #pragma warning disable 4014
-            _uiVisualizerService.ShowAsync<LogWindowViewModel>();
+        _uiVisualizerService.ShowAsync<LogWindowViewModel>();
 #pragma warning restore 4014
-        }
     }
 }

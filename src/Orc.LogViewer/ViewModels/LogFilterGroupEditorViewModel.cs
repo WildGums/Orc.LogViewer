@@ -7,7 +7,7 @@
     {
         public LogFilterGroupEditorViewModel()
         {
-            Title = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_Editor_Title");
+            Title = LanguageHelper.GetRequiredString("LogViewer_AdvancedLogViewerControl_Editor_Title");
         }
     }
 }

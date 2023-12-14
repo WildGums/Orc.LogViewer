@@ -2,28 +2,35 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.Collections.Immutable;
     using System.Windows.Media;
     using Catel.MVVM.Converters;
 
     public class CategoryBorderBrushConverter : ValueConverterBase<string>
     {
-        public static readonly Dictionary<string, SolidColorBrush> BrushCache = new Dictionary<string, SolidColorBrush>(StringComparer.OrdinalIgnoreCase);
+        public static readonly ImmutableDictionary<string, SolidColorBrush?> BrushCache;
 
         static CategoryBorderBrushConverter()
         {
-            BrushCache["Debug"] = new SolidColorBrush(Colors.DarkGray);
-            BrushCache["Info"] = new SolidColorBrush(Colors.RoyalBlue);
-            BrushCache["Warning"] = new SolidColorBrush(Colors.DarkOrange);
-            BrushCache["Error"] = new SolidColorBrush(Colors.Red);
-            BrushCache["Clock"] = new SolidColorBrush(Colors.Gray);
+            var dictionary = new Dictionary<string, SolidColorBrush?>(StringComparer.OrdinalIgnoreCase);
+
+            dictionary["Debug"] = new SolidColorBrush(Colors.DarkGray);
+            dictionary["Info"] = new SolidColorBrush(Colors.RoyalBlue);
+            dictionary["Warning"] = new SolidColorBrush(Colors.DarkOrange);
+            dictionary["Error"] = new SolidColorBrush(Colors.Red);
+            dictionary["Clock"] = new SolidColorBrush(Colors.Gray);
+
+            BrushCache = dictionary.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
         }
 
-        protected override object Convert(string value, Type targetType, object parameter)
+        protected override object? Convert(string? value, Type targetType, object? parameter)
         {
-            if (BrushCache.TryGetValue(value, out var brush))
+            if (value is not string stringValue)
+            {
+                return null;
+            }
+
+            if (BrushCache.TryGetValue(stringValue, out var brush))
             {
                 return brush;
             }

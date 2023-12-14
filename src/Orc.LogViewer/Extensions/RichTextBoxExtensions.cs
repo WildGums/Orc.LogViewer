@@ -1,12 +1,6 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="RichTextBoxExtensions.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer
+﻿namespace Orc.LogViewer
 {
+    using System;
     using System.Linq;
     using System.Text;
     using System.Windows.Controls;
@@ -16,7 +10,10 @@ namespace Orc.LogViewer
     {
         public static string GetInlineText(this RichTextBox richTextBox)
         {
+            ArgumentNullException.ThrowIfNull(richTextBox);
+
             var sb = new StringBuilder();
+
             foreach (var block in richTextBox.Document.Blocks.OfType<Paragraph>())
             {
                 foreach (var inline in block.Inlines.OfType<Run>())
@@ -24,6 +21,7 @@ namespace Orc.LogViewer
                     sb.AppendLine(inline.Text);
                 }
             }
+
             return sb.ToString();
         }
     }

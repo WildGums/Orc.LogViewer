@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ModuleInitializer.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-using Catel;
+﻿using Catel;
 using Catel.IoC;
 using Catel.MVVM;
 using Catel.Services;
@@ -23,10 +16,10 @@ public static class ModuleInitializer
     {
         var serviceLocator = ServiceLocator.Default;
 
-        var languageService = serviceLocator.ResolveType<ILanguageService>();
+        var languageService = serviceLocator.ResolveRequiredType<ILanguageService>();
         languageService.RegisterLanguageSource(new LanguageResourceSource("Orc.LogViewer", "Orc.LogViewer.Properties", "Resources"));
 
-        var commandManager = serviceLocator.ResolveType<ICommandManager>();
+        var commandManager = serviceLocator.ResolveRequiredType<ICommandManager>();
         InitializeCommands(commandManager);
     }
 

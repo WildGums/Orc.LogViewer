@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="UIElementExtensions.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer
+﻿namespace Orc.LogViewer
 {
     using System;
     using System.Windows;
@@ -14,14 +7,19 @@ namespace Orc.LogViewer
 
     public static class UIElementExtensions
     {
-        public static void SetTooltip(this UIElement control, InputGesture inputGesture)
+        public static void SetTooltip(this UIElement control, InputGesture? inputGesture)
         {
+            ArgumentNullException.ThrowIfNull(control);
+
             SetTooltip(control, inputGesture, string.Empty);
         }
 
-        public static void SetTooltip(this UIElement control, InputGesture inputGesture, string text)
+        public static void SetTooltip(this UIElement control, InputGesture? inputGesture, string text)
         {
-            string content = null;
+            ArgumentNullException.ThrowIfNull(control);
+
+            // Note: make nullable, string.Empty will still show up as a tooltip
+            string? content = null;
 
             if (inputGesture is not null)
             {

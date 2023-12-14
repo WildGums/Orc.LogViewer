@@ -1,11 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="AdvancedLogViewerViewModel.cs" company="WildGums">
-//   Copyright (c) 2008 - 2015 WildGums. All rights reserved.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-
-namespace Orc.LogViewer.ViewModels
+﻿namespace Orc.LogViewer.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -25,13 +18,12 @@ namespace Orc.LogViewer.ViewModels
         private readonly IConfigurationService _configurationService;
         private LogEvent _level;
 
-        #region Constructors
         public AdvancedLogViewerViewModel(IUIVisualizerService uiVisualizerService,
             IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService)
         {
-            Argument.IsNotNull(() => uiVisualizerService);
-            Argument.IsNotNull(() => applicationLogFilterGroupService);
-            Argument.IsNotNull(() => configurationService);
+            ArgumentNullException.ThrowIfNull(uiVisualizerService);
+            ArgumentNullException.ThrowIfNull(applicationLogFilterGroupService);
+            ArgumentNullException.ThrowIfNull(configurationService);
 
             _uiVisualizerService = uiVisualizerService;
             _applicationLogFilterGroupService = applicationLogFilterGroupService;
@@ -39,14 +31,13 @@ namespace Orc.LogViewer.ViewModels
 
             _level = LogEvent.Error | LogEvent.Warning | LogEvent.Info;
 
+            LogFilterGroups = new List<LogFilterGroup>();
             EditFilterGroups = new TaskCommand(OnEditFilterGroupsExecuteAsync);
         }
-        #endregion
 
-        #region Properties
         public bool EnableThreadId { get; set; }
 
-        public Type LogListenerType { get; set; }
+        public Type? LogListenerType { get; set; }
 
         public bool IgnoreCatelLogging { get; set; }
 
@@ -56,7 +47,7 @@ namespace Orc.LogViewer.ViewModels
 
         public List<LogFilterGroup> LogFilterGroups { get; private set; }
 
-        public LogFilterGroup SelectedLogFilterGroup { get; set; }
+        public LogFilterGroup? SelectedLogFilterGroup { get; set; }
 
         public LogEvent Level
         {
@@ -153,9 +144,7 @@ namespace Orc.LogViewer.ViewModels
                 RaisePropertyChanged(nameof(DebugChecked));
             }
         }
-        #endregion
 
-        #region Commands
         public TaskCommand EditFilterGroups { get; private set; }
 
         private async Task OnEditFilterGroupsExecuteAsync()
@@ -164,9 +153,7 @@ namespace Orc.LogViewer.ViewModels
 
             await UpdateAsync();
         }
-        #endregion
 
-        #region Methods
         protected override async Task InitializeAsync()
         {
             await base.InitializeAsync();
@@ -176,12 +163,13 @@ namespace Orc.LogViewer.ViewModels
 
         private async Task UpdateAsync()
         {
-            var filterGroups = new List<LogFilterGroup>();
-
-            filterGroups.Add(new LogFilterGroup
+            var filterGroups = new List<LogFilterGroup>
             {
-                Name = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_None")
-            });
+                new LogFilterGroup
+                {
+                    Name = LanguageHelper.GetRequiredString("LogViewer_AdvancedLogViewerControl_None")
+                }
+            };
 
             var loadedFilterGroups = await _applicationLogFilterGroupService.LoadAsync();
             filterGroups.AddRange(loadedFilterGroups.OrderBy(x => x.Name));
@@ -207,6 +195,5 @@ namespace Orc.LogViewer.ViewModels
                 _configurationService.SetRoamingValue(LogViewerSettings.LogFilterGroup, SelectedLogFilterGroup?.Name ?? string.Empty);
             }
         }
-        #endregion
     }
 }

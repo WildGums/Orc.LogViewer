@@ -31,14 +31,14 @@
             typeof(int), typeof(CategoryToggleButton), new PropertyMetadata(0));
 
 
-        public string Category
+        public string? Category
         {
-            get { return (string)GetValue(CategoryProperty); }
+            get { return (string?)GetValue(CategoryProperty); }
             set { SetValue(CategoryProperty, value); }
         }
 
         public static readonly DependencyProperty CategoryProperty = DependencyProperty.Register(nameof(Category),
-            typeof(string), typeof(CategoryToggleButton), new PropertyMetadata("", 
+            typeof(string), typeof(CategoryToggleButton), new PropertyMetadata(string.Empty, 
                 (sender, args) => ((CategoryToggleButton)sender).OnCategoryChanged(args)));
 
         private void OnCategoryChanged(DependencyPropertyChangedEventArgs args)
@@ -52,6 +52,11 @@
             }
 
             if (!brushes.TryGetValue(newBrushName, out var brush))
+            {
+                return;
+            }
+
+            if (brush is null)
             {
                 return;
             }
