@@ -4,7 +4,7 @@
                    xmlns:catel="http://schemas.catelproject.com">
 
     <Grid>
-        <Button Command="{Binding ShowLogWindow}" Width="250" Height="25"
+        <Button Command="{Binding ShowLogWindow}" MinWidth="250"
                 Content="Open log viewer in separate window" VerticalAlignment="Top" />
     </Grid>
 </catel:UserControl>
