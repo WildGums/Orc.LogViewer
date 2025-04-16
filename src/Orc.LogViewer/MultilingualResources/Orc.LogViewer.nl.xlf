@@ -6,14 +6,18 @@
     </header>
     <body>
       <group id="ORC.LOGVIEWER/PROPERTIES/RESOURCES.RESX" datatype="resx">
+        <trans-unit id="LogViewer_AdvancedLogViewerControl_ShowTimestamps" translate="yes" xml:space="preserve">
+          <source>Show timestamps</source>
+          <target state="new">Toon tijden</target>
+        </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error" translate="yes" xml:space="preserve">
           <source>Error</source>
-          <target state="needs-review-translation">Error</target>
+          <target state="needs-review-translation">Fout</target>
           <note from="MultilingualUpdate" priority="2">When the XLIFF file support was added via MAT, existing resources were found and auto-imported.  This source and target string contained the same value so the resource was marked as 'Needs review' to ensure the translation could be easily reviewed.</note>
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning" translate="yes" xml:space="preserve">
           <source>Warning</source>
-          <target state="needs-review-translation">Warning</target>
+          <target state="needs-review-translation">Waarschuwing</target>
           <note from="MultilingualUpdate" priority="2">When the XLIFF file support was added via MAT, existing resources were found and auto-imported.  This source and target string contained the same value so the resource was marked as 'Needs review' to ensure the translation could be easily reviewed.</note>
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info" translate="yes" xml:space="preserve">
@@ -33,12 +37,12 @@
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_Button_Content_Clear" translate="yes" xml:space="preserve">
           <source>Clear</source>
-          <target state="needs-review-translation">Clear</target>
+          <target state="needs-review-translation">Verwijderen</target>
           <note from="MultilingualUpdate" priority="2">When the XLIFF file support was added via MAT, existing resources were found and auto-imported.  This source and target string contained the same value so the resource was marked as 'Needs review' to ensure the translation could be easily reviewed.</note>
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_Button_Content_Copy" translate="yes" xml:space="preserve">
           <source>Copy</source>
-          <target state="needs-review-translation">Copy</target>
+          <target state="needs-review-translation">Kopiëren</target>
           <note from="MultilingualUpdate" priority="2">When the XLIFF file support was added via MAT, existing resources were found and auto-imported.  This source and target string contained the same value so the resource was marked as 'Needs review' to ensure the translation could be easily reviewed.</note>
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_Button_Content_Open" translate="yes" xml:space="preserve">
@@ -48,15 +52,15 @@
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip" translate="yes" xml:space="preserve">
           <source>Edit filter groups</source>
-          <target state="new">Edit filter groups</target>
+          <target state="new">Bewerk filter groepen</target>
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_None" translate="yes" xml:space="preserve">
           <source>None</source>
-          <target state="new">None</target>
+          <target state="new">Geen</target>
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_Editor_Title" translate="yes" xml:space="preserve">
           <source>Filter group editor</source>
-          <target state="new">Filter group editor</target>
+          <target state="new">Filter groep bewerker</target>
         </trans-unit>
       </group>
     </body>

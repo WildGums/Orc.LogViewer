@@ -124,6 +124,15 @@ namespace Orc.LogViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show timestamps.
+        /// </summary>
+        internal static string LogViewer_AdvancedLogViewerControl_ShowTimestamps {
+            get {
+                return ResourceManager.GetString("LogViewer_AdvancedLogViewerControl_ShowTimestamps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Debug.
         /// </summary>
         internal static string LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug {

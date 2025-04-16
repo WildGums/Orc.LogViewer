@@ -5,7 +5,7 @@
               xmlns:views="clr-namespace:Orc.LogViewer.Examples.Views" 
               xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" 
               xmlns:orctheming="http://schemas.wildgums.com/orc/theming"
-              Height="500" Width="1000">
+              Height="500" Width="1100">
 
     <orccontrols:StackGrid>
         <Grid.RowDefinitions>

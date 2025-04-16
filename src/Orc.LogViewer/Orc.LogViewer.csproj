@@ -5,7 +5,7 @@
     <RootNamespace>Orc.LogViewer</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageId>Orc.LogViewer</PackageId>
-    <PackageVersion>1.0.0-alpha0001</PackageVersion>
+    <PackageVersion>5.0.0-alpha0001</PackageVersion>
     <Description>Log viewer library.</Description>
     <PackageTags>orc;log;viewer</PackageTags>
     <UseWpf>true</UseWpf>
@@ -25,6 +25,7 @@
     <PackageReference Include="ModuleInit.Fody" Version="2.1.1" PrivateAssets="all" />
     <PackageReference Include="Obsolete.Fody" Version="5.3.1" PrivateAssets="all" />
     <PackageReference Include="Orc.Controls" Version="5.2.0" />
+    <PackageReference Include="Orc.Theming" Version="5.2.1" />
   </ItemGroup>
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.Build.nullable.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.Build.nullable.props')" />

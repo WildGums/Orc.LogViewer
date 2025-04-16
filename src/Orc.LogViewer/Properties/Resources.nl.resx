@@ -13,10 +13,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Fout</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Waarschuwing</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info" xml:space="preserve">
     <value>Info</value>
@@ -28,21 +28,24 @@
     <value>Filter</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_Button_Content_Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>Verwijderen</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_Button_Content_Copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>Kopiëren</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_Button_Content_Open" xml:space="preserve">
     <value>Open</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip" xml:space="preserve">
-    <value>Edit filter groups</value>
+    <value>Bewerk filter groepen</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_None" xml:space="preserve">
-    <value>None</value>
+    <value>Geen</value>
   </data>
   <data name="LogViewer_AdvancedLogViewerControl_Editor_Title" xml:space="preserve">
-    <value>Filter group editor</value>
+    <value>Filter groep bewerker</value>
+  </data>
+  <data name="LogViewer_AdvancedLogViewerControl_ShowTimestamps" xml:space="preserve">
+    <value>Toon tijden</value>
   </data>
 </root>
