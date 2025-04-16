@@ -24,7 +24,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -61,7 +61,7 @@
                     <xamlbehaviors:Interaction.Behaviors>
                         <orctheming:Square />
                     </xamlbehaviors:Interaction.Behaviors>
-                    
+
                     <controls:CategoryPresenter Category="Clock" />
                 </ToggleButton>
 

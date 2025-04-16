@@ -20,11 +20,11 @@
 
         <orccontrols:TabControl TabStripPlacement="Left">
             <TabItem Header="LogViewer">
-                <views:LogViewerExample/>
+                <views:LogViewerExample />
             </TabItem>
 
             <TabItem Header="LogViewer window">
-                <views:LogViewerSeparateWindowExample/>
+                <views:LogViewerSeparateWindowExample />
             </TabItem>
         </orccontrols:TabControl>
     </orccontrols:StackGrid>

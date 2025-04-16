@@ -4,7 +4,6 @@
                     xmlns:orctheming="http://schemas.wildgums.com/orc/theming">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Orc.Theming;component/Themes/Generic.xaml" />
         <ResourceDictionary Source="/Orc.Controls;component/Themes/Generic.xaml" />
     </ResourceDictionary.MergedDictionaries>
 

@@ -11,10 +11,10 @@
         {
             ArgumentNullException.ThrowIfNull(control);
 
-            SetTooltip(control, inputGesture, string.Empty);
+            SetTooltip(control, inputGesture, null);
         }
 
-        public static void SetTooltip(this UIElement control, InputGesture? inputGesture, string text)
+        public static void SetTooltip(this UIElement control, InputGesture? inputGesture, string? text)
         {
             ArgumentNullException.ThrowIfNull(control);
 
