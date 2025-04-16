@@ -18,6 +18,33 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Orc.LogViewer;component/Themes/Generic.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="ViewBoxSquareButtonStyle" TargetType="Button">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <Viewbox Stretch="Uniform">
+                                    <ContentPresenter Margin="{TemplateBinding Padding}"/>
+                                </Viewbox>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="AspectRatioSquareButton" TargetType="{x:Type Button}"
+                   BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"/>
+            </Style>
+
+            <Style x:Key="AspectRatioSquareToggleButton" TargetType="{x:Type ToggleButton}"
+                   BasedOn="{StaticResource {x:Type ToggleButton}}">
+                <Setter Property="Width" Value="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"/>
+            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -57,11 +84,13 @@
             <StackPanel Orientation="Horizontal"
                         DockPanel.Dock="Right">
                 <ToggleButton x:Name="EnableTimestampToggleButton"
-                              MinWidth="20">
-                    <xamlbehaviors:Interaction.Behaviors>
-                        <orctheming:Square />
-                    </xamlbehaviors:Interaction.Behaviors>
-                    
+                              MinWidth="20"
+                              VerticalAlignment="Stretch"
+                              VerticalContentAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              HorizontalAlignment="Stretch"
+                              Style="{StaticResource AspectRatioSquareToggleButton}">
+                   
                     <controls:CategoryPresenter Category="Clock" />
                 </ToggleButton>
 
@@ -77,12 +106,11 @@
 
                 <Button Command="{Binding EditFilterGroups}"
                         Content="..."
+                        Style="{StaticResource AspectRatioSquareButton}"
                         MinWidth="20"
                         ToolTip="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip}"
                         Visibility="{Binding ShowFilterGroups, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
-                    <xamlbehaviors:Interaction.Behaviors>
-                        <orctheming:Square />
-                    </xamlbehaviors:Interaction.Behaviors>
+
                 </Button>
 
                 <orccontrols:FilterBox x:Name="FilterBox"
