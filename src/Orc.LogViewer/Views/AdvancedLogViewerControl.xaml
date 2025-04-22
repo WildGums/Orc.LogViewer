@@ -21,8 +21,9 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <orccontrols:StackGrid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -101,8 +102,13 @@
             </StackPanel>
         </DockPanel>
 
+        <StackPanel Orientation="Horizontal">
+            <orccontrols:FilterBox Width="100" />
+            <orccontrols:WatermarkTextBox Width="100" />
+            <TextBox Width="100" />
+        </StackPanel>
+        
         <orccontrols:LogViewerControl x:Name="LogViewerControl"
-                                      Grid.Row="1"
                                       ShowDebug="{Binding DebugChecked}"
                                       ShowInfo="{Binding InfoChecked}"
                                       ShowWarning="{Binding WarningChecked}"
@@ -121,8 +127,7 @@
             </orccontrols:LogViewerControl.Resources>
         </orccontrols:LogViewerControl>
 
-        <DockPanel Grid.Row="2"
-                   LastChildFill="False"
+        <DockPanel LastChildFill="False"
                    Background="Transparent">
             <Button x:Name="ClearButton"
                     Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Clear}"
@@ -143,5 +148,5 @@
                     MinWidth="80"
                     Margin="4,6,4,6" />
         </DockPanel>
-    </Grid>
+    </orccontrols:StackGrid>
 </catel:UserControl>
