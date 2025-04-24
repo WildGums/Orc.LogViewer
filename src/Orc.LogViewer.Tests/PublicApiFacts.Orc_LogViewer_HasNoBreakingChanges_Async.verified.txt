@@ -88,7 +88,7 @@ namespace Orc.LogViewer
     public static class UIElementExtensions
     {
         public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture? inputGesture) { }
-        public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture? inputGesture, string text) { }
+        public static void SetTooltip(this System.Windows.UIElement control, Catel.Windows.Input.InputGesture? inputGesture, string? text) { }
     }
 }
 namespace Orc.LogViewer.Controls
