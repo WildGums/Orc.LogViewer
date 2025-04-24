@@ -13,15 +13,7 @@
                    d:DesignHeight="22"
                    d:DesignWidth="120">
 
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Orc.LogViewer;component/Themes/Generic.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </UserControl.Resources>
-
-    <Grid>
+    <orccontrols:StackGrid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -87,6 +79,7 @@
 
                 <orccontrols:FilterBox x:Name="FilterBox"
                                        Width="160"
+                                       Margin="0,6,0,6"
                                        PropertyName="Message"
                                        AllowAutoCompletion="False"
                                        FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
@@ -102,7 +95,7 @@
         </DockPanel>
 
         <orccontrols:LogViewerControl x:Name="LogViewerControl"
-                                      Grid.Row="1"
+                                      Margin="0"
                                       ShowDebug="{Binding DebugChecked}"
                                       ShowInfo="{Binding InfoChecked}"
                                       ShowWarning="{Binding WarningChecked}"
@@ -121,8 +114,7 @@
             </orccontrols:LogViewerControl.Resources>
         </orccontrols:LogViewerControl>
 
-        <DockPanel Grid.Row="2"
-                   LastChildFill="False"
+        <DockPanel LastChildFill="False"
                    Background="Transparent">
             <Button x:Name="ClearButton"
                     Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Clear}"
@@ -143,5 +135,5 @@
                     MinWidth="80"
                     Margin="4,6,4,6" />
         </DockPanel>
-    </Grid>
+    </orccontrols:StackGrid>
 </catel:UserControl>
