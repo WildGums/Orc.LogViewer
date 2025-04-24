@@ -16,7 +16,6 @@
     <orccontrols:StackGrid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -80,6 +79,7 @@
 
                 <orccontrols:FilterBox x:Name="FilterBox"
                                        Width="160"
+                                       Margin="0,6,0,6"
                                        PropertyName="Message"
                                        AllowAutoCompletion="False"
                                        FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
@@ -94,13 +94,8 @@
             </StackPanel>
         </DockPanel>
 
-        <StackPanel Orientation="Horizontal">
-            <orccontrols:FilterBox Width="100" />
-            <orccontrols:WatermarkTextBox Width="100" />
-            <TextBox Width="100" />
-        </StackPanel>
-        
         <orccontrols:LogViewerControl x:Name="LogViewerControl"
+                                      Margin="0"
                                       ShowDebug="{Binding DebugChecked}"
                                       ShowInfo="{Binding InfoChecked}"
                                       ShowWarning="{Binding WarningChecked}"
