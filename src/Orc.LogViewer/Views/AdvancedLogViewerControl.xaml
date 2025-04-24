@@ -1,86 +1,101 @@
 <catel:UserControl x:Class="Orc.LogViewer.AdvancedLogViewerControl"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:catel="http://schemas.catelproject.com"
-                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls" 
-                   xmlns:xamlbehaviors="http://schemas.microsoft.com/xaml/behaviors" 
+                   xmlns:orccontrols="http://schemas.wildgums.com/orc/controls"
+                   xmlns:xamlbehaviors="http://schemas.microsoft.com/xaml/behaviors"
                    xmlns:controls="clr-namespace:Orc.LogViewer.Controls"
-                   mc:Ignorable="d" x:Name="CurrentControl" d:DesignHeight="22" d:DesignWidth="120">
+                   xmlns:orctheming="http://schemas.wildgums.com/orc/theming"
+                   mc:Ignorable="d"
+                   x:Name="CurrentControl"
+                   d:DesignHeight="22"
+                   d:DesignWidth="120">
 
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Orc.LogViewer;component/Themes/Generic.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource LogViewerTextBlockStyle}" />
-        </ResourceDictionary>
-    </UserControl.Resources>
-
-    <Grid>
+    <orccontrols:StackGrid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition />
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <DockPanel LastChildFill="False"
                    Background="Transparent">
             <controls:CategoryToggleButton x:Name="ShowErrorToggleButton"
-                                           Margin="2,4,2,4"
                                            IsChecked="{Binding ErrorChecked}"
                                            EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.ErrorEntriesCount}"
-                                           Category="Error" />
+                                           Category="Error"
+                                           Margin="0,6,4,6" />
 
-            <controls:CategoryToggleButton x:Name="ShowWarningToggleButton" 
-                                           Margin="2,4,2,4"
+            <controls:CategoryToggleButton x:Name="ShowWarningToggleButton"
                                            IsChecked="{Binding WarningChecked}"
                                            EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.WarningEntriesCount}"
-                                           Category="Warning" />
+                                           Category="Warning"
+                                           Margin="4,6,4,6" />
 
-            <controls:CategoryToggleButton x:Name="ShowInfoToggleButton" 
-                                           Margin="2,4,2,4"
+            <controls:CategoryToggleButton x:Name="ShowInfoToggleButton"
                                            IsChecked="{Binding InfoChecked}"
                                            EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.InfoEntriesCount}"
-                                           Category="Info" />
+                                           Category="Info"
+                                           Margin="4,6,4,6" />
 
-            <controls:CategoryToggleButton x:Name="ShowDebugToggleButton" 
-                                           Margin="2,4,2,4"
+            <controls:CategoryToggleButton x:Name="ShowDebugToggleButton"
                                            IsChecked="{Binding DebugChecked}"
                                            EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.DebugEntriesCount}"
-                                           Category="Debug" />
+                                           Category="Debug"
+                                           Margin="4,6,0,6" />
 
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                <ToggleButton x:Name="EnableTimestampToggleButton" 
-                              Margin="2,4,2,4">
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Right">
+                <ToggleButton x:Name="EnableTimestampToggleButton"
+                              MinWidth="20">
+                    <xamlbehaviors:Interaction.Behaviors>
+                        <orctheming:Square />
+                    </xamlbehaviors:Interaction.Behaviors>
+
                     <controls:CategoryPresenter Category="Clock" />
                 </ToggleButton>
 
-                <ComboBox x:Name="FilterGroupsComboBox" Margin="0 0 4 0" Width="200" SelectedIndex="0" VerticalContentAlignment="Center"
-                          ItemsSource="{Binding LogFilterGroups}" SelectedItem="{Binding SelectedLogFilterGroup}" DisplayMemberPath="Name"
+                <ComboBox x:Name="FilterGroupsComboBox"
+                          Width="160"
+                          Margin="0,6,0,6"
+                          SelectedIndex="0"
+                          VerticalContentAlignment="Center"
+                          ItemsSource="{Binding LogFilterGroups}"
+                          SelectedItem="{Binding SelectedLogFilterGroup}"
+                          DisplayMemberPath="Name"
                           Visibility="{Binding ShowFilterGroups, Converter={catel:BooleanToCollapsingVisibilityConverter}}" />
 
-                <Button Command="{Binding EditFilterGroups}" Content="..." ToolTip="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip}" 
-                        Margin="0 0 4 0" Visibility="{Binding ShowFilterGroups, Converter={catel:BooleanToCollapsingVisibilityConverter}}" />
+                <Button Command="{Binding EditFilterGroups}"
+                        Content="..."
+                        MinWidth="20"
+                        ToolTip="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip}"
+                        Visibility="{Binding ShowFilterGroups, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
+                    <xamlbehaviors:Interaction.Behaviors>
+                        <orctheming:Square />
+                    </xamlbehaviors:Interaction.Behaviors>
+                </Button>
 
-                <orccontrols:FilterBox x:Name="FilterBox" MinWidth="160" 
-                                       PropertyName="Message" 
+                <orccontrols:FilterBox x:Name="FilterBox"
+                                       Width="160"
+                                       Margin="0,6,0,6"
+                                       PropertyName="Message"
                                        AllowAutoCompletion="False"
-                                       HorizontalAlignment="Stretch"
-                                       Height="{Binding ElementName=FilterGroupsComboBox, Path=ActualHeight}"
                                        FilterSource="{Binding ElementName=LogViewerControl, Path=ViewModel.LogEntries}"
-                                       Watermark="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter}" 
+                                       Watermark="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter}"
                                        Visibility="{Binding ShowFilterBox, Converter={catel:BooleanToCollapsingVisibilityConverter}}">
                     <xamlbehaviors:Interaction.Behaviors>
-                        <catel:FocusOnKeyPress Key="F" Modifiers="Ctrl" IsEnabled="{Binding ShowFilterBox}"/>
+                        <catel:FocusOnKeyPress Key="F"
+                                               Modifiers="Ctrl"
+                                               IsEnabled="{Binding ShowFilterBox}" />
                     </xamlbehaviors:Interaction.Behaviors>
                 </orccontrols:FilterBox>
             </StackPanel>
         </DockPanel>
 
-        <orccontrols:LogViewerControl x:Name ="LogViewerControl" Grid.Row="1" Margin="2,0,2,0"
+        <orccontrols:LogViewerControl x:Name="LogViewerControl"
+                                      Margin="0"
                                       ShowDebug="{Binding DebugChecked}"
                                       ShowInfo="{Binding InfoChecked}"
                                       ShowWarning="{Binding WarningChecked}"
@@ -92,16 +107,33 @@
                                       ActiveFilterGroup="{Binding SelectedItem, ElementName=FilterGroupsComboBox, Mode=OneWay}"
                                       LogListenerType="{Binding LogListenerType}"
                                       IgnoreCatelLogging="{Binding IgnoreCatelLogging}"
-                                      EnableThreadId="{Binding EnableThreadId}"/>
+                                      EnableThreadId="{Binding EnableThreadId}">
+            <orccontrols:LogViewerControl.Resources>
+                <Style TargetType="{x:Type TextBlock}"
+                       BasedOn="{StaticResource LogViewerTextBlockStyle}" />
+            </orccontrols:LogViewerControl.Resources>
+        </orccontrols:LogViewerControl>
 
-        <DockPanel Grid.Row="2" LastChildFill="False"
+        <DockPanel LastChildFill="False"
                    Background="Transparent">
-            <Button x:Name="ClearButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Clear}" 
-                    Command="{catel:CommandManagerBinding Logging.Clear}" DockPanel.Dock="Left" Margin="2 4 2 4" Width="80" Padding="2" />
-            <Button x:Name="CopyButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Copy}" 
-                    Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"  DockPanel.Dock="Right" Margin="2 4 2 4" Width="80" Padding="2"/>
-            <Button x:Name="OpenButton" Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Open}" 
-                    Command="{catel:CommandManagerBinding Logging.OpenInEditor}" DockPanel.Dock="Right" Margin="2 4 2 4" Width="80" Padding="2" />
+            <Button x:Name="ClearButton"
+                    Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Clear}"
+                    Command="{catel:CommandManagerBinding Logging.Clear}"
+                    DockPanel.Dock="Left"
+                    MinWidth="80"
+                    Margin="0,6,4,6" />
+            <Button x:Name="CopyButton"
+                    Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Copy}"
+                    Command="{catel:CommandManagerBinding Logging.CopyToClipboard}"
+                    DockPanel.Dock="Right"
+                    MinWidth="80"
+                    Margin="4,6,0,6" />
+            <Button x:Name="OpenButton"
+                    Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_Open}"
+                    Command="{catel:CommandManagerBinding Logging.OpenInEditor}"
+                    DockPanel.Dock="Right"
+                    MinWidth="80"
+                    Margin="4,6,4,6" />
         </DockPanel>
-    </Grid>
+    </orccontrols:StackGrid>
 </catel:UserControl>

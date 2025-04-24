@@ -6,6 +6,7 @@
     using System.Security;
     using System.Windows;
     using System.Windows.Media;
+    using Catel;
     using Catel.IoC;
     using Catel.Logging;
     using Catel.MVVM;
@@ -233,7 +234,7 @@
             ShowInfoToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleInfoInputGesture);
             ShowDebugToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleDebugInputGesture);
 
-            EnableTimestampToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleTimestampInputGesture, "Show timestamps");
+            EnableTimestampToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleTimestampInputGesture, LanguageHelper.GetRequiredString("LogViewer_AdvancedLogViewerControl_ShowTimestamps"));
             FilterBox.SetTooltip(LogViewerCommands.Logging.FilterInputGesture);
 
             ClearButton.SetTooltip(LogViewerCommands.Logging.ClearInputGesture);

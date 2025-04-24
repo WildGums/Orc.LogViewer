@@ -150,4 +150,7 @@
   <data name="LogViewer_AdvancedLogViewerControl_Editor_Title" xml:space="preserve">
     <value>Filter group editor</value>
   </data>
+  <data name="LogViewer_AdvancedLogViewerControl_ShowTimestamps" xml:space="preserve">
+    <value>Show timestamps</value>
+  </data>
 </root>

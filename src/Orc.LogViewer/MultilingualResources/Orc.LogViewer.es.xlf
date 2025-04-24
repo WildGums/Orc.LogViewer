@@ -6,6 +6,10 @@
     </header>
     <body>
       <group id="ORC.LOGVIEWER/PROPERTIES/RESOURCES.RESX" datatype="resx">
+        <trans-unit id="LogViewer_AdvancedLogViewerControl_ShowTimestamps" translate="yes" xml:space="preserve">
+          <source>Show timestamps</source>
+          <target state="new"></target>
+        </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error" translate="yes" xml:space="preserve">
           <source>Error</source>
           <target state="new">Error</target>

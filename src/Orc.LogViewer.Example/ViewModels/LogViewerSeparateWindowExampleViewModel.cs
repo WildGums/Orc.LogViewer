@@ -22,8 +22,6 @@ public class LogViewerSeparateWindowExampleViewModel : ViewModelBase
 
     private async Task OnShowLogWindowExecuteAsync()
     {
-#pragma warning disable 4014
-        _uiVisualizerService.ShowAsync<LogWindowViewModel>();
-#pragma warning restore 4014
+        await _uiVisualizerService.ShowAsync<LogWindowViewModel>();
     }
 }

@@ -1,11 +1,11 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
   <PropertyGroup>
-    <TargetFrameworks>net6.0-windows;net8.0-windows</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows;net9.0-windows</TargetFrameworks>
     <AssemblyName>Orc.LogViewer</AssemblyName>
     <RootNamespace>Orc.LogViewer</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageId>Orc.LogViewer</PackageId>
-    <PackageVersion>1.0.0-alpha0001</PackageVersion>
+    <PackageVersion>5.0.0-alpha0001</PackageVersion>
     <Description>Log viewer library.</Description>
     <PackageTags>orc;log;viewer</PackageTags>
     <UseWpf>true</UseWpf>
@@ -17,14 +17,14 @@
   </PropertyGroup>
   
   <ItemGroup>
-    <PackageReference Include="Catel.Fody" Version="4.9.0" PrivateAssets="all" />
-    <PackageReference Include="Fody" Version="6.8.0" PrivateAssets="all">
+    <PackageReference Include="Catel.Fody" Version="4.10.0" PrivateAssets="all" />
+    <PackageReference Include="Fody" Version="6.9.2" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MethodTimer.Fody" Version="3.2.2" PrivateAssets="all" />
+    <PackageReference Include="MethodTimer.Fody" Version="3.2.3" PrivateAssets="all" />
     <PackageReference Include="ModuleInit.Fody" Version="2.1.1" PrivateAssets="all" />
-    <PackageReference Include="Obsolete.Fody" Version="5.3.0" PrivateAssets="all" />
-    <PackageReference Include="Orc.Controls" Version="5.0.0" />
+    <PackageReference Include="Obsolete.Fody" Version="5.3.1" PrivateAssets="all" />
+    <PackageReference Include="Orc.Controls" Version="5.3.0" />
   </ItemGroup>
 
   <Import Project="$(MSBuildProjectDirectory)\..\Directory.Build.nullable.props" Condition="Exists('$(MSBuildProjectDirectory)\..\Directory.Build.nullable.props')" />
