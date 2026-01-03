@@ -5,6 +5,7 @@
     using Catel.IoC;
     using Catel.MVVM;
     using Catel.Services;
+    using Catel.ThirdPartyNotices;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -18,6 +19,8 @@
             serviceCollection.TryAddSingleton<CommandInitializer>();
 
             serviceCollection.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.LogViewer", "Orc.LogViewer.Properties", "Resources"));
+
+            serviceCollection.AddSingleton<IThirdPartyNotice>((x) => new LibraryThirdPartyNotice("Orc.LogViewer", "https://github.com/wildgums/orc.logviewer"));
 
             return serviceCollection;
         }
