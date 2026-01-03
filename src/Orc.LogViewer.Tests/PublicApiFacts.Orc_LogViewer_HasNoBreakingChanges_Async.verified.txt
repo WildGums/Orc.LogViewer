@@ -18,10 +18,10 @@ namespace Orc.LogViewer
         public static readonly System.Windows.DependencyProperty EnableThreadIdProperty;
         public static readonly System.Windows.DependencyProperty IgnoreCatelLoggingProperty;
         public static readonly System.Windows.DependencyProperty LevelProperty;
-        public static readonly System.Windows.DependencyProperty LogListenerTypeProperty;
         public static readonly System.Windows.DependencyProperty ShowFilterBoxProperty;
         public static readonly System.Windows.DependencyProperty ShowFilterGroupsProperty;
         public AdvancedLogViewerControl() { }
+        public AdvancedLogViewerControl(System.IServiceProvider serviceProvider, Catel.Services.IViewModelWrapperService viewModelWrapperService, Catel.MVVM.IDataContextSubscriptionService dataContextSubscriptionService, Catel.MVVM.ICommandManager commandManager, Catel.Services.IProcessService processService) { }
         public System.Windows.Media.Brush? AccentColorBrush { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool EnableThreadId { get; set; }
@@ -29,9 +29,7 @@ namespace Orc.LogViewer
         public bool IgnoreCatelLogging { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         [System.ComponentModel.TypeConverter(typeof(Orc.LogViewer.StringToLogEventLevelConverter))]
-        public Catel.Logging.LogEvent Level { get; set; }
-        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
-        public System.Type? LogListenerType { get; set; }
+        public Microsoft.Extensions.Logging.LogLevel Level { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
@@ -71,6 +69,10 @@ namespace Orc.LogViewer
     {
         public const string LogFilterGroup = "LogViewer.LastKnownLogFilterGroup";
         public static readonly string LogFilterGroupDefaultValue;
+    }
+    public static class OrcLogViewerModule
+    {
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddOrcLogViewer(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection) { }
     }
     public static class RichTextBoxExtensions
     {
@@ -140,20 +142,18 @@ namespace Orc.LogViewer.ViewModels
         public static readonly Catel.Data.IPropertyData EnableThreadIdProperty;
         public static readonly Catel.Data.IPropertyData IgnoreCatelLoggingProperty;
         public static readonly Catel.Data.IPropertyData LogFilterGroupsProperty;
-        public static readonly Catel.Data.IPropertyData LogListenerTypeProperty;
         public static readonly Catel.Data.IPropertyData SelectedLogFilterGroupProperty;
         public static readonly Catel.Data.IPropertyData ShowFilterBoxProperty;
         public static readonly Catel.Data.IPropertyData ShowFilterGroupsProperty;
-        public AdvancedLogViewerViewModel(Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService, Catel.Configuration.IConfigurationService configurationService) { }
+        public AdvancedLogViewerViewModel(System.IServiceProvider serviceProvider, Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService, Catel.Configuration.IConfigurationService configurationService, Catel.Logging.IInMemoryLoggingContainer inMemoryLoggingContainer) { }
         public bool DebugChecked { get; set; }
         public Catel.MVVM.TaskCommand EditFilterGroups { get; }
         public bool EnableThreadId { get; set; }
         public bool ErrorChecked { get; set; }
         public bool IgnoreCatelLogging { get; set; }
         public bool InfoChecked { get; set; }
-        public Catel.Logging.LogEvent Level { get; set; }
+        public Microsoft.Extensions.Logging.LogLevel Level { get; set; }
         public System.Collections.Generic.List<Orc.Controls.LogFilterGroup> LogFilterGroups { get; }
-        public System.Type? LogListenerType { get; set; }
         public Orc.Controls.LogFilterGroup? SelectedLogFilterGroup { get; set; }
         public bool ShowFilterBox { get; set; }
         public bool ShowFilterGroups { get; set; }
@@ -163,7 +163,7 @@ namespace Orc.LogViewer.ViewModels
     }
     public class LogFilterGroupEditorViewModel : Catel.MVVM.ViewModelBase
     {
-        public LogFilterGroupEditorViewModel() { }
+        public LogFilterGroupEditorViewModel(System.IServiceProvider serviceProvider) { }
     }
 }
 namespace Orc.LogViewer.Views
@@ -171,6 +171,9 @@ namespace Orc.LogViewer.Views
     public class LogFilterGroupEditorWindow : Catel.Windows.DataWindow, System.Windows.Markup.IComponentConnector
     {
         public LogFilterGroupEditorWindow() { }
+        [Microsoft.Extensions.DependencyInjection.ActivatorUtilitiesConstructor]
+        public LogFilterGroupEditorWindow(System.IServiceProvider serviceProvider, Catel.Services.IWrapControlService wrapControlService, Catel.Services.ILanguageService languageService) { }
+        public LogFilterGroupEditorWindow(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IWrapControlService wrapControlService, Catel.Services.ILanguageService languageService) { }
         public void InitializeComponent() { }
     }
 }
