@@ -4,16 +4,13 @@
     using System.ComponentModel;
     using System.Globalization;
     using System.Linq;
-    using System.Xaml;
-    using Catel.Logging;
+    using Microsoft.Extensions.Logging;
 
     public class StringToLogEventLevelConverter : TypeConverter
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
-
         public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object? value)
         {
-            LogEvent result = 0;
+            LogLevel result = 0;
 
             if (value is not string stringValue)
             {
@@ -27,23 +24,23 @@
                 switch (enumValue.ToLower())
                 {
                     case "error":
-                        result |= LogEvent.Error;
+                        result |= LogLevel.Error | LogLevel.Critical;
                         break;
 
                     case "warning":
-                        result |= LogEvent.Warning;
+                        result |= LogLevel.Warning;
                         break;
 
                     case "info":
-                        result |= LogEvent.Info;
+                        result |= LogLevel.Information;
                         break;
 
                     case "debug":
-                        result |= LogEvent.Debug;
+                        result |= LogLevel.Debug;
                         break;
 
                     default:
-                        throw Log.ErrorAndCreateException<XamlException>("Cannot parse the LogEvent value.");
+                        throw new ArgumentOutOfRangeException("value", "Cannot parse the LogEvent value.");
                 }
             }
 

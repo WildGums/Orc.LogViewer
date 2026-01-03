@@ -8,15 +8,13 @@
     using System.Windows.Media;
     using Catel;
     using Catel.IoC;
-    using Catel.Logging;
     using Catel.MVVM;
     using Catel.MVVM.Views;
     using Catel.Services;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using Orc.Controls;
 
-    /// <summary>
-    /// Interaction logic for AdvancedLogViewerControl.xaml.
-    /// </summary>
     public partial class AdvancedLogViewerControl
     {
         private readonly ICommandManager _commandManager;
@@ -24,17 +22,18 @@
 
         static AdvancedLogViewerControl()
         {
-            typeof (AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe();
+            typeof (AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe(IoCContainer.ServiceProvider.GetRequiredService<IViewPropertySelector>());
         }
 
-        public AdvancedLogViewerControl()
+        public AdvancedLogViewerControl(IServiceProvider serviceProvider, IViewModelWrapperService viewModelWrapperService,
+            IDataContextSubscriptionService dataContextSubscriptionService, ICommandManager commandManager,
+            IProcessService processService)
+            : base(serviceProvider, viewModelWrapperService, dataContextSubscriptionService)
         {
+            _commandManager = commandManager;
+            _processService = processService;
+
             InitializeComponent();
-
-            var serviceLocator = ServiceLocator.Default;
-
-            _commandManager = serviceLocator.ResolveRequiredType<ICommandManager>();
-            _processService = serviceLocator.ResolveRequiredType<IProcessService>();
 
             CreateTooltips();
         }
@@ -47,18 +46,6 @@
 
         public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register(nameof(AccentColorBrush), typeof (Brush),
             typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl) sender).OnAccentColorBrushChanged()));
-
-
-        [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
-        public Type? LogListenerType
-        {
-            get { return (Type?) GetValue(LogListenerTypeProperty); }
-            set { SetValue(LogListenerTypeProperty, value); }
-        }
-
-        public static readonly DependencyProperty LogListenerTypeProperty = DependencyProperty.Register(nameof(LogListenerType), typeof (Type),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(typeof (LogViewerLogListener), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging
@@ -95,14 +82,14 @@
 
         [TypeConverter(typeof (StringToLogEventLevelConverter))]
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
-        public LogEvent Level
+        public LogLevel Level
         {
-            get { return (LogEvent) GetValue(LevelProperty); }
+            get { return (LogLevel) GetValue(LevelProperty); }
             set { SetValue(LevelProperty, value); }
         }
 
-        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register(nameof(Level), typeof (LogEvent),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogEvent.Error | LogEvent.Warning | LogEvent.Info, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register(nameof(Level), typeof (LogLevel),
+            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogLevel.Critical | LogLevel.Error | LogLevel.Warning | LogLevel.Information, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]

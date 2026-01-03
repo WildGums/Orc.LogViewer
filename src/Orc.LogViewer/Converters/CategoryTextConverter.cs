@@ -30,9 +30,9 @@
                 return null;
             }
 
-            if (PathCache.TryGetValue(stringValue, out var cachedvalue))
+            if (PathCache.TryGetValue(stringValue, out var cachedValue))
             {
-                return cachedvalue;
+                return cachedValue;
             }
 
             return null;

@@ -9,6 +9,7 @@
     using Catel.Logging;
     using Catel.MVVM;
     using Catel.Services;
+    using Microsoft.Extensions.Logging;
     using Orc.Controls;
 
     public class AdvancedLogViewerViewModel : ViewModelBase
@@ -16,28 +17,27 @@
         private readonly IUIVisualizerService _uiVisualizerService;
         private readonly IApplicationLogFilterGroupService _applicationLogFilterGroupService;
         private readonly IConfigurationService _configurationService;
-        private LogEvent _level;
+        private readonly IInMemoryLoggingContainer _inMemoryLoggingContainer;
 
-        public AdvancedLogViewerViewModel(IUIVisualizerService uiVisualizerService,
-            IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService)
+        private LogLevel _level;
+
+        public AdvancedLogViewerViewModel(IServiceProvider serviceProvider, IUIVisualizerService uiVisualizerService,
+            IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService,
+            IInMemoryLoggingContainer inMemoryLoggingContainer)
+            : base(serviceProvider)
         {
-            ArgumentNullException.ThrowIfNull(uiVisualizerService);
-            ArgumentNullException.ThrowIfNull(applicationLogFilterGroupService);
-            ArgumentNullException.ThrowIfNull(configurationService);
-
             _uiVisualizerService = uiVisualizerService;
             _applicationLogFilterGroupService = applicationLogFilterGroupService;
             _configurationService = configurationService;
+            _inMemoryLoggingContainer = inMemoryLoggingContainer;
 
-            _level = LogEvent.Error | LogEvent.Warning | LogEvent.Info;
+            _level = LogLevel.Critical | LogLevel.Error | LogLevel.Warning | LogLevel.Information;
 
             LogFilterGroups = new List<LogFilterGroup>();
-            EditFilterGroups = new TaskCommand(OnEditFilterGroupsExecuteAsync);
+            EditFilterGroups = new TaskCommand(serviceProvider, OnEditFilterGroupsExecuteAsync);
         }
 
         public bool EnableThreadId { get; set; }
-
-        public Type? LogListenerType { get; set; }
 
         public bool IgnoreCatelLogging { get; set; }
 
@@ -49,7 +49,7 @@
 
         public LogFilterGroup? SelectedLogFilterGroup { get; set; }
 
-        public LogEvent Level
+        public LogLevel Level
         {
             get { return _level; }
             set
@@ -71,16 +71,16 @@
 
         public bool ErrorChecked
         {
-            get { return Level.HasFlag(LogEvent.Error); }
+            get { return Level.HasFlag(LogLevel.Error); }
             set
             {
                 if (value)
                 {
-                    Level |= LogEvent.Error;
+                    Level |= LogLevel.Error;
                 }
                 else
                 {
-                    Level &= ~LogEvent.Error;
+                    Level &= ~LogLevel.Error;
                 }
 
                 RaisePropertyChanged(nameof(Level));
@@ -90,16 +90,16 @@
 
         public bool WarningChecked
         {
-            get { return Level.HasFlag(LogEvent.Warning); }
+            get { return Level.HasFlag(LogLevel.Warning); }
             set
             {
                 if (value)
                 {
-                    Level |= LogEvent.Warning;
+                    Level |= LogLevel.Warning;
                 }
                 else
                 {
-                    Level &= ~LogEvent.Warning;
+                    Level &= ~LogLevel.Warning;
                 }
 
                 RaisePropertyChanged(nameof(Level));
@@ -109,16 +109,16 @@
 
         public bool InfoChecked
         {
-            get { return Level.HasFlag(LogEvent.Info); }
+            get { return Level.HasFlag(LogLevel.Information); }
             set
             {
                 if (value)
                 {
-                    Level |= LogEvent.Info;
+                    Level |= LogLevel.Information;
                 }
                 else
                 {
-                    Level &= ~LogEvent.Info;
+                    Level &= ~LogLevel.Information;
                 }
 
                 RaisePropertyChanged(nameof(Level));
@@ -128,16 +128,16 @@
 
         public bool DebugChecked
         {
-            get { return Level.HasFlag(LogEvent.Debug); }
+            get { return Level.HasFlag(LogLevel.Debug); }
             set
             {
                 if (value)
                 {
-                    Level |= LogEvent.Debug;
+                    Level |= LogLevel.Debug;
                 }
                 else
                 {
-                    Level &= ~LogEvent.Debug;
+                    Level &= ~LogLevel.Debug;
                 }
 
                 RaisePropertyChanged(nameof(Level));
