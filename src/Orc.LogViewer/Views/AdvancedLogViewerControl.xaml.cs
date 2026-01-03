@@ -22,7 +22,7 @@
 
         static AdvancedLogViewerControl()
         {
-            typeof (AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe(IoCContainer.ServiceProvider.GetRequiredService<IViewPropertySelector>());
+            typeof(AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe(IoCContainer.ServiceProvider.GetRequiredService<IViewPropertySelector>());
         }
 
         public AdvancedLogViewerControl(IServiceProvider serviceProvider, IViewModelWrapperService viewModelWrapperService,
@@ -40,62 +40,62 @@
 
         public Brush? AccentColorBrush
         {
-            get { return (Brush?) GetValue(AccentColorBrushProperty); }
+            get { return (Brush?)GetValue(AccentColorBrushProperty); }
             set { SetValue(AccentColorBrushProperty, value); }
         }
 
-        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register(nameof(AccentColorBrush), typeof (Brush),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl) sender).OnAccentColorBrushChanged()));
+        public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register(nameof(AccentColorBrush), typeof(Brush),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl)sender).OnAccentColorBrushChanged()));
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging
         {
-            get { return (bool) GetValue(IgnoreCatelLoggingProperty); }
+            get { return (bool)GetValue(IgnoreCatelLoggingProperty); }
             set { SetValue(IgnoreCatelLoggingProperty, value); }
         }
 
-        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register(nameof(IgnoreCatelLogging), typeof (bool),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty IgnoreCatelLoggingProperty = DependencyProperty.Register(nameof(IgnoreCatelLogging), typeof(bool),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterGroups
         {
-            get { return (bool) GetValue(ShowFilterGroupsProperty); }
+            get { return (bool)GetValue(ShowFilterGroupsProperty); }
             set { SetValue(ShowFilterGroupsProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowFilterGroupsProperty = DependencyProperty.Register(nameof(ShowFilterGroups), typeof (bool),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty ShowFilterGroupsProperty = DependencyProperty.Register(nameof(ShowFilterGroups), typeof(bool),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox
         {
-            get { return (bool) GetValue(ShowFilterBoxProperty); }
+            get { return (bool)GetValue(ShowFilterBoxProperty); }
             set { SetValue(ShowFilterBoxProperty, value); }
         }
 
-        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register(nameof(ShowFilterBox), typeof (bool),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register(nameof(ShowFilterBox), typeof(bool),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
-        [TypeConverter(typeof (StringToLogEventLevelConverter))]
+        [TypeConverter(typeof(StringToLogEventLevelConverter))]
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public LogLevel Level
         {
-            get { return (LogLevel) GetValue(LevelProperty); }
+            get { return (LogLevel)GetValue(LevelProperty); }
             set { SetValue(LevelProperty, value); }
         }
 
-        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register(nameof(Level), typeof (LogLevel),
-            typeof (AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogLevel.Critical | LogLevel.Error | LogLevel.Warning | LogLevel.Information, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty LevelProperty = DependencyProperty.Register(nameof(Level), typeof(LogLevel),
+            typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogLevel.Critical | LogLevel.Error | LogLevel.Warning | LogLevel.Information, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
         [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
         public bool EnableThreadId
         {
-            get { return (bool) GetValue(EnableThreadIdProperty); }
+            get { return (bool)GetValue(EnableThreadIdProperty); }
             set { SetValue(EnableThreadIdProperty, value); }
         }
 

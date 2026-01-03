@@ -8,6 +8,11 @@
 
     public class StringToLogEventLevelConverter : TypeConverter
     {
+        public StringToLogEventLevelConverter()
+        {
+            
+        }
+
         public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object? value)
         {
             LogLevel result = 0;
