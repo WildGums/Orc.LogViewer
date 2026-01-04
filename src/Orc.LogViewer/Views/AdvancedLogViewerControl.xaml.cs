@@ -22,6 +22,11 @@
 
         static AdvancedLogViewerControl()
         {
+            if (CatelEnvironment.IsInDesignMode)
+            {
+                return;
+            }
+
             typeof(AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe(IoCContainer.ServiceProvider.GetRequiredService<IViewPropertySelector>());
         }
 
