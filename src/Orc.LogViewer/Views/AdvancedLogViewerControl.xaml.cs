@@ -20,16 +20,6 @@
         private readonly ICommandManager _commandManager;
         private readonly IProcessService _processService;
 
-        static AdvancedLogViewerControl()
-        {
-            if (CatelEnvironment.IsInDesignMode)
-            {
-                return;
-            }
-
-            typeof(AdvancedLogViewerControl).AutoDetectViewPropertiesToSubscribe(IoCContainer.ServiceProvider.GetRequiredService<IViewPropertySelector>());
-        }
-
         public AdvancedLogViewerControl(IServiceProvider serviceProvider, IViewModelWrapperService viewModelWrapperService,
             IDataContextSubscriptionService dataContextSubscriptionService, ICommandManager commandManager,
             IProcessService processService)
