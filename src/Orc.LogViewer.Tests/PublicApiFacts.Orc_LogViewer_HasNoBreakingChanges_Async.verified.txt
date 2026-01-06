@@ -70,10 +70,6 @@ namespace Orc.LogViewer
         public const string LogFilterGroup = "LogViewer.LastKnownLogFilterGroup";
         public static readonly string LogFilterGroupDefaultValue;
     }
-    public static class OrcLogViewerModule
-    {
-        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddOrcLogViewer(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection) { }
-    }
     public static class RichTextBoxExtensions
     {
         public static string GetInlineText(this System.Windows.Controls.RichTextBox richTextBox) { }
@@ -175,5 +171,12 @@ namespace Orc.LogViewer.Views
         public LogFilterGroupEditorWindow(System.IServiceProvider serviceProvider, Catel.Services.IWrapControlService wrapControlService, Catel.Services.ILanguageService languageService) { }
         public LogFilterGroupEditorWindow(Catel.MVVM.IViewModel? viewModel, System.IServiceProvider serviceProvider, Catel.Services.IWrapControlService wrapControlService, Catel.Services.ILanguageService languageService) { }
         public void InitializeComponent() { }
+    }
+}
+namespace Orc
+{
+    public static class OrcLogViewerModule
+    {
+        public static Microsoft.Extensions.DependencyInjection.IServiceCollection AddOrcLogViewer(this Microsoft.Extensions.DependencyInjection.IServiceCollection serviceCollection) { }
     }
 }
