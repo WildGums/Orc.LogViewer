@@ -1,4 +1,4 @@
-﻿namespace Orc.LogViewer
+﻿namespace Orc
 {
     using System;
     using Catel;
@@ -8,6 +8,7 @@
     using Catel.ThirdPartyNotices;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.DependencyInjection.Extensions;
+    using Orc.LogViewer;
 
     /// <summary>
     /// Core module which allows the registration of default services in the service collection.
