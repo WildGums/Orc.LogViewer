@@ -1,10 +1,12 @@
 ﻿namespace Orc.LogViewer.Examples.ViewModels
 {
+    using System;
     using Catel.MVVM;
 
     public class LogWindowViewModel : ViewModelBase
     {
-        public LogWindowViewModel()
+        public LogWindowViewModel(IServiceProvider serviceProvider) 
+            : base(serviceProvider)
         {
         }
 

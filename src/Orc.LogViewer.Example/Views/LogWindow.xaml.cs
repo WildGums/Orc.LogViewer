@@ -6,19 +6,5 @@
 
     public partial class LogWindow
     {
-        private readonly CommandManagerWrapper _commandManagerWrapper;
-
-        public LogWindow()
-            : this(null)
-        {
-        }
-
-        public LogWindow(LogWindowViewModel? viewModel)
-            : base(viewModel, DataWindowMode.Custom)
-        {
-            InitializeComponent();
-
-            _commandManagerWrapper = new CommandManagerWrapper(this);
-        }
     }
 }
