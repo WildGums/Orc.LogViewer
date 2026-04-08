@@ -1,7 +1,6 @@
-﻿namespace Orc.LogViewer.Examples.Views
-{
-    public partial class LogViewerSeparateWindowExample
-    {
+﻿namespace Orc.LogViewer.Examples.Views;
 
-    }
+public partial class LogViewerSeparateWindowExample
+{
+
 }

@@ -1,41 +1,40 @@
-﻿namespace Orc.LogViewer.Converters
+﻿namespace Orc.LogViewer.Converters;
+
+using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using Catel;
+using Catel.MVVM.Converters;
+
+public class CategoryTextConverter : ValueConverterBase<string>
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.Immutable;
-    using Catel;
-    using Catel.MVVM.Converters;
+    private static readonly ImmutableDictionary<string, string?> PathCache;
 
-    public class CategoryTextConverter : ValueConverterBase<string>
+    static CategoryTextConverter()
     {
-        private static readonly ImmutableDictionary<string, string?> PathCache;
+        var dictionary = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
 
-        static CategoryTextConverter()
+        dictionary["Debug"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug");
+        dictionary["Info"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info");
+        dictionary["Warning"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning");
+        dictionary["Error"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error");
+        dictionary["Clock"] = null;
+
+        PathCache = dictionary.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
+    }
+
+    protected override object? Convert(string? value, Type targetType, object? parameter)
+    {
+        if (value is not string stringValue)
         {
-            var dictionary = new Dictionary<string, string?>(StringComparer.OrdinalIgnoreCase);
-
-            dictionary["Debug"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug");
-            dictionary["Info"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info");
-            dictionary["Warning"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning");
-            dictionary["Error"] = LanguageHelper.GetString("LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error");
-            dictionary["Clock"] = null;
-
-            PathCache = dictionary.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
-        }
-
-        protected override object? Convert(string? value, Type targetType, object? parameter)
-        {
-            if (value is not string stringValue)
-            {
-                return null;
-            }
-
-            if (PathCache.TryGetValue(stringValue, out var cachedValue))
-            {
-                return cachedValue;
-            }
-
             return null;
         }
+
+        if (PathCache.TryGetValue(stringValue, out var cachedValue))
+        {
+            return cachedValue;
+        }
+
+        return null;
     }
 }

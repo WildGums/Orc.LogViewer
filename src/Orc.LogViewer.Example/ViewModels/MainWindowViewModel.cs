@@ -1,14 +1,13 @@
-﻿namespace Orc.LogViewer.Examples.ViewModels
-{
-    using System;
-    using Catel.MVVM;
+﻿namespace Orc.LogViewer.Examples.ViewModels;
 
-    public class MainWindowViewModel : ViewModelBase
+using System;
+using Catel.MVVM;
+
+public class MainWindowViewModel : ViewModelBase
+{
+    public MainWindowViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
-        public MainWindowViewModel(IServiceProvider serviceProvider)
-            : base(serviceProvider)
-        {
-            Title = "Orc.LogViewer example";
-        }
+        Title = "Orc.LogViewer example";
     }
 }

@@ -1,18 +1,17 @@
-﻿namespace Orc.LogViewer.Examples.ViewModels
+﻿namespace Orc.LogViewer.Examples.ViewModels;
+
+using System;
+using Catel.MVVM;
+
+public class LogWindowViewModel : ViewModelBase
 {
-    using System;
-    using Catel.MVVM;
-
-    public class LogWindowViewModel : ViewModelBase
+    public LogWindowViewModel(IServiceProvider serviceProvider) 
+        : base(serviceProvider)
     {
-        public LogWindowViewModel(IServiceProvider serviceProvider) 
-            : base(serviceProvider)
-        {
-        }
+    }
 
-        public override string Title
-        {
-            get { return "Log window"; }
-        }
+    public override string Title
+    {
+        get { return "Log window"; }
     }
 }
