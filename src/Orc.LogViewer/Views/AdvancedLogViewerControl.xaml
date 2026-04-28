@@ -9,7 +9,6 @@
                    xmlns:controls="clr-namespace:Orc.LogViewer.Controls"
                    xmlns:orctheming="http://schemas.wildgums.com/orc/theming"
                    mc:Ignorable="d"
-                   x:Name="CurrentControl"
                    d:DesignHeight="22"
                    d:DesignWidth="120">
 
@@ -105,7 +104,6 @@
                                       EnableIcons="True"
                                       LogFilter="{Binding Text, ElementName=FilterBox}"
                                       ActiveFilterGroup="{Binding SelectedItem, ElementName=FilterGroupsComboBox, Mode=OneWay}"
-                                      LogListenerType="{Binding LogListenerType}"
                                       IgnoreCatelLogging="{Binding IgnoreCatelLogging}"
                                       EnableThreadId="{Binding EnableThreadId}">
             <orccontrols:LogViewerControl.Resources>

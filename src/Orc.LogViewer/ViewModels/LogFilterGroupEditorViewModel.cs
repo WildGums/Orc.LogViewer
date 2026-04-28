@@ -1,13 +1,14 @@
-﻿namespace Orc.LogViewer.ViewModels
-{
-    using Catel;
-    using Catel.MVVM;
+﻿namespace Orc.LogViewer.ViewModels;
 
-    public class LogFilterGroupEditorViewModel : ViewModelBase
+using System;
+using Catel;
+using Catel.MVVM;
+
+public class LogFilterGroupEditorViewModel : ViewModelBase
+{
+    public LogFilterGroupEditorViewModel(IServiceProvider serviceProvider)
+        : base(serviceProvider)
     {
-        public LogFilterGroupEditorViewModel()
-        {
-            Title = LanguageHelper.GetRequiredString("LogViewer_AdvancedLogViewerControl_Editor_Title");
-        }
+        Title = LanguageHelper.GetRequiredString("LogViewer_AdvancedLogViewerControl_Editor_Title");
     }
 }

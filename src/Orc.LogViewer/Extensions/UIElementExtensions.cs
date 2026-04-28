@@ -1,44 +1,43 @@
-﻿namespace Orc.LogViewer
+﻿namespace Orc.LogViewer;
+
+using System;
+using System.Windows;
+using System.Windows.Controls;
+using Catel.Windows.Input;
+
+public static class UIElementExtensions
 {
-    using System;
-    using System.Windows;
-    using System.Windows.Controls;
-    using Catel.Windows.Input;
-
-    public static class UIElementExtensions
+    public static void SetTooltip(this UIElement control, InputGesture? inputGesture)
     {
-        public static void SetTooltip(this UIElement control, InputGesture? inputGesture)
-        {
-            ArgumentNullException.ThrowIfNull(control);
+        ArgumentNullException.ThrowIfNull(control);
 
-            SetTooltip(control, inputGesture, null);
+        SetTooltip(control, inputGesture, null);
+    }
+
+    public static void SetTooltip(this UIElement control, InputGesture? inputGesture, string? text)
+    {
+        ArgumentNullException.ThrowIfNull(control);
+
+        // Note: make nullable, string.Empty will still show up as a tooltip
+        string? content = null;
+
+        if (inputGesture is not null)
+        {
+            content = inputGesture.ToString();
         }
 
-        public static void SetTooltip(this UIElement control, InputGesture? inputGesture, string? text)
+        if (!string.IsNullOrWhiteSpace(text))
         {
-            ArgumentNullException.ThrowIfNull(control);
-
-            // Note: make nullable, string.Empty will still show up as a tooltip
-            string? content = null;
-
-            if (inputGesture is not null)
+            if (string.IsNullOrEmpty(content))
             {
-                content = inputGesture.ToString();
+                content = text;
             }
-
-            if (!string.IsNullOrWhiteSpace(text))
+            else
             {
-                if (string.IsNullOrEmpty(content))
-                {
-                    content = text;
-                }
-                else
-                {
-                    content = text + Environment.NewLine + content;
-                }
+                content = text + Environment.NewLine + content;
             }
-
-            ToolTipService.SetToolTip(control, content);
         }
+
+        ToolTipService.SetToolTip(control, content);
     }
 }

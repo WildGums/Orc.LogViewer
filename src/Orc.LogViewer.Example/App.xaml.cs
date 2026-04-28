@@ -1,43 +1,88 @@
-﻿namespace Orc.LogViewer.Examples
+﻿namespace Orc.LogViewer.Examples;
+
+using System.Globalization;
+using System.Windows;
+using Catel;
+using Catel.IoC;
+using Catel.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Orc.Automation;
+using Orc.Controls;
+using Orc.FileSystem;
+using Orc.LogViewer.Examples.Views;
+using Orc.Serialization.Json;
+using Orc.SystemInfo;
+using Orc.Theming;
+using Orchestra;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-    using System.Globalization;
-    using System.Windows;
-    using Catel.Configuration;
-    using Catel.IoC;
-    using Catel.Logging;
-    using Catel.Services;
-    using Orchestra;
+#pragma warning disable IDISP006 // Implement IDisposable
+    private readonly IHost _host;
+#pragma warning restore IDISP006 // Implement IDisposable
 
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public App()
     {
-        private static readonly ILog Log = LogManager.GetCurrentClassLogger();
+        var hostBuilder = new HostBuilder()
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddCatelCore();
+                services.AddCatelMvvm();
+                services.AddOrcAutomation();
+                services.AddOrcControls();
+                services.AddOrcFileSystem();
+                services.AddOrcLogViewer();
+                services.AddOrcSerializationJson();
+                services.AddOrcSystemInfo();
+                services.AddOrcTheming();
+                services.AddOrchestraCore();
 
-        protected override async void OnStartup(StartupEventArgs e)
+                services.AddLogging(x =>
+                {
+                    x.AddConsole();
+                    x.AddDebug();
+                });
+            });
+
+        _host = hostBuilder.Build();
+
+        IoCContainer.ServiceProvider = _host.Services;
+    }
+
+    protected override async void OnStartup(StartupEventArgs e)
+    {
+        base.OnStartup(e);
+
+        var serviceProvider = IoCContainer.ServiceProvider;
+
+        serviceProvider.CreateTypesThatMustBeConstructedAtStartup();
+
+        var languageService = serviceProvider.GetRequiredService<ILanguageService>();
+
+        // Note: it's best to use .CurrentUICulture in actual apps since it will use the preferred language
+        // of the user. But in order to demo multilingual features for devs (who mostly have en-US as .CurrentUICulture),
+        // we use .CurrentCulture for the sake of the demo
+        languageService.PreferredCulture = CultureInfo.CurrentCulture;
+        languageService.FallbackCulture = new CultureInfo("en-US");
+
+        this.ApplyTheme();
+
+        var mainWindow = ActivatorUtilities.CreateInstance<MainWindow>(_host.Services);
+        mainWindow.Show();
+    }
+
+    protected override async void OnExit(ExitEventArgs e)
+    {
+        using (_host)
         {
-#if DEBUG
-            LogManager.AddDebugListener();
-#endif
-
-            var languageService = ServiceLocator.Default.ResolveRequiredType<ILanguageService>();
-
-            // Note: it's best to use .CurrentUICulture in actual apps since it will use the preferred language
-            // of the user. But in order to demo multilingual features for devs (who mostly have en-US as .CurrentUICulture),
-            // we use .CurrentCulture for the sake of the demo
-            languageService.PreferredCulture = CultureInfo.CurrentCulture;
-            languageService.FallbackCulture = new CultureInfo("en-US");
-
-            this.ApplyTheme();
-
-            var configurationService = ServiceLocator.Default.ResolveType<IConfigurationService>();
-            await configurationService.LoadAsync();
-
-            Log.Info("Starting application");
-            Log.Info("This log message should show up as debug");
-
-            base.OnStartup(e);
+            await _host.StopAsync();
         }
+
+        base.OnExit(e);
     }
 }

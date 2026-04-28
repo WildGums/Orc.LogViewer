@@ -9,13 +9,13 @@ public class LogViewerSeparateWindowExampleViewModel : ViewModelBase
 {
     private readonly IUIVisualizerService _uiVisualizerService;
 
-    public LogViewerSeparateWindowExampleViewModel(IUIVisualizerService uiVisualizerService)
+    public LogViewerSeparateWindowExampleViewModel(IServiceProvider serviceProvider, 
+        IUIVisualizerService uiVisualizerService)
+        : base(serviceProvider)
     {
-        ArgumentNullException.ThrowIfNull(uiVisualizerService);
-
         _uiVisualizerService = uiVisualizerService;
 
-        ShowLogWindow = new TaskCommand(OnShowLogWindowExecuteAsync);
+        ShowLogWindow = new TaskCommand(serviceProvider, OnShowLogWindowExecuteAsync);
     }
         
     public TaskCommand ShowLogWindow { get; }

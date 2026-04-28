@@ -1,41 +1,40 @@
-﻿namespace Orc.LogViewer.Converters
+﻿namespace Orc.LogViewer.Converters;
+
+using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Windows.Media;
+using Catel.MVVM.Converters;
+
+public class CategoryBorderBrushConverter : ValueConverterBase<string>
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.Immutable;
-    using System.Windows.Media;
-    using Catel.MVVM.Converters;
+    public static readonly ImmutableDictionary<string, SolidColorBrush?> BrushCache;
 
-    public class CategoryBorderBrushConverter : ValueConverterBase<string>
+    static CategoryBorderBrushConverter()
     {
-        public static readonly ImmutableDictionary<string, SolidColorBrush?> BrushCache;
+        var dictionary = new Dictionary<string, SolidColorBrush?>(StringComparer.OrdinalIgnoreCase);
 
-        static CategoryBorderBrushConverter()
+        dictionary["Debug"] = new SolidColorBrush(Colors.DarkGray);
+        dictionary["Info"] = new SolidColorBrush(Colors.RoyalBlue);
+        dictionary["Warning"] = new SolidColorBrush(Colors.DarkOrange);
+        dictionary["Error"] = new SolidColorBrush(Colors.Red);
+        dictionary["Clock"] = new SolidColorBrush(Colors.Gray);
+
+        BrushCache = dictionary.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
+    }
+
+    protected override object? Convert(string? value, Type targetType, object? parameter)
+    {
+        if (value is not string stringValue)
         {
-            var dictionary = new Dictionary<string, SolidColorBrush?>(StringComparer.OrdinalIgnoreCase);
-
-            dictionary["Debug"] = new SolidColorBrush(Colors.DarkGray);
-            dictionary["Info"] = new SolidColorBrush(Colors.RoyalBlue);
-            dictionary["Warning"] = new SolidColorBrush(Colors.DarkOrange);
-            dictionary["Error"] = new SolidColorBrush(Colors.Red);
-            dictionary["Clock"] = new SolidColorBrush(Colors.Gray);
-
-            BrushCache = dictionary.ToImmutableDictionary(StringComparer.OrdinalIgnoreCase);
+            return null;
         }
 
-        protected override object? Convert(string? value, Type targetType, object? parameter)
+        if (BrushCache.TryGetValue(stringValue, out var brush))
         {
-            if (value is not string stringValue)
-            {
-                return null;
-            }
-
-            if (BrushCache.TryGetValue(stringValue, out var brush))
-            {
-                return brush;
-            }
-
-            return Brushes.Black;
+            return brush;
         }
+
+        return Brushes.Black;
     }
 }

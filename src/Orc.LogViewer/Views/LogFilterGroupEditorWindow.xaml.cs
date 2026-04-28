@@ -1,10 +1,6 @@
-﻿namespace Orc.LogViewer.Views
+﻿namespace Orc.LogViewer.Views;
+
+public partial class LogFilterGroupEditorWindow
 {
-    public partial class LogFilterGroupEditorWindow
-    {
-        public LogFilterGroupEditorWindow()
-        {
-            InitializeComponent();
-        }
-    }
+
 }
