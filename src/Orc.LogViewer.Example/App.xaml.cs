@@ -3,6 +3,7 @@
 using System.Globalization;
 using System.Windows;
 using Catel;
+using Catel.Configuration;
 using Catel.IoC;
 using Catel.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -59,6 +60,9 @@ public partial class App : Application
         base.OnStartup(e);
 
         var serviceProvider = IoCContainer.ServiceProvider;
+
+        var configurationService = serviceProvider.GetRequiredService<IConfigurationService>();
+        await configurationService.LoadAsync();
 
         serviceProvider.CreateTypesThatMustBeConstructedAtStartup();
 
