@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Orc.LogViewer.Example\Orc.LogViewer.Example.csproj" />
     <ProjectReference Include="..\Orc.LogViewer\Orc.LogViewer.csproj" />
   </ItemGroup>
 
