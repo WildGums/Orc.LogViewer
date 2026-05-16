@@ -38,7 +38,9 @@ public class LocalizationFacts
 
     private static ServiceProvider CreateServiceProvider()
     {
-        var serviceCollection = ServiceCollectionHelper.CreateServiceCollectionWithExampleLocalization();
+        var serviceCollection = ServiceCollectionHelper.CreateServiceCollection();
+        serviceCollection.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.LogViewer.Example", "Orc.LogViewer.Example.Properties", "Resources"));
+
         var serviceProvider = serviceCollection.BuildServiceProvider();
         var languageService = serviceProvider.GetRequiredService<ILanguageService>();
         languageService.PreferredCulture = new CultureInfo("en-US");

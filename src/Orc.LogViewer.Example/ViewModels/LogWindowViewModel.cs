@@ -3,20 +3,10 @@
 using System;
 using Catel.Services;
 using Catel.MVVM;
-using Microsoft.Extensions.DependencyInjection;
 
 public class LogWindowViewModel : ViewModelBase
 {
     private readonly string _title;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="LogWindowViewModel"/> class.
-    /// </summary>
-    /// <param name="serviceProvider">The service provider.</param>
-    public LogWindowViewModel(IServiceProvider serviceProvider)
-        : this(serviceProvider, serviceProvider.GetRequiredService<ILanguageService>())
-    {
-    }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LogWindowViewModel"/> class.
