@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public class LogWindowViewModel : ViewModelBase
 {
-    private readonly ILanguageService _languageService;
+    private readonly string _title;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="LogWindowViewModel"/> class.
@@ -26,8 +26,8 @@ public class LogWindowViewModel : ViewModelBase
     public LogWindowViewModel(IServiceProvider serviceProvider, ILanguageService languageService)
         : base(serviceProvider)
     {
-        _languageService = languageService;
+        _title = languageService.GetRequiredString("LogViewerExample_LogWindow_Title");
     }
 
-    public override string Title => _languageService.GetRequiredString("LogViewerExample_LogWindow_Title");
+    public override string Title => _title;
 }
