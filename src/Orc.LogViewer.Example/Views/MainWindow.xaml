@@ -19,11 +19,11 @@
         </StackPanel>
 
         <orccontrols:TabControl TabStripPlacement="Left">
-            <TabItem Header="LogViewer">
+            <TabItem Header="{catel:LanguageBinding LogViewerExample_MainWindow_TabItem_Header_LogViewer}">
                 <views:LogViewerExample />
             </TabItem>
 
-            <TabItem Header="LogViewer window">
+            <TabItem Header="{catel:LanguageBinding LogViewerExample_MainWindow_TabItem_Header_LogViewerWindow}">
                 <views:LogViewerSeparateWindowExample />
             </TabItem>
         </orccontrols:TabControl>

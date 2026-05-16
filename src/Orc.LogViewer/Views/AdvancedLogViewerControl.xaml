@@ -67,7 +67,7 @@
                           Visibility="{Binding ShowFilterGroups, Converter={catel:BooleanToCollapsingVisibilityConverter}}" />
 
                 <Button Command="{Binding EditFilterGroups}"
-                        Content="..."
+                        Content="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_Button_Content_EditFilterGroups}"
                         MinWidth="20"
                         ToolTip="{catel:LanguageBinding LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip}"
                         Visibility="{Binding ShowFilterGroups, Converter={catel:BooleanToCollapsingVisibilityConverter}}">

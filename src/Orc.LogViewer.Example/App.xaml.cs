@@ -42,6 +42,7 @@ public partial class App : Application
                 services.AddOrcSystemInfo();
                 services.AddOrcTheming();
                 services.AddOrchestraCore();
+                services.AddOrcLogViewerExample();
 
                 services.AddLogging(x =>
                 {

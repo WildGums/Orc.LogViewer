@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,43 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error" xml:space="preserve">
-    <value>Error</value>
+  <data name="LogViewerExample_MainWindow_TabItem_Header_LogViewer" xml:space="preserve">
+    <value>LogViewer</value>
   </data>
-  <data name="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Warning" xml:space="preserve">
-    <value>Warning</value>
+  <data name="LogViewerExample_MainWindow_TabItem_Header_LogViewerWindow" xml:space="preserve">
+    <value>LogViewer window</value>
   </data>
-  <data name="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Info" xml:space="preserve">
-    <value>Info</value>
+  <data name="LogViewerExample_LogViewerSeparateWindowExample_Button_Content_OpenLogViewerInSeparateWindow" xml:space="preserve">
+    <value>Open log viewer in separate window</value>
   </data>
-  <data name="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Debug" xml:space="preserve">
-    <value>Debug</value>
+  <data name="LogViewerExample_MainWindow_Title" xml:space="preserve">
+    <value>Orc.LogViewer example</value>
   </data>
-  <data name="LogViewer_AdvancedLogViewerControl_FilterBoxControl_Watermark_Filter" xml:space="preserve">
-    <value>Filter</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_Button_Content_Clear" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_Button_Content_Copy" xml:space="preserve">
-    <value>Copy</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_Button_Content_Open" xml:space="preserve">
-    <value>Open</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_Button_Content_EditFilterGroups" xml:space="preserve">
-    <value>...</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_EditFilterGroups_Button_ToolTip" xml:space="preserve">
-    <value>Edit filter groups</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_None" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_Editor_Title" xml:space="preserve">
-    <value>Filter group editor</value>
-  </data>
-  <data name="LogViewer_AdvancedLogViewerControl_ShowTimestamps" xml:space="preserve">
-    <value>Show timestamps</value>
+  <data name="LogViewerExample_LogWindow_Title" xml:space="preserve">
+    <value>Log window</value>
   </data>
 </root>
