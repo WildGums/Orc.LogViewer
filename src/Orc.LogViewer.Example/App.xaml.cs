@@ -42,7 +42,7 @@ public partial class App : Application
                 services.AddOrcSystemInfo();
                 services.AddOrcTheming();
                 services.AddOrchestraCore();
-                services.AddSingleton<ILanguageSource>(new LanguageResourceSource("Orc.LogViewer.Example", "Orc.LogViewer.Example.Properties", "Resources"));
+                services.AddOrcLogViewerExample();
 
                 services.AddLogging(x =>
                 {
