@@ -32,6 +32,15 @@ public partial class App : Application
         var hostBuilder = new HostBuilder()
             .ConfigureServices((hostContext, services) =>
             {
+                services.AddLogging(x =>
+                {
+                    x.SetMinimumLevel(LogLevel.Debug);
+
+                    x.AddConsole();
+                    x.AddDebug();
+                    x.AddInMemory();
+                });
+
                 services.AddCatelCore();
                 services.AddCatelMvvm();
                 services.AddOrcAutomation();
@@ -43,12 +52,6 @@ public partial class App : Application
                 services.AddOrcTheming();
                 services.AddOrchestraCore();
                 services.AddOrcLogViewerExample();
-
-                services.AddLogging(x =>
-                {
-                    x.AddConsole();
-                    x.AddDebug();
-                });
             });
 
         _host = hostBuilder.Build();

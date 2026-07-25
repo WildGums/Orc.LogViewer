@@ -7,11 +7,9 @@ using System.Security;
 using System.Windows;
 using System.Windows.Media;
 using Catel;
-using Catel.IoC;
 using Catel.MVVM;
 using Catel.MVVM.Views;
 using Catel.Services;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Orc.Controls;
 

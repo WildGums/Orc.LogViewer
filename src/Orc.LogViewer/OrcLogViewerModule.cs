@@ -3,6 +3,7 @@
 using System;
 using Catel;
 using Catel.IoC;
+using Catel.Logging;
 using Catel.MVVM;
 using Catel.Services;
 using Catel.ThirdPartyNotices;
