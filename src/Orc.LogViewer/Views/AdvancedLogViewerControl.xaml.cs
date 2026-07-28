@@ -40,6 +40,7 @@ public partial class AdvancedLogViewerControl
     public static readonly DependencyProperty AccentColorBrushProperty = DependencyProperty.Register(nameof(AccentColorBrush), typeof(Brush),
         typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(Brushes.LightGray, (sender, e) => ((AdvancedLogViewerControl)sender).OnAccentColorBrushChanged()));
 
+
     [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
     public bool IgnoreCatelLogging
     {
@@ -71,18 +72,6 @@ public partial class AdvancedLogViewerControl
 
     public static readonly DependencyProperty ShowFilterBoxProperty = DependencyProperty.Register(nameof(ShowFilterBox), typeof(bool),
         typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
-
-
-    [TypeConverter(typeof(StringToLogEventLevelConverter))]
-    [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]
-    public LogLevel Level
-    {
-        get { return (LogLevel)GetValue(LevelProperty); }
-        set { SetValue(LevelProperty, value); }
-    }
-
-    public static readonly DependencyProperty LevelProperty = DependencyProperty.Register(nameof(Level), typeof(LogLevel),
-        typeof(AdvancedLogViewerControl), new FrameworkPropertyMetadata(LogLevel.Critical | LogLevel.Error | LogLevel.Warning | LogLevel.Information, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
 
     [ViewToViewModel(MappingType = ViewToViewModelMappingType.TwoWayViewWins)]

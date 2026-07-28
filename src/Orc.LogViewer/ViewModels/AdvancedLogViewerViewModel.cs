@@ -19,7 +19,8 @@ public class AdvancedLogViewerViewModel : ViewModelBase
     private readonly IConfigurationService _configurationService;
     private readonly IInMemoryLoggingContainer _inMemoryLoggingContainer;
 
-    private LogLevel _level;
+    // Log level is not a flags enum, so we need to use a dictionary to store the checked state of each log level.
+    private readonly Dictionary<LogLevel, bool> _level = new Dictionary<LogLevel, bool>();
 
     public AdvancedLogViewerViewModel(IServiceProvider serviceProvider, IUIVisualizerService uiVisualizerService,
         IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService,
@@ -31,7 +32,12 @@ public class AdvancedLogViewerViewModel : ViewModelBase
         _configurationService = configurationService;
         _inMemoryLoggingContainer = inMemoryLoggingContainer;
 
-        _level = LogLevel.Critical | LogLevel.Error | LogLevel.Warning | LogLevel.Information;
+        foreach (var enumValue in Enum<LogLevel>.GetValues())
+        {
+            _level[enumValue] = enumValue == LogLevel.Error ||
+                enumValue == LogLevel.Warning ||
+                enumValue == LogLevel.Information;
+        }
 
         LogFilterGroups = new List<LogFilterGroup>();
         EditFilterGroups = new TaskCommand(serviceProvider, OnEditFilterGroupsExecuteAsync);
@@ -49,98 +55,74 @@ public class AdvancedLogViewerViewModel : ViewModelBase
 
     public LogFilterGroup? SelectedLogFilterGroup { get; set; }
 
-    public LogLevel Level
-    {
-        get { return _level; }
-        set
-        {
-            if (_level == value)
-            {
-                return;
-            }
-
-            _level = value;
-
-            RaisePropertyChanged(nameof(Level));
-            RaisePropertyChanged(nameof(ErrorChecked));
-            RaisePropertyChanged(nameof(WarningChecked));
-            RaisePropertyChanged(nameof(InfoChecked));
-            RaisePropertyChanged(nameof(DebugChecked));
-        }
-    }
-
     public bool ErrorChecked
     {
-        get { return Level.HasFlag(LogLevel.Error); }
+        get { return _level[LogLevel.Error] || _level[LogLevel.Critical]; }
         set
         {
             if (value)
             {
-                Level |= LogLevel.Error;
+                _level[LogLevel.Error] = true;
             }
             else
             {
-                Level &= ~LogLevel.Error;
+                _level[LogLevel.Error] = false;
             }
 
-            RaisePropertyChanged(nameof(Level));
             RaisePropertyChanged(nameof(ErrorChecked));
         }
     }
 
     public bool WarningChecked
     {
-        get { return Level.HasFlag(LogLevel.Warning); }
+        get { return _level[LogLevel.Warning]; }
         set
         {
             if (value)
             {
-                Level |= LogLevel.Warning;
+                _level[LogLevel.Warning] = true;
             }
             else
             {
-                Level &= ~LogLevel.Warning;
+                _level[LogLevel.Warning] = false;
             }
 
-            RaisePropertyChanged(nameof(Level));
             RaisePropertyChanged(nameof(WarningChecked));
         }
     }
 
     public bool InfoChecked
     {
-        get { return Level.HasFlag(LogLevel.Information); }
+        get { return _level[LogLevel.Information]; }
         set
         {
             if (value)
             {
-                Level |= LogLevel.Information;
+                _level[LogLevel.Information] = true;
             }
             else
             {
-                Level &= ~LogLevel.Information;
+                _level[LogLevel.Information] = false;
             }
 
-            RaisePropertyChanged(nameof(Level));
             RaisePropertyChanged(nameof(InfoChecked));
         }
     }
 
     public bool DebugChecked
     {
-        get { return Level.HasFlag(LogLevel.Debug); }
+        get { return _level[LogLevel.Debug]; }
         set
         {
             if (value)
             {
-                Level |= LogLevel.Debug;
+                _level[LogLevel.Debug] = true;
             }
             else
             {
-                Level &= ~LogLevel.Debug;
+                _level[LogLevel.Debug] = false;
             }
 
-            RaisePropertyChanged(nameof(Level));
             RaisePropertyChanged(nameof(DebugChecked));
         }
     }

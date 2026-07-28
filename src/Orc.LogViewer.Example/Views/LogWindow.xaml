@@ -8,7 +8,6 @@
 
     <orclogviewer:AdvancedLogViewerControl Margin="4" 
                                            IgnoreCatelLogging="False"
-                                           ShowFilterBox="True" 
-                                           Level="Warning"/>
+                                           ShowFilterBox="True" />
 
 </catel:DataWindow>
