@@ -23,25 +23,25 @@
                    Background="Transparent">
             <controls:CategoryToggleButton x:Name="ShowErrorToggleButton"
                                            IsChecked="{Binding ErrorChecked}"
-                                           EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.ErrorEntriesCount}"
+                                           EntryCount="{Binding ErrorCount}"
                                            Category="Error"
                                            Margin="0,6,4,6" />
 
             <controls:CategoryToggleButton x:Name="ShowWarningToggleButton"
                                            IsChecked="{Binding WarningChecked}"
-                                           EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.WarningEntriesCount}"
+                                           EntryCount="{Binding WarningCount}"
                                            Category="Warning"
                                            Margin="4,6,4,6" />
 
             <controls:CategoryToggleButton x:Name="ShowInfoToggleButton"
                                            IsChecked="{Binding InfoChecked}"
-                                           EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.InfoEntriesCount}"
+                                           EntryCount="{Binding InfoCount}"
                                            Category="Info"
                                            Margin="4,6,4,6" />
 
             <controls:CategoryToggleButton x:Name="ShowDebugToggleButton"
                                            IsChecked="{Binding DebugChecked}"
-                                           EntryCount="{Binding ElementName=LogViewerControl, Path=ViewModel.DebugEntriesCount}"
+                                           EntryCount="{Binding DebugCount}"
                                            Category="Debug"
                                            Margin="4,6,0,6" />
 

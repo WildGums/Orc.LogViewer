@@ -12,6 +12,7 @@ using Catel.MVVM.Views;
 using Catel.Services;
 using Microsoft.Extensions.Logging;
 using Orc.Controls;
+using Orc.LogViewer.ViewModels;
 
 public partial class AdvancedLogViewerControl
 {
@@ -158,6 +159,7 @@ public partial class AdvancedLogViewerControl
     public void Clear()
     {
         LogViewerControl.Clear();
+        (ViewModel as AdvancedLogViewerViewModel)?.ResetCounts();
     }
 
     private void CopyToClipboard()

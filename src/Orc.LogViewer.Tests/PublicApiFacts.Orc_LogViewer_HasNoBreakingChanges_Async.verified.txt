@@ -135,25 +135,35 @@ namespace Orc.LogViewer.ViewModels
 {
     public class AdvancedLogViewerViewModel : Catel.MVVM.ViewModelBase
     {
+        public static readonly Catel.Data.IPropertyData DebugCountProperty;
         public static readonly Catel.Data.IPropertyData EnableThreadIdProperty;
+        public static readonly Catel.Data.IPropertyData ErrorCountProperty;
         public static readonly Catel.Data.IPropertyData IgnoreCatelLoggingProperty;
+        public static readonly Catel.Data.IPropertyData InfoCountProperty;
         public static readonly Catel.Data.IPropertyData LogFilterGroupsProperty;
         public static readonly Catel.Data.IPropertyData SelectedLogFilterGroupProperty;
         public static readonly Catel.Data.IPropertyData ShowFilterBoxProperty;
         public static readonly Catel.Data.IPropertyData ShowFilterGroupsProperty;
+        public static readonly Catel.Data.IPropertyData WarningCountProperty;
         public AdvancedLogViewerViewModel(System.IServiceProvider serviceProvider, Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService, Catel.Configuration.IConfigurationService configurationService, Catel.Logging.IInMemoryLoggingContainer inMemoryLoggingContainer) { }
         public bool DebugChecked { get; set; }
+        public int DebugCount { get; }
         public Catel.MVVM.TaskCommand EditFilterGroups { get; }
         public bool EnableThreadId { get; set; }
         public bool ErrorChecked { get; set; }
+        public int ErrorCount { get; }
         public bool IgnoreCatelLogging { get; set; }
         public bool InfoChecked { get; set; }
+        public int InfoCount { get; }
         public Microsoft.Extensions.Logging.LogLevel Level { get; set; }
         public System.Collections.Generic.List<Orc.Controls.LogFilterGroup> LogFilterGroups { get; }
         public Orc.Controls.LogFilterGroup? SelectedLogFilterGroup { get; set; }
         public bool ShowFilterBox { get; set; }
         public bool ShowFilterGroups { get; set; }
         public bool WarningChecked { get; set; }
+        public int WarningCount { get; }
+        public void ResetCounts() { }
+        protected override System.Threading.Tasks.Task CloseAsync() { }
         protected override System.Threading.Tasks.Task InitializeAsync() { }
         protected override void OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs e) { }
     }

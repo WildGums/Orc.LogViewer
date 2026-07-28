@@ -37,6 +37,14 @@ public class AdvancedLogViewerViewModel : ViewModelBase
         EditFilterGroups = new TaskCommand(serviceProvider, OnEditFilterGroupsExecuteAsync);
     }
 
+    public int ErrorCount { get; private set; }
+
+    public int WarningCount { get; private set; }
+
+    public int InfoCount { get; private set; }
+
+    public int DebugCount { get; private set; }
+
     public bool EnableThreadId { get; set; }
 
     public bool IgnoreCatelLogging { get; set; }
@@ -154,11 +162,63 @@ public class AdvancedLogViewerViewModel : ViewModelBase
         await UpdateAsync();
     }
 
+    public void ResetCounts()
+    {
+        ErrorCount = 0;
+        WarningCount = 0;
+        InfoCount = 0;
+        DebugCount = 0;
+    }
+
     protected override async Task InitializeAsync()
     {
         await base.InitializeAsync();
 
+        InitializeCounts();
+
+        _inMemoryLoggingContainer.LogEntryAdded += OnLogEntryAdded;
+
         await UpdateAsync();
+    }
+
+    protected override async Task CloseAsync()
+    {
+        _inMemoryLoggingContainer.LogEntryAdded -= OnLogEntryAdded;
+
+        await base.CloseAsync();
+    }
+
+    private void InitializeCounts()
+    {
+        foreach (var entry in _inMemoryLoggingContainer.LogEntries)
+        {
+            IncrementCount(entry.LogLevel);
+        }
+    }
+
+    private void OnLogEntryAdded(object? sender, LogEntryEventArgs e)
+    {
+        IncrementCount(e.LogEntry.LogLevel);
+    }
+
+    private void IncrementCount(LogLevel logLevel)
+    {
+        if (logLevel is LogLevel.Error or LogLevel.Critical)
+        {
+            ErrorCount++;
+        }
+        else if (logLevel == LogLevel.Warning)
+        {
+            WarningCount++;
+        }
+        else if (logLevel == LogLevel.Information)
+        {
+            InfoCount++;
+        }
+        else if (logLevel == LogLevel.Debug)
+        {
+            DebugCount++;
+        }
     }
 
     private async Task UpdateAsync()
