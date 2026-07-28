@@ -17,7 +17,6 @@ namespace Orc.LogViewer
         public static readonly System.Windows.DependencyProperty AccentColorBrushProperty;
         public static readonly System.Windows.DependencyProperty EnableThreadIdProperty;
         public static readonly System.Windows.DependencyProperty IgnoreCatelLoggingProperty;
-        public static readonly System.Windows.DependencyProperty LevelProperty;
         public static readonly System.Windows.DependencyProperty ShowFilterBoxProperty;
         public static readonly System.Windows.DependencyProperty ShowFilterGroupsProperty;
         public AdvancedLogViewerControl() { }
@@ -27,9 +26,6 @@ namespace Orc.LogViewer
         public bool EnableThreadId { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool IgnoreCatelLogging { get; set; }
-        [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
-        [System.ComponentModel.TypeConverter(typeof(Orc.LogViewer.StringToLogEventLevelConverter))]
-        public Microsoft.Extensions.Logging.LogLevel Level { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
         public bool ShowFilterBox { get; set; }
         [Catel.MVVM.Views.ViewToViewModel("", MappingType=Catel.MVVM.Views.ViewToViewModelMappingType.TwoWayViewWins)]
@@ -148,14 +144,12 @@ namespace Orc.LogViewer.ViewModels
         public bool ErrorChecked { get; set; }
         public bool IgnoreCatelLogging { get; set; }
         public bool InfoChecked { get; set; }
-        public Microsoft.Extensions.Logging.LogLevel Level { get; set; }
         public System.Collections.Generic.List<Orc.Controls.LogFilterGroup> LogFilterGroups { get; }
         public Orc.Controls.LogFilterGroup? SelectedLogFilterGroup { get; set; }
         public bool ShowFilterBox { get; set; }
         public bool ShowFilterGroups { get; set; }
         public bool WarningChecked { get; set; }
         protected override System.Threading.Tasks.Task InitializeAsync() { }
-        protected override void OnPropertyChanged(System.ComponentModel.PropertyChangedEventArgs e) { }
     }
     public class LogFilterGroupEditorViewModel : Catel.MVVM.ViewModelBase
     {
