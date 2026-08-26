@@ -48,4 +48,7 @@
   <data name="LogViewer_AdvancedLogViewerControl_ShowTimestamps" xml:space="preserve">
     <value>Toon tijden</value>
   </data>
+  <data name="LogViewer_AdvancedLogViewerControl_Button_Content_EditFilterGroups" xml:space="preserve">
+    <value>...</value>
+  </data>
 </root>

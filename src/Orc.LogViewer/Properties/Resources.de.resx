@@ -45,4 +45,10 @@
   <data name="LogViewer_AdvancedLogViewerControl_Editor_Title" xml:space="preserve">
     <value>Filter group editor</value>
   </data>
+  <data name="LogViewer_AdvancedLogViewerControl_Button_Content_EditFilterGroups" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="LogViewer_AdvancedLogViewerControl_ShowTimestamps" xml:space="preserve">
+    <value>Show-Zeitstempel</value>
+  </data>
 </root>

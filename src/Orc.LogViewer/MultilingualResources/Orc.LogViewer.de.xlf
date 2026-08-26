@@ -6,9 +6,13 @@
     </header>
     <body>
       <group id="ORC.LOGVIEWER/PROPERTIES/RESOURCES.RESX" datatype="resx">
+        <trans-unit id="LogViewer_AdvancedLogViewerControl_Button_Content_EditFilterGroups" translate="yes" xml:space="preserve">
+          <source>...</source>
+          <target state="new">...</target>
+        </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_ShowTimestamps" translate="yes" xml:space="preserve">
           <source>Show timestamps</source>
-          <target state="new"></target>
+          <target state="new">Show-Zeitstempel</target>
         </trans-unit>
         <trans-unit id="LogViewer_AdvancedLogViewerControl_TextBlock_Text_Error" translate="yes" xml:space="preserve">
           <source>Error</source>
