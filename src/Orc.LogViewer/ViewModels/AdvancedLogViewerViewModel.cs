@@ -18,6 +18,7 @@ public class AdvancedLogViewerViewModel : ViewModelBase
     private readonly IApplicationLogFilterGroupService _applicationLogFilterGroupService;
     private readonly IConfigurationService _configurationService;
     private readonly IInMemoryLoggingContainer _inMemoryLoggingContainer;
+    private readonly ILanguageService _languageService;
 
     // Log level is not a flags enum, so we need to use a dictionary to store the checked state of each log level.
     private readonly Dictionary<LogLevel, bool> _level = new Dictionary<LogLevel, bool>();
@@ -25,12 +26,21 @@ public class AdvancedLogViewerViewModel : ViewModelBase
     public AdvancedLogViewerViewModel(IServiceProvider serviceProvider, IUIVisualizerService uiVisualizerService,
         IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService,
         IInMemoryLoggingContainer inMemoryLoggingContainer)
+        : this(serviceProvider, uiVisualizerService, applicationLogFilterGroupService, configurationService,
+               inMemoryLoggingContainer, (ILanguageService)serviceProvider.GetService(typeof(ILanguageService))!)
+    {
+    }
+
+    public AdvancedLogViewerViewModel(IServiceProvider serviceProvider, IUIVisualizerService uiVisualizerService,
+        IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService,
+        IInMemoryLoggingContainer inMemoryLoggingContainer, ILanguageService languageService)
         : base(serviceProvider)
     {
         _uiVisualizerService = uiVisualizerService;
         _applicationLogFilterGroupService = applicationLogFilterGroupService;
         _configurationService = configurationService;
         _inMemoryLoggingContainer = inMemoryLoggingContainer;
+        _languageService = languageService;
 
         foreach (var enumValue in Enum<LogLevel>.GetValues())
         {
@@ -149,7 +159,7 @@ public class AdvancedLogViewerViewModel : ViewModelBase
         {
             new LogFilterGroup
             {
-                Name = LanguageHelper.GetRequiredString("LogViewer_AdvancedLogViewerControl_None")
+                Name = _languageService.GetRequiredString("LogViewer_AdvancedLogViewerControl_None")
             }
         };
 
