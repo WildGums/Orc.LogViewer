@@ -6,7 +6,6 @@ using System.IO;
 using System.Security;
 using System.Windows;
 using System.Windows.Media;
-using Catel;
 using Catel.MVVM;
 using Catel.MVVM.Views;
 using Catel.Services;
@@ -17,14 +16,16 @@ public partial class AdvancedLogViewerControl
 {
     private readonly ICommandManager _commandManager;
     private readonly IProcessService _processService;
+    private readonly ILanguageService _languageService;
 
     public AdvancedLogViewerControl(IServiceProvider serviceProvider, IViewModelWrapperService viewModelWrapperService,
         IDataContextSubscriptionService dataContextSubscriptionService, ICommandManager commandManager,
-        IProcessService processService)
+        IProcessService processService, ILanguageService languageService)
         : base(serviceProvider, viewModelWrapperService, dataContextSubscriptionService)
     {
         _commandManager = commandManager;
         _processService = processService;
+        _languageService = languageService;
 
         InitializeComponent();
 
@@ -203,7 +204,7 @@ public partial class AdvancedLogViewerControl
         ShowInfoToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleInfoInputGesture);
         ShowDebugToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleDebugInputGesture);
 
-        EnableTimestampToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleTimestampInputGesture, LanguageHelper.GetRequiredString("LogViewer_AdvancedLogViewerControl_ShowTimestamps"));
+        EnableTimestampToggleButton.SetTooltip(LogViewerCommands.Logging.ToggleTimestampInputGesture, _languageService.GetRequiredString("LogViewer_AdvancedLogViewerControl_ShowTimestamps"));
         FilterBox.SetTooltip(LogViewerCommands.Logging.FilterInputGesture);
 
         ClearButton.SetTooltip(LogViewerCommands.Logging.ClearInputGesture);
