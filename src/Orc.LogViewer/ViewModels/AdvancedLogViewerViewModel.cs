@@ -25,15 +25,6 @@ public class AdvancedLogViewerViewModel : ViewModelBase
 
     public AdvancedLogViewerViewModel(IServiceProvider serviceProvider, IUIVisualizerService uiVisualizerService,
         IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService,
-        IInMemoryLoggingContainer inMemoryLoggingContainer)
-        : this(serviceProvider, uiVisualizerService, applicationLogFilterGroupService, configurationService,
-               inMemoryLoggingContainer, serviceProvider.GetService(typeof(ILanguageService)) as ILanguageService
-                   ?? throw new InvalidOperationException($"Service of type '{nameof(ILanguageService)}' is not registered."))
-    {
-    }
-
-    public AdvancedLogViewerViewModel(IServiceProvider serviceProvider, IUIVisualizerService uiVisualizerService,
-        IApplicationLogFilterGroupService applicationLogFilterGroupService, IConfigurationService configurationService,
         IInMemoryLoggingContainer inMemoryLoggingContainer, ILanguageService languageService)
         : base(serviceProvider)
     {

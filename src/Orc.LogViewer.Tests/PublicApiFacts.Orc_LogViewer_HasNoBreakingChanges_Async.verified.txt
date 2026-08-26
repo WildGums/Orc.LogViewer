@@ -137,7 +137,6 @@ namespace Orc.LogViewer.ViewModels
         public static readonly Catel.Data.IPropertyData SelectedLogFilterGroupProperty;
         public static readonly Catel.Data.IPropertyData ShowFilterBoxProperty;
         public static readonly Catel.Data.IPropertyData ShowFilterGroupsProperty;
-        public AdvancedLogViewerViewModel(System.IServiceProvider serviceProvider, Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService, Catel.Configuration.IConfigurationService configurationService, Catel.Logging.IInMemoryLoggingContainer inMemoryLoggingContainer) { }
         public AdvancedLogViewerViewModel(System.IServiceProvider serviceProvider, Catel.Services.IUIVisualizerService uiVisualizerService, Orc.Controls.IApplicationLogFilterGroupService applicationLogFilterGroupService, Catel.Configuration.IConfigurationService configurationService, Catel.Logging.IInMemoryLoggingContainer inMemoryLoggingContainer, Catel.Services.ILanguageService languageService) { }
         public bool DebugChecked { get; set; }
         public Catel.MVVM.TaskCommand EditFilterGroups { get; }
@@ -154,7 +153,6 @@ namespace Orc.LogViewer.ViewModels
     }
     public class LogFilterGroupEditorViewModel : Catel.MVVM.ViewModelBase
     {
-        public LogFilterGroupEditorViewModel(System.IServiceProvider serviceProvider) { }
         public LogFilterGroupEditorViewModel(System.IServiceProvider serviceProvider, Catel.Services.ILanguageService languageService) { }
     }
 }
