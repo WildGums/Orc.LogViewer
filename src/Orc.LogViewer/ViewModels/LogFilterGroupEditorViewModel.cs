@@ -7,7 +7,8 @@ using Catel.Services;
 public class LogFilterGroupEditorViewModel : ViewModelBase
 {
     public LogFilterGroupEditorViewModel(IServiceProvider serviceProvider)
-        : this(serviceProvider, (ILanguageService)serviceProvider.GetService(typeof(ILanguageService))!)
+        : this(serviceProvider, serviceProvider.GetService(typeof(ILanguageService)) as ILanguageService
+               ?? throw new InvalidOperationException($"Service of type '{nameof(ILanguageService)}' is not registered."))
     {
     }
 
